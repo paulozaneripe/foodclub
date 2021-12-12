@@ -1,0 +1,80 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span.toggler-label {
+        font-size: 1.4em;
+
+        &.material-icons {
+            font-size: 22px;
+        }
+    }
+}
+
+.light-mode .toggler-label {
+    color: #484848;
+}
+
+.toggler-label:first-child {
+    margin-right: 12px;
+}
+
+.toggler-label:last-child {
+    margin-left: 10px;
+}
+
+.toggler {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+
+.toggler input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggler-background {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #bababa;
+}
+
+.toggler-background:before {
+    position: absolute;
+    content: "";
+    height: 21px;
+    width: 21px;
+    left: 1px;
+    bottom: 2px;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.4s;
+}
+
+.toggler input:checked + .toggler-background {
+    background: $red;
+}
+
+body.user-is-tabbing .container:focus-within {
+    outline: 2px solid;
+}
+
+input:checked + .toggler-background:before {
+    transform: translateX(24px);
+}
+
+.toggler-background.toggler-ball {
+    border-radius: 34px;
+}
+
+.toggler-background.toggler-ball:before {
+    border-radius: 50%;
+}

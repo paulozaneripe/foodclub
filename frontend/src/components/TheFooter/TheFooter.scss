@@ -1,0 +1,39 @@
+.light-mode {
+    footer {
+        color: #555555;
+        background-color: $light-primary;
+    }
+}
+
+.dark-mode {
+    footer {
+        color: #cccccc;
+        background-color: $dark-primary;
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    padding: 18px;
+    height: 72px;
+    border-radius: 50px 50px 0 0;
+    box-shadow: 0 -1px 10px -5px rgba(0, 0, 0, 0.2);
+    transition: background-color 200ms ease-in-out;
+
+    #footer-description {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 960px;
+        width: 90%;
+        margin: 0 auto;
+
+        p {
+            text-align: center;
+            font-size: 1.4em;
+        }
+    }
+}

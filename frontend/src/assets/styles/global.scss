@@ -1,0 +1,153 @@
+@font-face {
+    font-family: "OpenDyslexic";
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src: url('~assets/fonts/OpenDyslexic/OpenDyslexic-Regular.otf') format("truetype");
+}
+
+@font-face {
+    font-family: "OpenDyslexic";
+    font-style: normal;
+    font-weight: bold;
+    font-display: swap;
+    src: url('~assets/fonts/OpenDyslexic/OpenDyslexic-Bold.otf') format("truetype");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    font-size: 3.2em;
+}
+
+h2 {
+    font-size: 2.8em;
+}
+
+h3 {
+    font-size: 2.4em;
+}
+
+h4 {
+    font-size: 2.0em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+img {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
+button {
+    font-size: 1.2em;
+}
+
+.material-icons, .icon {
+    cursor: default;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.open-dyslexic {
+    font-family: OpenDyslexic, sans-serif;
+    line-height: 15px;
+    
+    button, input {
+        font-family: OpenDyslexic, sans-serif;
+        line-height: 15px;
+    }
+}
+
+.open-dyslexic.standard-font {
+    font-size: 57%;
+    line-height: 14px;
+}
+
+.open-dyslexic.medium-font { 
+    font-size: 61%;
+}
+
+.open-dyslexic.big-font {
+    font-size: 65%;
+}
+
+.open-dyslexic.giant-font {
+    font-size: 69%;
+}
+
+.roboto {
+    font-family: Roboto, sans-serif;
+    line-height: 15px;
+    
+    button, input {
+        font-family: Roboto, sans-serif;
+    }
+}
+
+.roboto.standard-font {
+    font-size: 62.5%;
+}
+
+
+.roboto.medium-font { 
+    font-size: 66.5%;
+}
+
+.roboto.big-font {
+    font-size: 70.5%;
+    
+}
+
+.roboto.giant-font {
+    font-size: 74.5%;
+    
+}
+
+body {
+    transition: background-color 200ms ease-in-out;
+}
+
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none;
+}
+
+body.user-is-tabbing .buttons:not(:first-of-type):focus,
+body.user-is-tabbing input:focus,
+body.user-is-tabbing select:focus,
+body.user-is-tabbing textarea:focus,
+body.user-is-tabbing  {
+    outline: 2px solid;
+}
+
+.dark-mode body {
+    background-color: $dark-background;
+    color: white;
+}
+
+.light-mode body {
+    background-color: $light-background;
+}

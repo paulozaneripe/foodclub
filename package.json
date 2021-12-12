@@ -1,0 +1,15 @@
+{
+  "name": "foodclub",
+  "version": "1.0.0",
+  "description": "A website that uses a11y practices to help you share your favorite food recipes",
+  "main": "index.js",
+  "author": "Paulo Zaneripe",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -r -k \"cd backend && yarn dev\" \"cd frontend && yarn dev\" "
+  },
+  "devDependencies": {
+    "concurrently": "^6.4.0"
+  }
+}
