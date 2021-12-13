@@ -3,7 +3,7 @@
         <div v-if="showA11yMenu" id="menu">
             <ul>
                 <li>
-                    <Toggler
+                    <TheToggler
                         id="theme-toggler-a11ymenu"
                         enabled-text="Modo escuro"
                         :enabled-if="$colorMode.preference === 'dark'"
@@ -15,10 +15,9 @@
                     />
                 </li>
                 <li>
-                    <Toggler
+                    <TheToggler
                         id="readable-font-toggler"
                         enabled-text="Fonte legível"
-                        :enabled-if="readableFont"
                     />
                 </li>
                 <li>
@@ -66,12 +65,12 @@
 </template>
 
 <script>
-import Vue from "vue";
-import Toggler from "~/components/Toggler/Toggler.vue";
+import Vue from 'vue';
+import TheToggler from '~/components/TheToggler/TheToggler.vue';
 
 export default Vue.extend({
     components: {
-        Toggler,
+        TheToggler,
     },
     data() {
         return {
@@ -83,9 +82,9 @@ export default Vue.extend({
     updated() {
         if (
             this.a11yMenuFirstFocus === true &&
-            document.getElementById("a11y-menu") !== document.activeElement
+            document.getElementById('a11y-menu') !== document.activeElement
         ) {
-            document.getElementById("theme-toggler-a11ymenu").focus();
+            document.getElementById('theme-toggler-a11ymenu').focus();
             this.a11yMenuFirstFocus = false;
         }
     },
@@ -101,31 +100,31 @@ export default Vue.extend({
             }
         },
         decreaseFontSize() {
-            if (document.body.classList.contains("giant-font")) {
-                document.body.classList.toggle("giant-font");
-                document.body.classList.toggle("big-font");
-            } else if (document.body.classList.contains("big-font")) {
-                document.body.classList.toggle("big-font");
-                document.body.classList.toggle("medium-font");
-            } else if (document.body.classList.contains("medium-font")) {
-                document.body.classList.toggle("medium-font");
-                document.body.classList.toggle("standard-font");
+            if (document.body.classList.contains('giant-font')) {
+                document.body.classList.toggle('giant-font');
+                document.body.classList.toggle('big-font');
+            } else if (document.body.classList.contains('big-font')) {
+                document.body.classList.toggle('big-font');
+                document.body.classList.toggle('medium-font');
+            } else if (document.body.classList.contains('medium-font')) {
+                document.body.classList.toggle('medium-font');
+                document.body.classList.toggle('standard-font');
             }
         },
         increaseFontSize() {
-            if (document.body.classList.contains("standard-font")) {
-                document.body.classList.toggle("standard-font");
-                document.body.classList.toggle("medium-font");
-            } else if (document.body.classList.contains("medium-font")) {
-                document.body.classList.toggle("medium-font");
-                document.body.classList.toggle("big-font");
-            } else if (document.body.classList.contains("big-font")) {
-                document.body.classList.toggle("big-font");
-                document.body.classList.toggle("giant-font");
+            if (document.body.classList.contains('standard-font')) {
+                document.body.classList.toggle('standard-font');
+                document.body.classList.toggle('medium-font');
+            } else if (document.body.classList.contains('medium-font')) {
+                document.body.classList.toggle('medium-font');
+                document.body.classList.toggle('big-font');
+            } else if (document.body.classList.contains('big-font')) {
+                document.body.classList.toggle('big-font');
+                document.body.classList.toggle('giant-font');
             }
         },
     },
 });
 </script>
 
-<style lang="scss" src="./A11yMenu.scss" scoped />
+<style lang='scss' src='./A11yMenu.scss' scoped />

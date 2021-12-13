@@ -1,17 +1,19 @@
 @font-face {
-    font-family: "OpenDyslexic";
+    font-family: 'OpenDyslexic';
     font-style: normal;
     font-weight: normal;
     font-display: swap;
-    src: url('~assets/fonts/OpenDyslexic/OpenDyslexic-Regular.otf') format("truetype");
+    src: url('~assets/fonts/OpenDyslexic/OpenDyslexic-Regular.otf')
+        format('truetype');
 }
 
 @font-face {
-    font-family: "OpenDyslexic";
+    font-family: 'OpenDyslexic';
     font-style: normal;
     font-weight: bold;
     font-display: swap;
-    src: url('~assets/fonts/OpenDyslexic/OpenDyslexic-Bold.otf') format("truetype");
+    src: url('~assets/fonts/OpenDyslexic/OpenDyslexic-Bold.otf')
+        format('truetype');
 }
 
 * {
@@ -36,7 +38,7 @@ h3 {
 }
 
 h4 {
-    font-size: 2.0em;
+    font-size: 2em;
 }
 
 p {
@@ -59,21 +61,23 @@ button {
     font-size: 1.2em;
 }
 
-.material-icons, .icon {
+.material-icons,
+.icon {
     cursor: default;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .open-dyslexic {
     font-family: OpenDyslexic, sans-serif;
     line-height: 15px;
-    
-    button, input {
+
+    button,
+    input {
         font-family: OpenDyslexic, sans-serif;
         line-height: 15px;
     }
@@ -84,7 +88,7 @@ button {
     line-height: 14px;
 }
 
-.open-dyslexic.medium-font { 
+.open-dyslexic.medium-font {
     font-size: 61%;
 }
 
@@ -99,8 +103,9 @@ button {
 .roboto {
     font-family: Roboto, sans-serif;
     line-height: 15px;
-    
-    button, input {
+
+    button,
+    input {
         font-family: Roboto, sans-serif;
     }
 }
@@ -109,19 +114,16 @@ button {
     font-size: 62.5%;
 }
 
-
-.roboto.medium-font { 
+.roboto.medium-font {
     font-size: 66.5%;
 }
 
 .roboto.big-font {
     font-size: 70.5%;
-    
 }
 
 .roboto.giant-font {
     font-size: 74.5%;
-    
 }
 
 body {
@@ -132,14 +134,14 @@ body:not(.user-is-tabbing) button:focus,
 body:not(.user-is-tabbing) input:focus,
 body:not(.user-is-tabbing) select:focus,
 body:not(.user-is-tabbing) textarea:focus {
-  outline: none;
+    outline: none;
 }
 
 body.user-is-tabbing .buttons:not(:first-of-type):focus,
 body.user-is-tabbing input:focus,
 body.user-is-tabbing select:focus,
 body.user-is-tabbing textarea:focus,
-body.user-is-tabbing  {
+body.user-is-tabbing {
     outline: 2px solid;
 }
 

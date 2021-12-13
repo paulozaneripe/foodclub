@@ -1,0 +1,6 @@
+{
+    "files.trimFinalNewlines": true,
+    "prettier.quoteProps": "preserve",
+    "prettier.singleQuote": true,
+    "prettier.embeddedLanguageFormatting": "off"
+}

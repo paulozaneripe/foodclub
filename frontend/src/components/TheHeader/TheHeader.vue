@@ -3,7 +3,7 @@
         <nav>
             <ul>
                 <li>
-                    <Toggler
+                    <TheToggler
                         id="theme-toggler-header"
                         aria-label="Modo escuro"
                         disabled-text="light_mode"
@@ -33,11 +33,12 @@
                             tabindex="0"
                             to="/auth/login"
                             :prefetch="false"
-                            >Login</NuxtLink
                         >
-                        <NuxtLink tabindex="0" to="/auth/register"
-                            >Cadastre-se</NuxtLink
-                        >
+                            Login
+                        </NuxtLink>
+                        <NuxtLink tabindex="0" to="/auth/register">
+                            Cadastre-se
+                        </NuxtLink>
                     </div>
                 </li>
             </ul>
@@ -45,19 +46,19 @@
     </header>
 </template>
 <script>
-import Vue from "vue";
-import Toggler from "~/components/Toggler/Toggler.vue";
+import Vue from 'vue';
+import TheToggler from '~/components/TheToggler/TheToggler.vue';
 
 export default Vue.extend({
     components: {
-        Toggler,
+        TheToggler,
     },
     head() {
         return {
             link: [
                 {
-                    rel: "stylesheet",
-                    href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+                    rel: 'stylesheet',
+                    href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
                 },
             ],
         };
