@@ -9,8 +9,16 @@
 
 <script>
 import Vue from 'vue';
+import TheHeader from '~/components/TheHeader/TheHeader.vue';
+import A11yMenu from '~/components/A11yMenu/A11yMenu.vue';
+import TheFooter from '~/components/TheFooter/TheFooter.vue';
 
 export default Vue.extend({
+    components: {
+        TheHeader,
+        A11yMenu,
+        TheFooter
+    },
     head() {
         return {
             bodyAttrs: {

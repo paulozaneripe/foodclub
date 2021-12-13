@@ -18,7 +18,7 @@ export default {
     css: [
         '@/assets/styles/global.scss'
     ],
-    components: true,
+    components: false,
     buildModules: [
         '@nuxtjs/color-mode'
     ],

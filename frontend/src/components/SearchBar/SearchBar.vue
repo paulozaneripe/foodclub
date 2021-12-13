@@ -14,10 +14,6 @@
     </div>
 </template>
 
-<script>
-import Vue from 'vue';
-
-export default Vue.extend({});
-</script>
+<script src="./SearchBar.js" />
 
 <style lang="scss" src="./SearchBar.scss" scoped />

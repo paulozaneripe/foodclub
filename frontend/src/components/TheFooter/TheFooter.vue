@@ -9,16 +9,5 @@
     </footer>
 </template>
 
-<script>
-import Vue from 'vue';
-
-export default Vue.extend({
-    data() {
-        return {
-            currentYear: new Date().getFullYear(),
-        };
-    },
-});
-</script>
-
+<script src="./TheFooter.js" />
 <style lang="scss" src="./TheFooter.scss" scoped />
