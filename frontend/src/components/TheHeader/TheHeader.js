@@ -5,6 +5,11 @@ export default Vue.extend({
     components: {
         TheToggler,
     },
+    data() {
+        return {
+            showHeaderMenu: false,
+        };
+    },
     head() {
         return {
             link: [
@@ -15,4 +20,11 @@ export default Vue.extend({
             ],
         };
     },
+    methods: {
+        showMenu() {
+            this.showHeaderMenu
+                ? (this.showHeaderMenu = false)
+                : (this.showHeaderMenu = true);
+        },
+    }
 });

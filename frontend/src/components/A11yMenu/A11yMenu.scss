@@ -1,17 +1,17 @@
-.a11y {
+#a11y-menu {
     position: fixed;
     bottom: 30px;
     right: 30px;
 }
 
-#menu {
+.content {
     position: absolute;
     bottom: 60px;
     right: 31px;
     width: 202px;
 }
 
-.open-dyslexic.giant-font #menu {
+.open-dyslexic.giant-font .content {
     width: 208px;
 }
 
@@ -62,12 +62,11 @@ ul {
     }
 }
 
-#a11y-menu {
+#a11y-button {
     width: 63px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
     padding: 8px;
     border-radius: 50%;
     z-index: 999;
@@ -77,7 +76,7 @@ ul {
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-#a11y-menu img {
+#a11y-button img {
     width: 47px;
     height: 46px;
     filter: invert(95%);

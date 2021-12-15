@@ -15,5 +15,4 @@
 </template>
 
 <script src="./SearchBar.js" />
-
 <style lang="scss" src="./SearchBar.scss" scoped />

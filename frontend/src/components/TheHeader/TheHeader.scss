@@ -22,10 +22,6 @@
 
     .links a {
         color: white;
-
-        &:last-of-type {
-            border: 1px solid white;
-        }
     }
 }
 
@@ -51,36 +47,46 @@ header {
             justify-content: space-between;
             align-items: center;
 
-            .links {
+            .sandwich-menu {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 575.98px) {
+    header nav ul {
+        .links {
+            display: flex !important;
+            width: 100%;
+
+            a {
                 display: flex;
-                width: 100%;
+                justify-content: center;
+                align-items: center;
+                height: 38px;
+                padding: 0 18px;
+                border-radius: 50px;
+                font-size: 1.2em;
+                transition: background-color 400ms;
+                font-weight: bold;
+                border: none;
+                text-decoration: none;
 
-                a {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 38px;
-                    padding: 0 18px;
-                    border-radius: 50px;
-                    font-size: 1.2em;
-                    transition: background-color 400ms;
-                    font-weight: bold;
-                    border: none;
-                    text-decoration: none;
+                &:first-of-type {
+                    color: white;
+                    background-color: $red;
+                    padding: 11px 20px;
+                    margin-right: 25px;
 
-                    &:first-of-type {
-                        color: white;
-                        background-color: $red;
-                        padding: 11px 20px;
-                        margin-right: 25px;
-                        &:hover {
-                            background-color: darken($red, 5%);
-                        }
+                    &:hover {
+                        background-color: darken($red, 5%);
                     }
+                }
 
-                    &:last-of-type {
-                        background-color: transparent;
-                    }
+                &:last-of-type {
+                    background-color: transparent;
+                    border: 1px solid white;
                 }
             }
         }
@@ -88,20 +94,67 @@ header {
 }
 
 @media (max-width: 575.98px) {
+    .dark-mode {
+        .links, .arrow {
+            background-color: $dark-primary;
+        }
+    }
+
+    .light-mode {
+        .links, .arrow {
+            background-color: $light-primary;
+        }
+    }
+
+
     header {
         display: block;
         padding: 18px 0;
-    }
 
-    header nav ul {
-        justify-content: center;
+        nav {
+            ul {
+                .links {
+                    position: absolute;
+                    top: 55px;
+                    right: 50px;
+                    padding: 20px;
+                    border-radius: 10px 0 10px 10px;
+                    font-size: 1.4em;
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    box-shadow: 4px -5px 5px rgba(0, 0, 0, 0.1);
+                    z-index: 999;
 
-        #logo img {
-            margin-bottom: -17px;
-        }
+                    a { 
+                        width: 100%;
+                        min-width: 80px;
 
-        .links {
-            display: none;
+                        &:not(:last-child) {
+                            margin-bottom: 25px;
+                        }
+
+                        &:hover {
+                           font-weight: bold;
+                        }
+                    }
+                }
+
+                .sandwich-menu {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: 0.4s transform;
+
+                    span.material-icons {
+                        font-size: 36px;
+                        cursor: pointer;
+                    }
+
+                    &:hover {
+                        transform: scale(1.08);
+                    }
+                }
+            }
         }
     }
 }

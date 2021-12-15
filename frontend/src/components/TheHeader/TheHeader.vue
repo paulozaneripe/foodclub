@@ -28,7 +28,14 @@
                     </div>
                 </li>
                 <li>
-                    <div class="links">
+                    <div
+                        class="sandwich-menu"
+                        @click="showMenu"
+                        @keyup.space="showMenu"
+                    >
+                        <span class="material-icons" tabindex="0"> menu </span>
+                    </div>
+                    <div class="links" v-show="showHeaderMenu">
                         <NuxtLink
                             tabindex="0"
                             to="/auth/login"

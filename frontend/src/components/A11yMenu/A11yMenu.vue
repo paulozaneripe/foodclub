@@ -1,6 +1,6 @@
 <template>
-    <div class="a11y">
-        <div v-if="showA11yMenu" id="menu">
+    <div id="a11y-menu">
+        <div v-if="showA11yMenu" class="content">
             <ul>
                 <li>
                     <TheToggler
@@ -48,7 +48,7 @@
             <span class="arrow"></span>
         </div>
         <span
-            id="a11y-menu"
+            id="a11y-button"
             tabindex="0"
             role="button"
             :aria-pressed="showA11yMenu === false ? 'false' : 'true'"
@@ -64,5 +64,5 @@
     </div>
 </template>
 
-<script src="./A11yMenu.js"/>
+<script src="./A11yMenu.js" />
 <style lang="scss" src="./A11yMenu.scss" scoped />
