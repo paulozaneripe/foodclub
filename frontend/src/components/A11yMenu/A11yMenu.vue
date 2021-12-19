@@ -18,6 +18,8 @@
                     <TheToggler
                         id="readable-font-toggler"
                         enabled-text="Fonte legível"
+                        :enabled-if="readableFont"
+						@toggle="$store.dispatch('changeFont')"
                     />
                 </li>
                 <li>

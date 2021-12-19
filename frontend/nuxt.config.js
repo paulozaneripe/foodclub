@@ -18,6 +18,9 @@ export default {
     css: [
         '@/assets/styles/global.scss'
     ],
+    plugins: [
+        { src: '~/plugins/persistedState.client.js', mode: 'client'}
+    ],
     components: false,
     buildModules: [
         '@nuxtjs/color-mode'

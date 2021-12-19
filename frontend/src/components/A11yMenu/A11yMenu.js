@@ -11,7 +11,11 @@ export default Vue.extend({
             a11yMenuFirstFocus: false,
         };
     },
-    computed: {},
+    computed: {
+        readableFont() {
+            return this.$store.state.readableFont;
+        }
+    },
     updated() {
         if (
             this.a11yMenuFirstFocus === true &&

@@ -17,7 +17,7 @@ export default Vue.extend({
     components: {
         TheHeader,
         A11yMenu,
-        TheFooter
+        TheFooter,
     },
     head() {
         return {
@@ -27,6 +27,10 @@ export default Vue.extend({
         };
     },
     beforeMount() {
+        if (this.$store.state.readableFont === true) {
+            this.$store.dispatch('changeFont');
+        }
+
         window.addEventListener('keydown', this.handleTab);
     },
     methods: {
