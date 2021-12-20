@@ -20,6 +20,7 @@
 <script>
 import SearchBar from '~/components/SearchBar/SearchBar.vue';
 
+
 export default {
     components: {
         SearchBar,

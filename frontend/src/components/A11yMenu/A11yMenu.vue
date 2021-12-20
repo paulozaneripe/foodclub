@@ -29,8 +29,8 @@
                             class="material-icons"
                             role="button"
                             aria-label="Diminuir tamanho da fonte"
-                            @click="decreaseFontSize"
-                            @keyup.space="decreaseFontSize"
+                            @click="$store.dispatch('decreaseFontSize')"
+                            @keyup.space="$store.dispatch('decreaseFontSize')"
                         >
                             text_decrease
                         </span>
@@ -39,8 +39,8 @@
                             class="material-icons"
                             role="button"
                             aria-label="Aumentar tamanho da fonte"
-                            @click="increaseFontSize"
-                            @keyup.space="increaseFontSize"
+                            @click="$store.dispatch('increaseFontSize')"
+                            @keyup.space="$store.dispatch('increaseFontSize')"
                         >
                             text_increase
                         </span>

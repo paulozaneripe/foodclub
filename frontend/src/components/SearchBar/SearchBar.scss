@@ -20,16 +20,12 @@
     }
 }
 
-.dark-mode .user-is-tabbing .search-bar{
-    &:focus-within {
-        outline: 1px solid white;
-    }
+.dark-mode .search-bar:focus-within {
+    outline: 1px solid white;
 }
 
-.light-mode .user-is-tabbing .search-bar {
-    &:focus-within {
-        outline: 1px solid black;
-    }
+.light-mode .search-bar:focus-within {
+    outline: 1px solid black;
 }
 
 .search-bar {

@@ -3,11 +3,6 @@
         color: black;
         background-color: $light-primary;
     }
-
-    .links a:last-of-type {
-        color: black;
-        border: 1px solid black;
-    }
 }
 
 .dark-mode {
@@ -91,6 +86,16 @@ header {
             }
         }
     }
+
+    .dark-mode .links a:last-of-type {
+            background-color: transparent;
+        border: 1px solid white;
+    }
+
+    .light-mode .links a:last-of-type {
+        color: black;
+        border: 1px solid black;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -127,7 +132,7 @@ header {
 
                     a { 
                         width: 100%;
-                        min-width: 80px;
+                        min-width: 90px;
 
                         &:not(:last-child) {
                             margin-bottom: 25px;
@@ -143,15 +148,11 @@ header {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    transition: 0.4s transform;
-
+                    
                     span.material-icons {
                         font-size: 36px;
                         cursor: pointer;
-                    }
-
-                    &:hover {
-                        transform: scale(1.08);
+                        transition: 0.4s transform;
                     }
                 }
             }
