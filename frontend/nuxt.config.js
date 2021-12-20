@@ -43,6 +43,9 @@ export default {
         }
     },
     build: {
+        splitChunks: {
+            layouts: true
+        },
         loaders: {
             scss: {
                 implementation: require('sass'),

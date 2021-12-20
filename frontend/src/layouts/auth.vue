@@ -1,21 +1,22 @@
 <template>
     <div>
-        <TheHeader />
+        <SkipShortcut
+            target="a11y-button"
+            description="Pular para ajustes de acessibilidade"
+        />
         <main>
             <section>
                 <Nuxt />
             </section>
-        </main>
+        </main>        
         <A11yMenu />
-        <TheFooter />
     </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import TheHeader from '~/components/TheHeader/TheHeader.vue';
+import SkipShortcut from '~/components/SkipShortcut/SkipShortcut.vue';
 import A11yMenu from '~/components/A11yMenu/A11yMenu.vue';
-import TheFooter from '~/components/TheFooter/TheFooter.vue';
 
 export default Vue.extend({
     data() {
@@ -25,9 +26,8 @@ export default Vue.extend({
         };
     },
     components: {
-        TheHeader,
+        SkipShortcut,
         A11yMenu,
-        TheFooter,
     },
     head() {
         return {
@@ -72,11 +72,15 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 main {
-    min-height: calc(100vh - 234px);
+    height: 100%;
 }
 
 section {
-    margin: 50px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0 auto;
     max-width: 960px;
     width: 90%;
 }

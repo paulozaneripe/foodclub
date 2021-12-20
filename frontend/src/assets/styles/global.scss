@@ -64,6 +64,7 @@ img {
 
 button {
     font-size: 1.2em;
+    border: none;
 }
 
 .material-icons,
@@ -141,12 +142,16 @@ body:not(.user-is-tabbing) textarea:focus {
     outline: none;
 }
 
-body.user-is-tabbing .buttons:not(:first-of-type):focus,
+body.user-is-tabbing button:focus,
 body.user-is-tabbing input:focus,
 body.user-is-tabbing select:focus,
-body.user-is-tabbing textarea:focus,
-body.user-is-tabbing {
+body.user-is-tabbing textarea:focus {
+    outline-offset: 3px;
     outline: 2px solid;
+}
+
+*:focus-within {
+    outline-offset: 3px;
 }
 
 .dark-mode body {

@@ -42,12 +42,12 @@
                     <div class="links" v-show="showHeaderMenu">
                         <NuxtLink
                             tabindex="0"
-                            to="/auth/login"
+                            to="/login"
                             :prefetch="false"
                         >
-                            Login
+                            Entrar
                         </NuxtLink>
-                        <NuxtLink tabindex="0" to="/auth/register">
+                        <NuxtLink tabindex="0" to="/register">
                             Cadastre-se
                         </NuxtLink>
                     </div>
