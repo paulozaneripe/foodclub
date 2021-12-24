@@ -1,6 +1,14 @@
 <template>
-    <section>
+    <section class="login-section">
         <div class="left-panel">
+            <div id="logo">
+                <NuxtLink to="/">
+                    <img
+                        src="~/assets/images/foodclublogo.svg"
+                        alt="Logo do FoodClub"
+                    />
+                </NuxtLink>
+            </div>
             <h1>
                 Faça seu login e desfrute das mais
                 deliciosas receitas!
@@ -10,14 +18,16 @@
             <form action="">
                 <h2>Login</h2>
                 <div class="input-field">
-                    <i class="material-icons">email</i>
-                    <input type="email" name="email" placeholder="E-mail">
+                    <span class="material-icons">email</span>
+                    <input id="email" type="email" name="email" aria-label="email" title="Digite seu email" placeholder="E-mail">
                 </div>
                 <div class="input-field">
-                    <i class="material-icons">lock</i>
-                    <input type="password" name="password" placeholder="Senha">
+                    <span class="material-icons">lock</span>
+                    <input id="password" type="password" name="password" aria-label="senha" title="Digite sua senha" placeholder="Senha">
                 </div>
-                <button type="submit" class="login">Entrar</button>
+                <NuxtLink class="forgot-password" to="/forgot-password">Esqueceu sua senha?</NuxtLink>
+                <button type="submit" class="login">ENTRAR</button>
+                <p>Não possui uma conta?&nbsp;&nbsp;<NuxtLink to="/register">Cadastre-se</NuxtLink></p>
             </form>
         </div>
     </section>
@@ -26,22 +36,16 @@
 <script>
 export default {
     layout: 'auth',
+
 };
 </script>
 
 <style lang="scss">
-
-.left-panel {
-    max-width: 360px;
-    margin-right: 50px;
-
-    h1 {
-        line-height: normal;
-        text-align: center;
+.dark-mode .login-section {
+    #logo {
+        filter: invert(100%);
     }
-}
 
-.dark-mode {
     .form-panel {
         background-color: $dark-primary;
     }
@@ -63,13 +67,9 @@ export default {
     }
 }
 
-.light-mode {
+.light-mode .login-section {
     .form-panel {
         background-color: $light-primary;
-
-        i {
-            color: $gray-icon;
-        }
 
         button {
             &:focus {
@@ -96,17 +96,41 @@ export default {
     }
 }
 
-.form-panel {
+.login-section .left-panel {
+    max-width: 360px;
+    margin-right: 50px;
+
+    #logo {
+        margin-bottom: 40px;
+
+        img {
+            width: 12em;
+        }
+    }
+
+    h1 {
+        line-height: normal;
+        text-align: left;
+        line-height: 1.4em;
+    }
+}
+
+.login-section .form-panel {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 32px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 1px 10px 1px rgba(0, 0, 0, 0.2);
 
     h2 {
+        display: none;
         text-align: center;
         margin-bottom: 35px;
+    }
+
+    label {
+        font-size: 1.4em;
     }
 
     .input-field {
@@ -117,7 +141,7 @@ export default {
         grid-template-columns: 1fr 14fr;
         padding: 0 0 0 20px;
 
-        i {
+        span {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -138,7 +162,6 @@ export default {
     input {
         background: none;
         width: 100%;
-        height: 100%;
         border-radius: 0 10px 10px 0;
         border: none;
         font-size: 1.4em;
@@ -151,6 +174,20 @@ export default {
         }
     }
 
+    a {
+        font-weight: bold;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    a.forgot-password {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 1.4em;
+    }
+
     button {
         width: 100%;
         height: 58px;
@@ -160,12 +197,21 @@ export default {
         cursor: pointer;
         color: white;
         transition: background-color 350ms;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.4em;
     }
 }
 
 @media (max-width: 991.98px) {
-    .left-panel {
+    .login-section .left-panel {
         display: none;
+    }
+
+    .login-section .form-panel h2 {
+        display: block;
     }
 }
 

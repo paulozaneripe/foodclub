@@ -7,9 +7,9 @@
 }
 
 .skip {
+    position: fixed;
     left: -10000px;
     top: 127px;
-    position: absolute;
     padding: 20px;
     font-size: 1.6em;
     border-radius: 0 10px 10px 0;

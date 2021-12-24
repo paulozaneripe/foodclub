@@ -1,13 +1,11 @@
 <template>
     <div>
-        <SkipShortcut
-            target="a11y-button"
+        <SkipShortcut 
+            target="a11y-button" 
             description="Pular para ajustes de acessibilidade"
         />
         <main>
-            <section>
-                <Nuxt />
-            </section>
+            <Nuxt />
         </main>        
         <A11yMenu />
     </div>
@@ -27,7 +25,7 @@ export default Vue.extend({
     },
     components: {
         SkipShortcut,
-        A11yMenu,
+        A11yMenu
     },
     head() {
         return {

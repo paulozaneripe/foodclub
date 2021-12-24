@@ -2,9 +2,7 @@
     <div>
         <TheHeader />
         <main>
-            <section>
-                <Nuxt />
-            </section>
+            <Nuxt />
         </main>
         <A11yMenu />
         <TheFooter />

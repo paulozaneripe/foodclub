@@ -2,7 +2,7 @@
     <header>
         <SkipShortcut 
             target="a11y-button" 
-            description="Pular para ajustes de acessibilidade" 
+            description="Pular para ajustes de acessibilidade"
         />
         <nav>
             <ul>
@@ -23,7 +23,7 @@
                 </li>
                 <li>
                     <div id="logo">
-                        <NuxtLink to="/" tabindex="0">
+                        <NuxtLink to="/">
                             <img
                                 src="~/assets/images/foodclublogo.svg"
                                 alt="Logo do FoodClub"
@@ -37,17 +37,16 @@
                         @click="showMenu"
                         @keyup.space="showMenu"
                     >
-                        <span class="material-icons" tabindex="0"> menu </span>
+                        <span class="material-icons" role="button" tabindex="0"> menu </span>
                     </div>
                     <div class="links" v-show="showHeaderMenu">
                         <NuxtLink
-                            tabindex="0"
                             to="/login"
                             :prefetch="false"
                         >
                             Entrar
                         </NuxtLink>
-                        <NuxtLink tabindex="0" to="/register">
+                        <NuxtLink to="/register">
                             Cadastre-se
                         </NuxtLink>
                     </div>

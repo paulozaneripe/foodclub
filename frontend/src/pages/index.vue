@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <section>
         <SearchBar />
         <div id="cards">
             <div class="card">
@@ -12,12 +12,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
 import SearchBar from '~/components/SearchBar/SearchBar.vue';
-
 
 export default {
     components: {

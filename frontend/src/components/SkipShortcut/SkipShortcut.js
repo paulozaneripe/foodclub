@@ -15,12 +15,13 @@ export default Vue.extend({
     },
     methods: {
         unhide() {
-            document.querySelector(".skip").style.left = "0";
+            document.querySelector(".skip").style.left = "0px";
         },
         hide() {
             document.querySelector(".skip").style.left = "-10000px";
         },
-        skipToTarget() {
+        skipToTarget(e) {
+            e.preventDefault();
             document.querySelector(".skip").style.left = "-10000px";
             document.getElementById(this.target).focus();
         }

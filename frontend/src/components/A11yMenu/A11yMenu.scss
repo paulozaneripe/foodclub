@@ -116,3 +116,11 @@ body.user-is-tabbing #font-sizing:focus-within + span:focus {
     outline: 1px solid white;
     border: 1px solid white;
 }
+
+@media (max-width: 575.98px) {
+    #a11y-menu {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }    
+}
