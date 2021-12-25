@@ -34,28 +34,12 @@ export default Vue.extend({
                     rel: 'stylesheet',
                     href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
                 },
-            ],
-            bodyAttrs: {
-                class: 'roboto standard-font',
-            },
+            ]
         };
     },
     beforeMount() {
         window.addEventListener('keydown', this.handleTab);
-
-        let classes = this.readableFont ? 'open-dyslexic' : 'roboto';
-
-        if (this.fontSize === 'standard') {
-            classes = classes + ' standard-font';
-        } else if (this.fontSize === 'medium') {
-            classes = classes + ' medium-font';
-        } else if (this.fontSize === 'big') {
-            classes = classes + ' big-font';
-        } else if (this.fontSize === 'giant') {
-            classes = classes + ' giant-font';
-        }
-
-        document.body.className = classes;
+        document.body.className = this.readableFont ? 'open-dyslexic ' + this.fontSize : 'roboto ' + this.fontSize;
     },
     methods: {
         handleTab(e) {

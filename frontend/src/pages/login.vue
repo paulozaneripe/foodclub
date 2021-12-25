@@ -27,7 +27,7 @@
                 </div>
                 <NuxtLink class="forgot-password" to="/forgot-password">Esqueceu sua senha?</NuxtLink>
                 <button type="submit" class="login">ENTRAR</button>
-                <p>Não possui uma conta?&nbsp;&nbsp;<NuxtLink to="/register">Cadastre-se</NuxtLink></p>
+                <p>Não possui uma conta?&nbsp;<NuxtLink to="/register">Cadastre-se</NuxtLink></p>
             </form>
         </div>
     </section>
