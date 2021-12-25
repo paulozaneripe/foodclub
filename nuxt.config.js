@@ -26,7 +26,8 @@ export default {
         '@nuxtjs/color-mode'
     ],
     modules: [
-        '@nuxtjs/style-resources'
+        '@nuxtjs/style-resources',
+        '@nuxtjs/axios'
     ],
     colorMode: {
         preference: 'light',
@@ -51,5 +52,8 @@ export default {
                 implementation: require('sass'),
             },
         },
-    }
+    },
+    serverMiddleware: [
+        '~/api'
+    ]
 };

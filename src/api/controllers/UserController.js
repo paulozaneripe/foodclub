@@ -7,7 +7,21 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-    res.send('User create');
+    var userData = {
+        email: req.body.email,
+        name: req.body.name,
+        password: req.body.password,
+        confirmPassword: req.body.confirmPassword
+    };
+
+    const keys = Object.keys(userData);
+
+    for(let key of keys) {
+        if (req.body[key] == "")
+            return res.send("Por favor, preencha todos os campos!");
+    }
+
+    return res.send("Registrado");
 };
 
 const edit = (req, res) => {
