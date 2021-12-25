@@ -27,15 +27,13 @@ export default Vue.extend({
         SkipShortcut,
         A11yMenu
     },
-    head() {
-        return {
-            link: [
-                {
-                    rel: 'stylesheet',
-                    href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-                },
-            ]
-        };
+    head: {
+        link: [
+            {
+                rel: 'stylesheet',
+                href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+            },
+        ],
     },
     beforeMount() {
         window.addEventListener('keydown', this.handleTab);

@@ -57,6 +57,7 @@
             aria-label="Menu de Acessibilidade"
             @click="showMenu($event)"
             @keyup.space="showMenu($event)"
+            @keyup.enter="showMenu($event)"
         >
             <img
                 src="~/assets/images/icons/accessibility.svg"

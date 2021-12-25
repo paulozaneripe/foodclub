@@ -27,15 +27,13 @@ export default Vue.extend({
         A11yMenu,
         TheFooter,
     },
-    head() {
-        return {
-            link: [
-                {
-                    rel: 'stylesheet',
-                    href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-                },
-            ]
-        };
+    head: {
+        link: [
+            {
+                rel: 'stylesheet',
+                href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+            },
+        ],
     },
     beforeMount() {
         window.addEventListener('keydown', this.handleTab);

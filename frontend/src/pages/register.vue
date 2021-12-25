@@ -20,7 +20,7 @@
                     <input id="confirm-password" type="password" name="confirm-password" aria-label="Confirme sua senha" title="Confirme sua senha" placeholder="Confirme sua senha">
                 </div>
                 <button type="submit" class="login">CADASTRAR</button>
-                <p>Já possui uma conta?&nbsp;<NuxtLink to="/login">Faça o login</NuxtLink></p>
+                <p>Já possui uma conta? <NuxtLink to="/login">Faça o login</NuxtLink></p>
             </form>
         </div>
         <div class="right-panel">
@@ -111,7 +111,7 @@ export default {
         margin-bottom: 40px;
 
         img {
-            width: 12em;
+            width: 120px;
         }
     }
 

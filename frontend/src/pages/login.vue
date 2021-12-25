@@ -27,7 +27,7 @@
                 </div>
                 <NuxtLink class="forgot-password" to="/forgot-password">Esqueceu sua senha?</NuxtLink>
                 <button type="submit" class="login">ENTRAR</button>
-                <p>Não possui uma conta?&nbsp;<NuxtLink to="/register">Cadastre-se</NuxtLink></p>
+                <p>Não possui uma conta? <NuxtLink to="/register">Cadastre-se</NuxtLink></p>
             </form>
         </div>
     </section>
@@ -104,7 +104,7 @@ export default {
         margin-bottom: 40px;
 
         img {
-            width: 12em;
+            width: 120px;
         }
     }
 
