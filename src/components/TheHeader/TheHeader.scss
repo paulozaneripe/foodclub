@@ -70,8 +70,13 @@ header {
 
                 &:first-of-type {
                     color: white;
+                    background-color: $red;
                     padding: 11px 20px;
                     margin-right: 25px;
+
+                    &:hover {
+                        background-color: darken($red, 5%);
+                    }
                 }
 
                 &:last-of-type {
@@ -84,14 +89,6 @@ header {
 
     .dark-mode {
         .links {
-            a:first-of-type {
-                background-color: $red;
-
-                &:hover {
-                    background-color: darken($red, 5%);
-                }
-            }
-
             a:last-of-type {
                 background-color: transparent;
                 border: 1px solid white;
@@ -101,14 +98,6 @@ header {
 
     .light-mode {
         .links {
-            a:first-of-type {
-                background-color: $red;
-
-                &:hover {
-                    background-color: darken($red, 5%);
-                }
-            }
-
             a:last-of-type {
                 color: black;
                 border: 1px solid black;

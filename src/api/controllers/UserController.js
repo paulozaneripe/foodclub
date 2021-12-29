@@ -7,7 +7,7 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-    var userData = {
+    let userData = {
         email: req.body.email,
         name: req.body.name,
         password: req.body.password,
@@ -21,7 +21,7 @@ const create = (req, res) => {
             return res.send("Por favor, preencha todos os campos!");
     }
 
-    return res.send("Registrado");
+    return res.send(userData);
 };
 
 const edit = (req, res) => {

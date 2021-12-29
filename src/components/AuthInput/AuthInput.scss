@@ -1,0 +1,56 @@
+.dark-mode .input-field {
+    background-color:#464646;
+
+    input, input::placeholder {
+        color: white;
+    }
+}
+
+.light-mode .input-field {
+    background-color: $light-background;
+
+    input, input::placeholder {
+        color: black;
+    }
+}
+
+.input-field {
+    width: 100%;
+    height: 58px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 14fr;
+    padding: 0 0 0 20px;
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 1.25rem;
+        outline: none;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    &:focus-within { 
+        outline: 2px solid;
+    }
+}
+
+input {
+    background: none;
+    width: 100%;
+    border-radius: 0 10px 10px 0;
+    border: none;
+    font-size: 1.4em;
+    text-overflow: ellipsis;
+    padding: 10px 20px;
+    outline: none;
+
+    &:focus {
+        outline: none !important;
+    }
+}

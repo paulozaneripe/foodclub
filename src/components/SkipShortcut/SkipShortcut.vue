@@ -2,7 +2,6 @@
     <a
         :href="'#' + target"
         class="skip"
-        tabindex="0"
         @focus="unhide()"
         @blur="hide()"
         @click="skipToTarget($event)"

@@ -1,46 +1,3 @@
-<template>
-    <section class="login-section">
-        <div class="left-panel">
-            <div id="logo">
-                <NuxtLink to="/">
-                    <img
-                        src="~/assets/images/foodclublogo.svg"
-                        alt="Logo do FoodClub"
-                    />
-                </NuxtLink>
-            </div>
-            <h1>
-                Faça seu login e desfrute das mais
-                deliciosas receitas!
-            </h1>
-        </div>
-        <div class="form-panel">
-            <form action="">
-                <h2>Login</h2>
-                <div class="input-field">
-                    <span class="material-icons">email</span>
-                    <input id="email" type="email" name="email" aria-label="email" title="Digite seu email" placeholder="E-mail">
-                </div>
-                <div class="input-field">
-                    <span class="material-icons">lock</span>
-                    <input id="password" type="password" name="password" aria-label="senha" title="Digite sua senha" placeholder="Senha">
-                </div>
-                <NuxtLink class="forgot-password" to="/forgot-password">Esqueceu sua senha?</NuxtLink>
-                <button type="submit" class="login">ENTRAR</button>
-                <p>Não possui uma conta? <NuxtLink to="/register">Cadastre-se</NuxtLink></p>
-            </form>
-        </div>
-    </section>
-</template>
-
-<script>
-export default {
-    layout: 'auth',
-
-};
-</script>
-
-<style lang="scss">
 .dark-mode .login-section {
     #logo {
         filter: invert(100%);
@@ -214,5 +171,3 @@ export default {
         display: block;
     }
 }
-
-</style>
