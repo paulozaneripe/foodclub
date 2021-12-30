@@ -53,11 +53,11 @@
             id="a11y-button"
             tabindex="0"
             role="button"
-            :aria-pressed="showA11yMenu === false ? 'false' : 'true'"
-            aria-label="Menu de Acessibilidade"
-            @click="showMenu($event)"
-            @keyup.space="showMenu($event)"
-            @keyup.enter="showMenu($event)"
+            :aria-expanded="showA11yMenu === false ? 'false' : 'true'"
+            aria-haspopup="true"
+            aria-label="Abrir menu de acessibilidade"
+            @click="showMenu"
+            @keyup.space="showMenu"
         >
             <img
                 src="~/assets/images/icons/accessibility.svg"

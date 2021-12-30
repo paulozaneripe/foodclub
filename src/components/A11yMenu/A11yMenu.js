@@ -18,6 +18,7 @@ export default Vue.extend({
     methods: {
         showMenu() {
             this.showA11yMenu ? (this.showA11yMenu = false) : (this.showA11yMenu = true);
+            document.getElementById("a11y-button").ariaLabel = this.showA11yMenu ? "Fechar menu de acessibilidade" : "Abrir menu de acessibilidade";
         }
     },
 });

@@ -4,5 +4,11 @@ export default {
     layout: 'auth',
     components: {
         AuthInput
-    }
+    },
+    data() {
+        return {
+            email: "",
+            password: ""
+        };
+    },
 };

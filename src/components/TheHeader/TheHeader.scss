@@ -14,10 +14,6 @@
     #logo {
         filter: invert(100%);
     }
-
-    .links a {
-        color: white;
-    }
 }
 
 header {
@@ -41,127 +37,170 @@ header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-
-            .sandwich-menu {
-                display: none;
-            }
         }
     }
 }
 
 @media (min-width: 575.98px) {
-    header nav ul {
+    nav ul li:last-of-type {
+        .mobile-button {
+            display: none;
+        }
+
         .links {
             display: flex !important;
-            width: 100%;
 
-            a {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 38px;
-                padding: 0 18px;
-                border-radius: 50px;
-                font-size: 1.2em;
-                transition: background-color 400ms;
-                font-weight: bold;
-                border: none;
-                text-decoration: none;
-
-                &:first-of-type {
-                    color: white;
+            li {
+                a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 38px;
+                    padding: 0 18px;
+                    border-radius: 50px;
+                    font-size: 1.2em;
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+    
+                &:first-of-type a {
                     background-color: $red;
-                    padding: 11px 20px;
-                    margin-right: 25px;
-
+                    color: white;
+                    margin-right: 20px;
+                    border: none;
+                    transition: background-color 400ms;
+    
                     &:hover {
                         background-color: darken($red, 5%);
                     }
                 }
-
-                &:last-of-type {
-                    background-color: transparent;
-                    border: 1px solid white;
+    
+                &:last-of-type a {
+                    border: 1px solid;
                 }
-            }
-        }
-    }
-
-    .dark-mode {
-        .links {
-            a:last-of-type {
-                background-color: transparent;
-                border: 1px solid white;
-            }
-        }
-    }
-
-    .light-mode {
-        .links {
-            a:last-of-type {
-                color: black;
-                border: 1px solid black;
             }
         }
     }
 }
 
 @media (max-width: 575.98px) {
-    .dark-mode {
-        .links, .arrow {
-            background-color: $dark-primary;
-        }
+    header.border-fix {
+        border-radius: 0 0 0 50px;
     }
 
-    .light-mode {
-        .links, .arrow {
-            background-color: $light-primary;
-        }
-    }
+    .dark-mode ul li:last-of-type  {
+        .mobile-button {
 
+            &:focus {
+                outline: 2px solid white;
+            }
 
-    header {
-        display: block;
-        padding: 18px 0;
-
-        nav {
-            ul {
-                .links {
-                    position: absolute;
-                    top: 55px;
-                    right: 50px;
-                    padding: 20px;
-                    border-radius: 10px 0 10px 10px;
-                    font-size: 1.4em;
-                    display: grid;
-                    grid-template-columns: 1fr;
-                    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.1);
-                    z-index: 999;
-
-                    a { 
-                        width: 100%;
-                        min-width: 90px;
-
-                        &:not(:last-child) {
-                            margin-bottom: 25px;
-                        }
-
-                        &:hover {
-                           font-weight: bold;
-                        }
-                    }
+            #hamburger {
+                color: white;
+    
+                &::after, &::before {
+                    background-color: white;
                 }
+            }
+        } 
 
-                .sandwich-menu {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    
-                    span.material-icons {
-                        font-size: 36px;
-                        cursor: pointer;
-                        transition: 0.4s transform;
-                    }
+        .links {
+            background-color: $dark-primary;
+            border-left: 1px solid darken($dark-primary, 5%);
+            border-bottom: 1px solid darken($dark-primary, 5%);
+            color: white;
+    
+            li a {
+                border-top: 1px solid $dark-background;
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid $dark-background;
+                }
+    
+                &:hover, &:focus {
+                    background-color: darken($dark-primary, 5%);
+                }
+            }
+        }
+    }
+
+
+    .light-mode ul li:last-of-type  {
+        .mobile-button {
+
+            &:focus {
+                outline: 2px solid black;
+            }
+
+            #hamburger {
+                color: black;
+    
+                &::after, &::before {
+                    background-color: black;
+                }
+            }
+        } 
+
+        .links {
+            background-color: $light-primary;
+            border-left: 1px solid darken($light-background, 5%);
+            border-bottom: 1px solid darken($light-background, 5%);
+    
+            li a {
+                border-top: 1px solid darken($light-primary, 10%);
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid darken($light-primary, 10%);
+                }
+    
+                &:hover, &:focus {
+                    background-color: darken($light-primary, 10%);
+                }
+            }
+        }
+    }
+
+
+    nav ul li:last-of-type {
+        .mobile-button {
+            display: flex;
+            border: none;
+            background: none;
+            cursor: pointer;
+            gap: .5rem;
+            color: white;
+
+            #hamburger {
+                border-top: 3px solid;
+                width: 33px;
+
+                &::after, &::before {
+                    display: block;
+                    content: "";
+                    width: 33px;
+                    height: 3px;
+                    margin-top: 6px;
+                }
+            }
+        }
+
+        .links {
+            display: block;
+            position: absolute;
+            top: 72px;
+            right: 0px;
+            box-shadow: -5px 15px 15px 1px rgba(0, 0, 0, 0.2);
+            width: 50vw;
+            z-index: 999;
+            overflow-y: hidden;
+
+            li a {
+                width: 100%;
+                font-size: 1.6em;
+                display: flex;
+                justify-content: flex-start;
+                padding: 20px;
+                &:focus {
+                    outline: none;
+                    border: 1px solid;
                 }
             }
         }
@@ -169,15 +208,7 @@ header {
 }
 
 @media (max-width: 767.98px) {
-    header nav ul {
-        li:first-child {
-            display: none;
-        }
-
-        .links a {
-            &:first-of-type {
-                margin-right: 10px;
-            }
-        }
+    nav ul:not(.links) > li:first-of-type {
+        display: none;
     }
 }

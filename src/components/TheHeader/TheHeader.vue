@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <header :class="showHeaderMenu ? 'border-fix' : ''">
         <SkipShortcut 
             target="a11y-button" 
             description="Pular para ajustes de acessibilidade"
@@ -32,24 +32,28 @@
                     </div>
                 </li>
                 <li>
-                    <div
-                        class="sandwich-menu"
-                        @click="showMenu"
-                        @keyup.space="showMenu"
+                    <button
+                        type="button"
+                        class="mobile-button"
+                        aria-label="Abrir menu"
+                        @click="showMenu($event)"
+                        @keyup.space="showMenu($event)"
+                        aria-expanded="false"
                     >
-                        <span class="material-icons" role="button" tabindex="0"> menu </span>
-                    </div>
-                    <div class="links" v-show="showHeaderMenu">
-                        <NuxtLink
-                            to="/login"
-                            :prefetch="false"
-                        >
-                            Entrar
-                        </NuxtLink>
-                        <NuxtLink to="/register">
-                            Cadastre-se
-                        </NuxtLink>
-                    </div>
+                        <span id="hamburger"></span>
+                    </button>
+                    <ul class="links" v-show="showHeaderMenu">
+                        <li>
+                            <NuxtLink to="/login">
+                                Entrar
+                            </NuxtLink>
+                        </li>
+                        <li>
+                            <NuxtLink to="/register">
+                                Cadastre-se
+                            </NuxtLink>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
