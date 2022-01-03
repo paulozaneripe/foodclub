@@ -17,6 +17,8 @@
 }
 
 header {
+    position: relative;
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,10 +93,6 @@ header {
     .dark-mode ul li:last-of-type  {
         .mobile-button {
 
-            &:focus {
-                outline: 2px solid white;
-            }
-
             #hamburger {
                 color: white;
     
@@ -112,6 +110,7 @@ header {
     
             li a {
                 border-top: 1px solid $dark-background;
+
                 &:not(:last-of-type) {
                     border-bottom: 1px solid $dark-background;
                 }
@@ -123,13 +122,12 @@ header {
         }
     }
 
+    .dark-mode .user-is-tabbing .mobile-button:focus {
+        outline: 2px solid white;
+    }
 
     .light-mode ul li:last-of-type  {
         .mobile-button {
-
-            &:focus {
-                outline: 2px solid black;
-            }
 
             #hamburger {
                 color: black;
@@ -146,18 +144,25 @@ header {
             border-bottom: 1px solid darken($light-background, 5%);
     
             li a {
-                border-top: 1px solid darken($light-primary, 10%);
+                border-top: 1px solid darken($light-background, 10%);
                 &:not(:last-of-type) {
-                    border-bottom: 1px solid darken($light-primary, 10%);
+                    border-bottom: 1px solid darken($light-background, 10%);
+                }
+
+                &:focus {
+                    background-color: darken($light-primary, 10%);
                 }
     
-                &:hover, &:focus {
+                &:hover {
                     background-color: darken($light-primary, 10%);
                 }
             }
         }
     }
 
+    .light-mode .user-is-tabbing .mobile-button:focus {
+        outline: 2px solid black;
+    }
 
     nav ul li:last-of-type {
         .mobile-button {
@@ -166,23 +171,23 @@ header {
             background: none;
             cursor: pointer;
             gap: .5rem;
-            color: white;
+            color: white;       
 
             #hamburger {
                 border-top: 3px solid;
-                width: 33px;
+                width: 30px;
 
                 &::after, &::before {
                     display: block;
                     content: "";
-                    width: 33px;
+                    width: 30px;
                     height: 3px;
                     margin-top: 6px;
                 }
             }
         }
 
-        .links {
+        .links {    
             display: block;
             position: absolute;
             top: 72px;
@@ -198,6 +203,8 @@ header {
                 display: flex;
                 justify-content: flex-start;
                 padding: 20px;
+                transition: background-color 200ms;
+
                 &:focus {
                     outline: none;
                     border: 1px solid;

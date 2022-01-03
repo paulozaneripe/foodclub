@@ -1,9 +1,5 @@
 <template>
     <header :class="showHeaderMenu ? 'border-fix' : ''">
-        <SkipShortcut 
-            target="a11y-button" 
-            description="Pular para ajustes de acessibilidade"
-        />
         <nav>
             <ul>
                 <li>

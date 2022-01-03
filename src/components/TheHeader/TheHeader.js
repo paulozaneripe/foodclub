@@ -1,10 +1,8 @@
 import Vue from 'vue';
-import SkipShortcut from '~/components/SkipShortcut/SkipShortcut.vue';
 import TheToggler from '~/components/TheToggler/TheToggler.vue';
 
 export default Vue.extend({
     components: {
-        SkipShortcut,
         TheToggler
     },
     data() {

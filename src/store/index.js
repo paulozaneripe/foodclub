@@ -5,15 +5,15 @@ export const state = () => ({
 
 export const mutations = {
     changeFont(state) {
-        if (state.readableFont === false) {
+        if (!state.readableFont) {
             document.body.classList.remove('roboto');
             document.body.classList.add('open-dyslexic');
-            state.readableFont = true;
         } else {
             document.body.classList.remove('open-dyslexic');
             document.body.classList.add('roboto');
-            state.readableFont = false;
         }
+
+        state.readableFont = !state.readableFont;
     },
     decreaseFontSize(state) {
         if (document.body.classList.contains('giant-font')) {

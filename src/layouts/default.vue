@@ -1,5 +1,9 @@
 <template>
     <div>
+        <SkipShortcut 
+            target="a11y-button" 
+            description="Pular para ajustes de acessibilidade"
+        />
         <TheHeader />
         <main>
             <Nuxt />
@@ -11,6 +15,7 @@
 
 <script>
 import Vue from 'vue';
+import SkipShortcut from '~/components/SkipShortcut/SkipShortcut.vue';
 import TheHeader from '~/components/TheHeader/TheHeader.vue';
 import A11yMenu from '~/components/A11yMenu/A11yMenu.vue';
 import TheFooter from '~/components/TheFooter/TheFooter.vue';
@@ -23,6 +28,7 @@ export default Vue.extend({
         };
     },
     components: {
+        SkipShortcut,
         TheHeader,
         A11yMenu,
         TheFooter,
