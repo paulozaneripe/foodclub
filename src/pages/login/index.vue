@@ -1,7 +1,7 @@
 <template>
     <section class="login-section">
         <div class="left-panel">
-            <div id="logo">
+            <div class="logo">
                 <NuxtLink to="/">
                     <img
                         src="~/assets/images/foodclublogo.svg"
@@ -14,9 +14,9 @@
                 deliciosas receitas!
             </h1>
         </div>
+        
         <div class="form-panel">
             <form method="POST" @submit.prevent="submit()">
-                <h2>Login</h2>
                 <AuthInput 
                     v-model="email" 
                     name="email"

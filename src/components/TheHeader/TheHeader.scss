@@ -45,7 +45,7 @@ header {
 
 @media (min-width: 575.98px) {
     nav ul li:last-of-type {
-        .mobile-button {
+        #mobile-button {
             display: none;
         }
 
@@ -91,7 +91,7 @@ header {
     }
 
     .dark-mode ul li:last-of-type  {
-        .mobile-button {
+        #mobile-button {
 
             #hamburger {
                 color: white;
@@ -122,12 +122,12 @@ header {
         }
     }
 
-    .dark-mode .user-is-tabbing .mobile-button:focus {
+    .dark-mode .user-is-tabbing #mobile-button:focus {
         outline: 2px solid white;
     }
 
     .light-mode ul li:last-of-type  {
-        .mobile-button {
+        #mobile-button {
 
             #hamburger {
                 color: black;
@@ -160,12 +160,12 @@ header {
         }
     }
 
-    .light-mode .user-is-tabbing .mobile-button:focus {
+    .light-mode .user-is-tabbing #mobile-button:focus {
         outline: 2px solid black;
     }
 
     nav ul li:last-of-type {
-        .mobile-button {
+        #mobile-button {
             display: flex;
             border: none;
             background: none;
@@ -179,10 +179,25 @@ header {
 
                 &::after, &::before {
                     display: block;
+                    position: relative;
                     content: "";
                     width: 30px;
                     height: 3px;
                     margin-top: 6px;
+                    transition: transform .3s;
+                }
+            }
+
+            &.active #hamburger {
+                border-top-color: transparent;
+
+                &::before {
+                   transform: rotate(135deg); 
+                }
+
+                &::after {
+                    transform: rotate(-135deg);
+                    top: -9px;
                 }
             }
         }
@@ -203,7 +218,6 @@ header {
                 display: flex;
                 justify-content: flex-start;
                 padding: 20px;
-                transition: background-color 200ms;
 
                 &:focus {
                     outline: none;

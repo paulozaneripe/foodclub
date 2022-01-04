@@ -28,9 +28,11 @@ export default Vue.extend({
                 ? this.showHeaderMenu = false
                 : this.showHeaderMenu = true;
 
-            document.getElementsByClassName("mobile-button")[0].setAttribute("aria-expanded", this.showHeaderMenu);
-            document.getElementsByClassName("mobile-button")[0].ariaLabel = this.showHeaderMenu ? "Fechar menu" : "Abrir menu";
-
+            document.getElementById("mobile-button").setAttribute("aria-expanded", this.showHeaderMenu);
+            document.getElementById("mobile-button").ariaLabel = this.showHeaderMenu
+                ? "Fechar menu"
+                : "Abrir menu";
+            document.getElementById("mobile-button").classList.toggle("active");
         },
     }
 });

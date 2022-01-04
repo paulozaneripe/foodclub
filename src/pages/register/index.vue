@@ -39,7 +39,7 @@
             </form>
         </div>
         <div class="right-panel">
-            <div id="logo">
+            <div class="logo">
                 <NuxtLink to="/">
                     <img
                         src="~/assets/images/foodclublogo.svg"

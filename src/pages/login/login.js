@@ -11,4 +11,14 @@ export default {
             password: ""
         };
     },
+    methods: {
+        async submit() {
+            this.$axios.post("/api/users/create", {
+                email: this.email,
+                password: this.password,
+            }).then(({ data }) => {
+                alert("Email: " + data.email + " - Senha: " + data.password);
+            });
+        }
+    }
 };

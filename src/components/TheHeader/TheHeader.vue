@@ -30,7 +30,7 @@
                 <li>
                     <button
                         type="button"
-                        class="mobile-button"
+                        id="mobile-button"
                         aria-label="Abrir menu"
                         @click="showMenu($event)"
                         @keyup.space="showMenu($event)"

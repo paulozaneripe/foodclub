@@ -59,9 +59,15 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0 auto;
-    max-width: 960px;
     width: 90%;
 }
+
+@media (max-width: 1199.98px) {
+    section {
+        flex-direction: column;
+    }
+}
+
 </style>
