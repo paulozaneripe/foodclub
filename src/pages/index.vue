@@ -11,6 +11,51 @@
                     <p>Hamburger Triplo Bacon</p>
                 </div>
             </div>
+            <div class="card">
+                <img
+                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+                    alt="hamburger"
+                />
+                <div class="title">
+                    <p>Hamburger Triplo Bacon</p>
+                </div>
+            </div>
+                        <div class="card">
+                <img
+                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+                    alt="hamburger"
+                />
+                <div class="title">
+                    <p>Hamburger Triplo Bacon</p>
+                </div>
+            </div>
+                        <div class="card">
+                <img
+                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+                    alt="hamburger"
+                />
+                <div class="title">
+                    <p>Hamburger Triplo Bacon</p>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+                    alt="hamburger"
+                />
+                <div class="title">
+                    <p>Hamburger Triplo Bacon</p>
+                </div>
+            </div>
+                        <div class="card">
+                <img
+                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+                    alt="hamburger"
+                />
+                <div class="title">
+                    <p>Hamburger Triplo Bacon</p>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -38,16 +83,21 @@ export default {
 <style lang="scss" scoped>
 
 #cards {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
 }
 
 .card {
-    margin-top: 40px;
-    width: 250px;
+    width: 100%;
     max-height: 200px;
     border-radius: 25px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
 }
 
 .card img {
@@ -65,10 +115,14 @@ export default {
     margin-top: -5px;
     padding: 0 20px;
     height: 45px;
-    min-height: 45px;
-    color: white;
-    font-size: 1.2em;
-    font-weight: bold;
     border-radius: 0 0 25px 25px;
+
+    p {
+        color: white;
+        font-size: 1.4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+    }
 }
 </style>
