@@ -16,17 +16,21 @@
     }
 }
 
+.container {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
 header {
     position: relative;
-    z-index: 999;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 72px;
     border-radius: 0 0 50px 50px;
     box-shadow: 0 -5px 10px 5px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
     transition: background-color 200ms ease-in-out;
 
     nav {
@@ -44,13 +48,17 @@ header {
 }
 
 @media (min-width: 575.98px) {
+    #menu-background{
+        display: none !important;
+    }
+
     nav ul li:last-of-type {
         #mobile-button {
             display: none;
         }
 
-        .links {
-            display: flex !important;
+        #links {
+            visibility: visible;
 
             li {
                 a {
@@ -86,35 +94,37 @@ header {
 }
 
 @media (max-width: 575.98px) {
-    header.border-fix {
-        border-radius: 0 0 0 50px;
+    #menu-background {
+        display: none;
+        z-index: 1;
+    }
+
+    header {
+        transition: border-radius 2s ease-in;
+
+        &.active {
+            border-radius: 0 0 0 50px;
+            transition: border-radius 70ms;
+        }
     }
 
     .dark-mode ul li:last-of-type  {
-        #mobile-button {
-
-            #hamburger {
-                color: white;
-    
-                &::after, &::before {
-                    background-color: white;
-                }
-            }
-        } 
-
-        .links {
-            background-color: $dark-primary;
-            border-left: 1px solid darken($dark-primary, 5%);
-            border-bottom: 1px solid darken($dark-primary, 5%);
+        #mobile-button #hamburger {
             color: white;
-    
-            li a {
-                border-top: 1px solid $dark-background;
 
-                &:not(:last-of-type) {
-                    border-bottom: 1px solid $dark-background;
-                }
-    
+            &::after, &::before {
+                background-color: white;
+            }
+        }
+
+        #links {
+            background-color: $dark-primary;
+            border-top: 1px solid $dark-background;
+            color: white;
+
+            li a {
+                border-bottom: 1px solid $dark-background;
+                
                 &:hover, &:focus {
                     background-color: darken($dark-primary, 5%);
                 }
@@ -127,27 +137,20 @@ header {
     }
 
     .light-mode ul li:last-of-type  {
-        #mobile-button {
+        #mobile-button #hamburger {
+            color: black;
 
-            #hamburger {
-                color: black;
-    
-                &::after, &::before {
-                    background-color: black;
-                }
+            &::after, &::before {
+                background-color: black;
             }
-        } 
+        }
 
-        .links {
+        #links {
             background-color: $light-primary;
-            border-left: 1px solid darken($light-background, 5%);
-            border-bottom: 1px solid darken($light-background, 5%);
+            border-top: 1px solid darken($light-background, 10%);   
     
             li a {
-                border-top: 1px solid darken($light-background, 10%);
-                &:not(:last-of-type) {
-                    border-bottom: 1px solid darken($light-background, 10%);
-                }
+                border-bottom: 1px solid darken($light-background, 10%);
 
                 &:focus {
                     background-color: darken($light-primary, 10%);
@@ -202,15 +205,24 @@ header {
             }
         }
 
-        .links {    
+        #links {    
             display: block;
             position: absolute;
             top: 72px;
             right: 0px;
             box-shadow: -5px 15px 15px 1px rgba(0, 0, 0, 0.2);
-            width: 50vw;
+            width: 65vw;
+            height: 0;
             z-index: 999;
+            visibility: hidden;
             overflow-y: hidden;
+            overflow-x: hidden;
+            transition: visibility .4s, height .4s;
+
+            &.active {
+                visibility: visible;
+                height: 100vh;
+            }
 
             li a {
                 width: 100%;
@@ -229,7 +241,7 @@ header {
 }
 
 @media (max-width: 767.98px) {
-    nav ul:not(.links) > li:first-of-type {
+    nav ul:not(#links) > li:first-of-type {
         display: none;
     }
 }

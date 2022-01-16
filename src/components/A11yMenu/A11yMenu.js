@@ -21,6 +21,7 @@ export default Vue.extend({
             document.getElementById("a11y-button").ariaLabel = this.showA11yMenu 
                 ? "Fechar menu de acessibilidade" 
                 : "Abrir menu de acessibilidade";
+            document.getElementById("a11y-background").style.display = this.showA11yMenu ? "block" : "none";
         }
     },
 });

@@ -1,7 +1,7 @@
 <template>
     <div>
-        <SkipShortcut 
-            target="a11y-button" 
+        <SkipShortcut
+            target="a11y-button"
             description="Pular para ajustes de acessibilidade"
         />
         <TheHeader />
@@ -43,7 +43,9 @@ export default Vue.extend({
     },
     beforeMount() {
         window.addEventListener('keydown', this.handleTab);
-        document.body.className = this.readableFont ? 'open-dyslexic ' + this.fontSize : 'roboto ' + this.fontSize;
+        document.body.className = this.readableFont
+            ? 'open-dyslexic ' + this.fontSize
+            : 'roboto ' + this.fontSize;
     },
     methods: {
         handleTab(e) {

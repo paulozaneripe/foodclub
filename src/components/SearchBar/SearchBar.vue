@@ -9,6 +9,7 @@
             type="text"
             name="recipe-search"
             placeholder="Encontre a receita que está procurando..."
+            aria-label="Pesquisar receita..."
         />
     </div>
 </template>

@@ -24,15 +24,13 @@ export default Vue.extend({
         showMenu(e) {
             e.preventDefault();
 
-            this.showHeaderMenu
-                ? this.showHeaderMenu = false
-                : this.showHeaderMenu = true;
+            this.showHeaderMenu = !this.showHeaderMenu;
 
             document.getElementById("mobile-button").setAttribute("aria-expanded", this.showHeaderMenu);
             document.getElementById("mobile-button").ariaLabel = this.showHeaderMenu
                 ? "Fechar menu"
                 : "Abrir menu";
-            document.getElementById("mobile-button").classList.toggle("active");
+            document.getElementById("menu-background").style.display = this.showHeaderMenu ? "block" : "none";
         },
     }
 });

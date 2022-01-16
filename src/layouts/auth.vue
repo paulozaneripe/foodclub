@@ -1,12 +1,12 @@
 <template>
     <div>
-        <SkipShortcut 
-            target="a11y-button" 
+        <SkipShortcut
+            target="a11y-button"
             description="Pular para ajustes de acessibilidade"
         />
         <main>
             <Nuxt />
-        </main>        
+        </main>
         <A11yMenu />
     </div>
 </template>
@@ -25,7 +25,7 @@ export default Vue.extend({
     },
     components: {
         SkipShortcut,
-        A11yMenu
+        A11yMenu,
     },
     head: {
         link: [
@@ -37,7 +37,9 @@ export default Vue.extend({
     },
     beforeMount() {
         window.addEventListener('keydown', this.handleTab);
-        document.body.className = this.readableFont ? 'open-dyslexic ' + this.fontSize : 'roboto ' + this.fontSize;
+        document.body.className = this.readableFont
+            ? 'open-dyslexic ' + this.fontSize
+            : 'roboto ' + this.fontSize;
     },
     methods: {
         handleTab(e) {
@@ -69,5 +71,4 @@ section {
         flex-direction: column;
     }
 }
-
 </style>
