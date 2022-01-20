@@ -7,23 +7,20 @@
                     v-model="email"
                     name="email" 
                     type="email" 
-                    label="email" 
-                    placeholder="Seu e-mail" 
+                    label="Seu e-mail" 
                     icon="email"
                 />
                 <AuthInput 
                     v-model="name"
                     name="name" 
-                    label="nome" 
-                    placeholder="Seu nome" 
+                    label="Seu nome" 
                     icon="person"
                 />
                 <AuthInput 
                     v-model="password" 
                     name="password"
                     type="password" 
-                    label="senha" 
-                    placeholder="Sua senha" 
+                    label="Sua senha" 
                     icon="lock"
                 />
                 <AuthInput 
@@ -31,10 +28,9 @@
                     name="confirmPassword"
                     type="password" 
                     label="Confirme sua senha" 
-                    placeholder="Confirme sua senha" 
                     icon="lock"
                 />
-                <button type="submit" class="login">CADASTRAR</button>
+                <button type="submit">CADASTRAR</button>
                 <p>Já possui uma conta? <NuxtLink to="/login">Faça o login</NuxtLink></p>
             </form>
         </div>

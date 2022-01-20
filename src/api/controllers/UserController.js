@@ -14,12 +14,12 @@ const create = (req, res) => {
         confirmPassword: req.body.confirmPassword
     };
 
-    const keys = Object.keys(userData);
+    // const keys = Object.keys(userData);
 
-    for(let key of keys) {
-        if (req.body[key] == "")
-            return res.send("Por favor, preencha todos os campos!");
-    }
+    // for(let key of keys) {
+    //     if (req.body[key] == "")
+    //         return res.send("Por favor, preencha todos os campos!");
+    // }
 
     return res.send(userData);
 };

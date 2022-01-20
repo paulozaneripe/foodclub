@@ -21,9 +21,7 @@ export default Vue.extend({
         };
     },
     methods: {
-        showMenu(e) {
-            e.preventDefault();
-
+        showMenu() {
             this.showHeaderMenu = !this.showHeaderMenu;
 
             document.getElementById("mobile-button").setAttribute("aria-expanded", this.showHeaderMenu);

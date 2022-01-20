@@ -22,11 +22,6 @@ export default Vue.extend({
             default: null,
             required: true
         },
-        placeholder: {
-            type: String,
-            default: null,
-            required: true
-        },
         icon: {
             type: String,
             default: "text_snippet",
@@ -36,6 +31,19 @@ export default Vue.extend({
     methods: {
         updateValue(value) {
             this.$emit('input', value);
+        },
+        showHidePassword(e) {
+            let input = document.getElementById(this.name);
+
+            if (input.type === "password") {
+                input.type = "text";
+                e.target.innerHTML = "visibility_off";
+                e.target.classList.add("hide");
+            } else {
+                input.type = "password";
+                e.target.innerHTML = "visibility";
+                e.target.classList.remove("hide");
+            }
         }
     }
 });

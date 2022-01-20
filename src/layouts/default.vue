@@ -21,6 +21,11 @@ import A11yMenu from '~/components/A11yMenu/A11yMenu.vue';
 import TheFooter from '~/components/TheFooter/TheFooter.vue';
 
 export default Vue.extend({
+    watch: {
+        $route() {
+            document.getElementById("reset-focus").focus();
+        },
+    },
     data() {
         return {
             readableFont: this.$store.state.readableFont,

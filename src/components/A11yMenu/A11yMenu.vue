@@ -39,6 +39,9 @@
                                 @keyup.space="
                                     $store.dispatch('decreaseFontSize')
                                 "
+                                @keyup.enter="
+                                    $store.dispatch('decreaseFontSize')
+                                "
                             >
                                 text_decrease
                             </span>
@@ -51,6 +54,7 @@
                                 @keyup.space="
                                     $store.dispatch('increaseFontSize')
                                 "
+                                @keyup.enter="$store.dispatch('increaseFontSize')"
                             >
                                 text_increase
                             </span>
@@ -68,6 +72,7 @@
                 aria-label="Abrir menu de acessibilidade"
                 @click="showMenu"
                 @keyup.space="showMenu"
+                @keyup.enter="showMenu"
             >
                 <img
                     src="~/assets/images/icons/accessibility.svg"

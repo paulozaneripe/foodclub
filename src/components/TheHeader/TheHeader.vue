@@ -39,8 +39,9 @@
                             id="mobile-button"
                             :class="this.showHeaderMenu ? 'active' : ''"
                             aria-label="Abrir menu"
-                            @click="showMenu($event)"
-                            @keyup.space="showMenu($event)"
+                            @click.prevent="showMenu()"
+                            @keyup.space="showMenu()"
+                            aria-controls="links"
                             aria-expanded="false"
                         >
                             <span id="hamburger"></span>

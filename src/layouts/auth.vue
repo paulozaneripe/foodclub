@@ -17,6 +17,11 @@ import SkipShortcut from '~/components/SkipShortcut/SkipShortcut.vue';
 import A11yMenu from '~/components/A11yMenu/A11yMenu.vue';
 
 export default Vue.extend({
+    watch: {
+        $route() {
+            document.getElementById("reset-focus").focus();
+        },
+    },
     data() {
         return {
             readableFont: this.$store.state.readableFont,

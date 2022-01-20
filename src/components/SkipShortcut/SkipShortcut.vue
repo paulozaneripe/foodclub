@@ -1,4 +1,6 @@
 <template>
+<div>
+    <div id="reset-focus" tabindex="-1" aria-hidden="true"></div>
     <a
         :href="'#' + target"
         class="skip"
@@ -6,9 +8,11 @@
         @blur="hide()"
         @click="skipToTarget($event)"
         @keyup.space="skipToTarget($event)"
+        tabindex="1"
     >
         {{ description }}
     </a>
+</div>
 </template>
 
 <script src="./SkipShortcut.js" />

@@ -21,20 +21,18 @@
                     v-model="email" 
                     name="email"
                     type="email" 
-                    label="email" 
-                    placeholder="E-mail" 
+                    label="E-mail" 
                     icon="email"
                 />
                 <AuthInput 
                     v-model="password" 
                     name="password"
                     type="password" 
-                    label="senha" 
-                    placeholder="Senha" 
+                    label="Senha" 
                     icon="lock"
                 />
                 <NuxtLink class="forgot-password" to="/forgot-password">Esqueceu sua senha?</NuxtLink>
-                <button type="submit" class="login">ENTRAR</button>
+                <button type="submit">ENTRAR</button>
                 <p>Não possui uma conta? <NuxtLink to="/register">Cadastre-se</NuxtLink></p>
             </form>
         </div>

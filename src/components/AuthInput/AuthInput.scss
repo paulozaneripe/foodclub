@@ -1,7 +1,8 @@
 .dark-mode .input-field {
     background-color: #464646;
 
-    input, input::placeholder {
+    input,
+    input::placeholder {
         color: white;
     }
 }
@@ -9,48 +10,100 @@
 .light-mode .input-field {
     background-color: $light-background;
 
-    input, input::placeholder {
+    input,
+    input::placeholder {
         color: black;
     }
 }
 
 .input-field {
-
-    height: 58px;
+    position: relative;
+    margin: 0 auto;
+    padding-left: 20px;
+    height: 62px;
     border-radius: 10px;
-    display: grid;
-    grid-template-columns: 1fr 14fr;
-    padding: 0 0 0 20px;
+    width: 100%;
+
+    label {
+        position: absolute;
+        bottom: 24px;
+        left: 50px;
+        width: 63%;
+        transition: bottom ease 0.5s, font-size ease 0.5s, opacity ease 0.5s;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-wrap: break-word;
+        line-break: break-all;
+        overflow: hidden;
+        font-size: 1.6em !important;
+        cursor: text;
+    }
 
     span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        position: absolute;
+        font-size: 1.4rem;
         text-align: center;
-        font-size: 1.25rem;
-        outline: none;
+
+        &:first-of-type {
+            bottom: 20px;
+            left: 15px;
+        }
+
+        &.password-visibility {
+            display: none;
+            bottom: 20px;
+            right: 15px;
+            cursor: pointer;
+            transition: opacity .6s;
+            opacity: 70%;
+        }
+
+        &.password-visibility.hide {
+            opacity: 50%;
+        }
+    }
+
+    &:focus-within {
+        outline: 2px solid;
+        outline-offset: 1px;
     }
 
     &:not(:last-child) {
         margin-bottom: 20px;
     }
-
-    &:focus-within { 
-        outline: 2px solid;
-    }
 }
 
 input {
-    background: none;
+    background-color: transparent;
     width: 100%;
+    height: 100%;
     border-radius: 0 10px 10px 0;
     border: none;
-    font-size: 1.4em;
-    text-overflow: ellipsis;
-    padding: 10px 20px;
     outline: none;
+    font-size: 1.6em;
+    padding: 17px 20px 0 30px;
 
-    &:focus {
+    &.password {
+        padding-right: 50px;
+    }
+
+    &.password[type="password"]::-ms-reveal,
+    &.password[type="password"]::-ms-clear {
+        display: none;
+    }
+
+    &:focus, &:not(:placeholder-shown) {
         outline: none !important;
+    
+        & ~ label {
+            font-size: 1.3em !important;
+            bottom: 34px;
+            opacity: 80%;
+            width: 51%;
+        }
+    }
+
+    &:not(:placeholder-shown) ~ .password-visibility {
+        display: block;
     }
 }
