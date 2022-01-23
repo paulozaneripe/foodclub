@@ -1,6 +1,10 @@
 import Vue from 'vue';
+import { ValidationProvider } from "vee-validate";
 
 export default Vue.extend({
+    components: {
+        ValidationProvider
+    },
     props: {
         value: {
             type: String,
@@ -17,14 +21,33 @@ export default Vue.extend({
             default: "text",
             required: false
         },
+        max: {
+            type: String,
+            required: false
+        },
+        icon: {
+            type: String,
+            default: "text_snippet",
+            required: false
+        },
         label: {
             type: String,
             default: null,
             required: true
         },
-        icon: {
+        rules: {
             type: String,
-            default: "text_snippet",
+            default: null,
+            required: false
+        },
+        mask: {
+            type: String,
+            default: null,
+            required: false
+        },
+        mode: {
+            type: String,
+            default: "eager",
             required: false
         }
     },
@@ -32,18 +55,20 @@ export default Vue.extend({
         updateValue(value) {
             this.$emit('input', value);
         },
+        filterLabel(label) {
+            let filteredLabel = label.replace("Seu ","");
+            filteredLabel = filteredLabel.replace("Sua ", "");
+            return filteredLabel.charAt(0).toUpperCase() + filteredLabel.slice(1);
+        },
         showHidePassword(e) {
             let input = document.getElementById(this.name);
 
-            if (input.type === "password") {
-                input.type = "text";
-                e.target.innerHTML = "visibility_off";
-                e.target.classList.add("hide");
-            } else {
-                input.type = "password";
-                e.target.innerHTML = "visibility";
-                e.target.classList.remove("hide");
-            }
+            input.type = input.type === "password" ? "text" : "password";
+            e.target.innerHTML = input.type === "password" ? "visibility" : "visibility_off";
+            e.target.ariaExpanded = input.type === "password" ? false : true;
+            e.target.ariaLabel = input.type === "password" ? "Revelar senha" : "Ocultar senha";
+            e.target.title = input.type === "password" ? "Revelar senha" : "Ocultar senha";
+            input.type === "password" ? e.target.classList.remove("hide") : e.target.classList.add("hide");
         }
     }
 });

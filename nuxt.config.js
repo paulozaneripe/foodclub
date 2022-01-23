@@ -19,7 +19,9 @@ export default {
         '@/assets/styles/global.scss'
     ],
     plugins: [
-        { src: '~/plugins/persistedState.client.js', mode: 'client'}
+        { src: '~/plugins/persistedState.client.js', mode: 'client'},
+        '~plugins/vueMask.js',
+        '~plugins/veeValidate.js'
     ],
     components: false,
     buildModules: [
@@ -52,6 +54,7 @@ export default {
                 implementation: require('sass'),
             },
         },
+        transpile: ['vee-validate']
     },
     serverMiddleware: [
         '~/api'

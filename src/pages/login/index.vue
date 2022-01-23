@@ -9,33 +9,47 @@
                     />
                 </NuxtLink>
             </div>
-            <h1>
-                Faça seu login e desfrute das mais
-                deliciosas receitas!
-            </h1>
+            <h1>Faça seu login e desfrute das mais deliciosas receitas!</h1>
         </div>
-        
-        <div class="form-panel">
-            <form method="POST" @submit.prevent="submit()">
-                <AuthInput 
-                    v-model="email" 
+
+        <ValidationObserver
+            tag="div"
+            class="form-panel"
+            ref="form"
+            v-slot="{ handleSubmit }"
+        >
+            <form
+                method="POST"
+                @submit.prevent="handleSubmit(submit())"
+                novalidate
+            >
+                <AuthInput
+                    v-model="email"
                     name="email"
-                    type="email" 
-                    label="E-mail" 
+                    type="email"
                     icon="email"
+                    label="E-mail"
+                    rules="required|email"
                 />
-                <AuthInput 
-                    v-model="password" 
+                <AuthInput
+                    v-model.trim="password"
                     name="password"
-                    type="password" 
-                    label="Senha" 
+                    type="password"
+                    max="20"
                     icon="lock"
+                    label="Senha"
+                    rules="required"
                 />
-                <NuxtLink class="forgot-password" to="/forgot-password">Esqueceu sua senha?</NuxtLink>
+                <NuxtLink class="forgot-password" to="/forgot-password">
+                    Esqueceu sua senha?
+                </NuxtLink>
                 <button type="submit">ENTRAR</button>
-                <p>Não possui uma conta? <NuxtLink to="/register">Cadastre-se</NuxtLink></p>
+                <p>
+                    Não possui uma conta?
+                    <NuxtLink to="/register">Cadastre-se</NuxtLink>
+                </p>
             </form>
-        </div>
+        </ValidationObserver>
     </section>
 </template>
 

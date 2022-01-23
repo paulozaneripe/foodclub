@@ -1,9 +1,11 @@
 import AuthInput from '~/components/AuthInput/AuthInput.vue';
+import { ValidationObserver } from "vee-validate";
 
 export default {
     layout: 'auth',
     components: {
-        AuthInput
+        AuthInput,
+        ValidationObserver
     },
     data() {
         return {
@@ -13,12 +15,20 @@ export default {
     },
     methods: {
         async submit() {
-            this.$axios.post("/api/users/create", {
-                email: this.email,
-                password: this.password,
-            }).then(({ data }) => {
-                alert("Email: " + data.email + " - Senha: " + data.password);
+            this.$refs.form.validate().then(success => {
+
+                if (!success) {
+                    return;
+                }
+
+                this.$axios.post("/api/users/create", {
+                    email: this.email,
+                    password: this.password,
+                }).then(({ data }) => {
+                    alert("Email: " + data.email + " - Senha: " + data.password);
+                });
             });
+
         }
     }
 };

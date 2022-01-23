@@ -1,39 +1,58 @@
 <template>
     <section class="register-section">
-        <div class="form-panel">
-            <form method="POST" @submit.prevent="submit()">
+        <ValidationObserver
+            tag="div"
+            class="form-panel"
+            ref="form"
+            v-slot="{ handleSubmit }"
+        >
+            <form
+                method="POST"
+                @submit.prevent="handleSubmit(submit())"
+                novalidate
+            >
                 <h2>Crie sua conta</h2>
-                <AuthInput 
+                <AuthInput
                     v-model="email"
-                    name="email" 
-                    type="email" 
-                    label="Seu e-mail" 
+                    name="email"
+                    type="email"
                     icon="email"
+                    label="Seu e-mail"
+                    rules="required|email"
                 />
-                <AuthInput 
+                <AuthInput
                     v-model="name"
-                    name="name" 
-                    label="Seu nome" 
+                    name="name"
                     icon="person"
+                    label="Seu nome"
+                    rules="required|alpha_spaces"
                 />
-                <AuthInput 
-                    v-model="password" 
+                <AuthInput
+                    v-model.trim="password"
                     name="password"
-                    type="password" 
-                    label="Sua senha" 
+                    type="password"
+                    max="20"
                     icon="lock"
+                    label="Sua senha"
+                    rules="required|min:6|max:20"
                 />
-                <AuthInput 
-                    v-model="confirmPassword" 
+                <AuthInput
+                    v-model.trim="confirmPassword"
                     name="confirmPassword"
-                    type="password" 
-                    label="Confirme sua senha" 
+                    type="password"
+                    max="20"
                     icon="lock"
+                    label="Confirme sua senha"
+                    rules="required|max:20|confirm:@password"
+                    mode="aggressive"
                 />
                 <button type="submit">CADASTRAR</button>
-                <p>Já possui uma conta? <NuxtLink to="/login">Faça o login</NuxtLink></p>
+                <p>
+                    Já possui uma conta?
+                    <NuxtLink to="/login">Faça o login</NuxtLink>
+                </p>
             </form>
-        </div>
+        </ValidationObserver>
         <div class="right-panel">
             <div class="logo">
                 <NuxtLink to="/">
@@ -44,7 +63,8 @@
                 </NuxtLink>
             </div>
             <h1>
-                Junte-se a comunidade de chefs e compartilhe seus segredos culinários!
+                Junte-se a comunidade de chefs e compartilhe seus segredos
+                culinários!
             </h1>
         </div>
     </section>

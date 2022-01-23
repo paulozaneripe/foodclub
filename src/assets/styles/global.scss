@@ -155,12 +155,19 @@ body:not(.user-is-tabbing) textarea:focus {
     outline: none;
 }
 
-body.user-is-tabbing button:focus,
-body.user-is-tabbing input:focus,
-body.user-is-tabbing select:focus,
-body.user-is-tabbing textarea:focus {
+body.user-is-tabbing ~ button:focus,
+body.user-is-tabbing ~ input:focus,
+body.user-is-tabbing ~ select:focus,
+body.user-is-tabbing ~ textarea:focus {
     outline-offset: 3px;
     outline: 2px solid;
+}
+
+body.user-is-tabbing .light-mode ~ button:focus,
+body.user-is-tabbing .light-mode ~ input:focus,
+body.user-is-tabbing .light-mode ~ select:focus,
+body.user-is-tabbing .light-mode ~ textarea:focus {
+    outline-color: black;
 }
 
 *:focus-within {
