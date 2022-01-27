@@ -13,8 +13,8 @@
 
 <script>
 import Vue from 'vue';
-import SkipShortcut from '~/components/SkipShortcut/SkipShortcut.vue';
-import A11yMenu from '~/components/A11yMenu/A11yMenu.vue';
+import SkipShortcut from '~/components/global/SkipShortcut/SkipShortcut.vue';
+import A11yMenu from '~/components/global/A11yMenu/A11yMenu.vue';
 
 export default Vue.extend({
     watch: {

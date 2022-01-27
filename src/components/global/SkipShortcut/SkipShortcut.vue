@@ -8,7 +8,6 @@
         @blur="hide()"
         @click="skipToTarget($event)"
         @keyup.space="skipToTarget($event)"
-        tabindex="1"
     >
         {{ description }}
     </a>

@@ -1,4 +1,4 @@
-import AuthInput from '~/components/AuthInput/AuthInput.vue';
+import AuthInput from '~/components/auth/AuthInput/AuthInput.vue';
 import { ValidationObserver } from "vee-validate";
 
 export default {
@@ -21,7 +21,7 @@ export default {
                     return;
                 }
 
-                this.$axios.post("/api/users/create", {
+                this.$axios.post("/api/users/register", {
                     email: this.email,
                     password: this.password,
                 }).then(({ data }) => {

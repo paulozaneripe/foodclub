@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import TheToggler from '~/components/TheToggler/TheToggler.vue';
+import TheToggler from '~/components/global/TheToggler/TheToggler.vue';
 
 export default Vue.extend({
     components: {

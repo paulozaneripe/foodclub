@@ -16,6 +16,7 @@
                     v-model="email"
                     name="email"
                     type="email"
+                    max="255"
                     icon="email"
                     label="Seu e-mail"
                     rules="required|email"
@@ -23,9 +24,10 @@
                 <AuthInput
                     v-model="name"
                     name="name"
+                    max="255"
                     icon="person"
                     label="Seu nome"
-                    rules="required|alpha_spaces"
+                    rules="required|alpha_dash"
                 />
                 <AuthInput
                     v-model.trim="password"

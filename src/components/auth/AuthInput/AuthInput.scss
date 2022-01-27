@@ -2,9 +2,16 @@
     .input-field {
         background-color: #464646;
     
-        span:first-of-type.error {
-            color: lighten($red, 20%);
+        span:first-of-type {
+            &.success {
+                color: $dark-success;
+            }
+
+            &.error {
+                color: lighten($red, 25%);
+            }
         }
+        
 
         input,
         input::placeholder {
@@ -13,7 +20,7 @@
     }
 
     #error-message {
-        color: lighten($red, 26%);
+        color: lighten($red, 25%);
     }
 }
 
@@ -21,8 +28,14 @@
     .input-field {
         background-color: $light-background;
 
-        span:first-of-type.error {
-            color: $red;
+        span:first-of-type {
+            &.success {
+                color: $light-success;
+            }
+
+            &.error {
+                color: $red;
+            }
         }
 
         input,
@@ -47,9 +60,15 @@
     height: 62px;
     border-radius: 10px;
     width: 100%;
-    
+
     &.error {
-        transition: color .6s;
+        outline: 1px solid lighten($red, 25%);
+    }
+    
+    &:focus-within {
+        outline: 1px solid;
+        outline-offset: 0;
+        border-radius: 10px;
     }
 
     input {
@@ -150,12 +169,6 @@
             font-size: 1.3rem;
         }
     }
-
-    &:focus-within {
-        outline: 2px solid;
-        outline-offset: 0;
-        border-radius: 11px;
-    }
 }
 
 
@@ -165,8 +178,6 @@
     position: relative;
     font-size: 1.3em;
     margin: 5px 0 -10px 0;
-    transition: visibility .6s;
-
 
     &.error {
         display: block;

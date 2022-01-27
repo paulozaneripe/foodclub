@@ -66,8 +66,8 @@ export default Vue.extend({
             input.type = input.type === "password" ? "text" : "password";
             e.target.innerHTML = input.type === "password" ? "visibility" : "visibility_off";
             e.target.ariaExpanded = input.type === "password" ? false : true;
-            e.target.ariaLabel = input.type === "password" ? "Revelar senha" : "Ocultar senha";
-            e.target.title = input.type === "password" ? "Revelar senha" : "Ocultar senha";
+            e.target.ariaLabel = input.type === "password" ? "Mostrar senha" : "Ocultar senha";
+            e.target.title = input.type === "password" ? "Mostrar senha" : "Ocultar senha";
             input.type === "password" ? e.target.classList.remove("hide") : e.target.classList.add("hide");
         }
     }

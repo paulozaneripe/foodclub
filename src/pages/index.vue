@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import SearchBar from '~/components/SearchBar/SearchBar.vue';
+import SearchBar from '~/components/global/SearchBar/SearchBar.vue';
 
 export default {
     components: {

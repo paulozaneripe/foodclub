@@ -1,4 +1,4 @@
-import AuthInput from '~/components/AuthInput/AuthInput.vue';
+import AuthInput from '~/components/auth/AuthInput/AuthInput.vue';
 import { extend, ValidationObserver } from "vee-validate";
 
 extend('confirm', {
@@ -32,7 +32,7 @@ export default {
                     return;
                 }
 
-                this.$axios.post("/api/users/create", {
+                this.$axios.post("/api/users/register", {
                     email: this.email,
                     name: this.name,
                     password: this.password,

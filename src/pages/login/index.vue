@@ -27,6 +27,7 @@
                     v-model="email"
                     name="email"
                     type="email"
+                    max="255"
                     icon="email"
                     label="E-mail"
                     rules="required|email"

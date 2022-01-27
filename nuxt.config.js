@@ -29,10 +29,11 @@ export default {
     ],
     modules: [
         '@nuxtjs/style-resources',
-        '@nuxtjs/axios'
+        '@nuxtjs/axios',
+        '@nuxtjs/auth'
     ],
     colorMode: {
-        preference: 'light',
+        preference: 'system',
         fallback: 'dark'
     },
     styleResources: {

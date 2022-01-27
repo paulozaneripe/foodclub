@@ -1,0 +1,173 @@
+@media (min-width: 575.98px) {
+    #mobile-button {
+        display: none;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        visibility: visible;
+
+        li {
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 38px;
+                padding: 0 18px;
+                border-radius: 50px;
+                font-size: 1.2em;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            &:first-of-type a:first-of-type {
+                background-color: $red;
+                color: white;
+                margin-right: 20px;
+                border: none;
+                transition: background-color 400ms;
+
+                &:hover {
+                    background-color: darken($red, 5%);
+                }
+            }
+
+            &:last-of-type a {
+                border: 1px solid;
+            }
+        }
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dark-mode {
+        #mobile-button #hamburger {
+            color: white;
+
+            &::after, &::before {
+                background-color: white;
+            }
+        }
+
+        .user-is-tabbing #mobile-button:focus {
+            outline: 2px solid white;
+        }
+
+        ul {
+            background-color: $dark-primary;
+            border-top: 1px solid $dark-background;
+            color: white;
+
+            li a {
+                border-bottom: 1px solid $dark-background;
+                
+                &:hover, &:focus {
+                    background-color: darken($dark-primary, 5%);
+                }
+            }
+        }
+    }
+
+    .light-mode {
+        #mobile-button #hamburger {
+            color: black;
+
+            &::after, &::before {
+                background-color: black;
+            }
+        }
+
+        .user-is-tabbing #mobile-button:focus {
+            outline: 2px solid black;
+        }
+
+        ul {
+            background-color: $light-primary;
+            border-top: 1px solid darken($light-background, 10%);   
+    
+            li a {
+                border-bottom: 1px solid darken($light-background, 10%);
+
+                &:focus {
+                    background-color: darken($light-primary, 10%);
+                }
+    
+                &:hover {
+                    background-color: darken($light-primary, 10%);
+                }
+            }
+        }
+    }
+
+    #mobile-button {
+        display: flex;
+        border: none;
+        background: none;
+        cursor: pointer;
+        gap: .5rem;
+        color: white;       
+
+        #hamburger {
+            border-top: 3px solid;
+            width: 30px;
+
+            &::after, &::before {
+                display: block;
+                position: relative;
+                content: "";
+                width: 30px;
+                height: 3px;
+                margin-top: 6px;
+                transition: transform .3s;
+            }
+        }
+
+        &.active #hamburger {
+            border-top-color: transparent;
+
+            &::before {
+                transform: rotate(135deg); 
+            }
+
+            &::after {
+                transform: rotate(-135deg);
+                top: -9px;
+            }
+        }
+    }
+
+    ul {    
+        display: block;
+        position: absolute;
+        top: 72px;
+        right: 0px;
+        box-shadow: -5px 15px 15px 1px rgba(0, 0, 0, 0.2);
+        width: 65vw;
+        height: 0;
+        z-index: 999;
+        visibility: hidden;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        transition: visibility .4s, height .4s;
+
+        &.active {
+            visibility: visible;
+            height: 100vh;
+        }
+
+        li a {
+            width: 100%;
+            font-size: 1.6em;
+            display: flex;
+            justify-content: flex-start;
+            padding: 20px;
+
+            &:focus {
+                outline: none;
+                border: 1px solid;
+            }
+        }
+    }
+}
