@@ -1,0 +1,132 @@
+#a11y-background {
+    z-index: 999;
+    display: none;
+}
+
+#a11y-background ~ div {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+}
+
+#a11y-menu {
+    position: absolute;
+    bottom: 60px;
+    right: 31px;
+    width: 202px;
+}
+
+.arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    margin: 0 0 15px auto;
+    border-left: 25px solid transparent;
+    border-right: 0px solid transparent;
+    box-shadow: 4px -5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode {
+    .arrow {
+        border-top: 20px solid $light-primary;
+    }
+
+    ul {
+        background-color: $light-primary;
+    }
+}
+
+.dark-mode {
+    .arrow {
+        border-top: 20px solid $dark-primary;
+    }
+
+    ul {
+        background-color: $dark-primary;
+    }
+}
+
+ul {
+    position: relative;
+    padding: 20px 0 20px 17px;
+    border-radius: 10px 10px 0 10px;
+    box-shadow: 4px -5px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-bottom: -1px;
+
+    li {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        transition: transform 400ms;
+
+        &:not(:last-child) {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+#a11y-button {
+    width: 63px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-radius: 50%;
+    z-index: 999;
+    background-color: $red;
+    color: white;
+    cursor: pointer;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+#a11y-button img {
+    width: 47px;
+    height: 46px;
+}
+
+#font-sizing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding-right: 17px;
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 26px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: $red;
+        color: white;
+
+        &:not(last-child) {
+            margin-right: 10px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            font-weight: bold;
+            background-color: darken($red, 5%);
+        }
+    }
+}
+
+body.user-is-tabbing #font-sizing:focus-within + span:focus {
+    outline: 1px solid white;
+    border: 1px solid white;
+}
+
+@media (max-width: 575.98px) {
+    #a11y-background ~ div {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }    
+}

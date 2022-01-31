@@ -1,8 +1,4 @@
 .dark-mode .login-section {
-    .logo {
-        filter: invert(100%);
-    }
-
     .form-panel {
         background-color: $dark-primary;
     }
@@ -17,6 +13,10 @@
 }
 
 .light-mode .login-section {
+    .logo {
+        filter: invert(100%);
+    }
+
     .form-panel {
         background-color: $light-primary;
     }
@@ -35,7 +35,7 @@
 
     .left-panel {
         max-width: 360px;
-        margin-right: 50px;
+        margin-right: 60px;
     
         .logo {
             display: flex;

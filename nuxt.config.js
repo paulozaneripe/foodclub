@@ -1,5 +1,6 @@
 export default {
     srcDir: './src',
+    loading: false,
     head: {
         title: 'FoodClub',
         htmlAttrs: {
@@ -12,14 +13,15 @@ export default {
             { name: 'format-detection', content: 'telephone=no' }
         ],
         link: [
-            { rel: 'icon', type: 'image/png', href: '/favicon.png?v2' }
+            { rel: 'icon', type: 'image/png', href: '/favicon.png' }
         ]
     },
     css: [
         '@/assets/styles/global.scss'
     ],
     plugins: [
-        { src: '~/plugins/persistedState.client.js', mode: 'client'},
+        { src: '~/plugins/persistedState.client.js', mode: 'client' },
+        { src: '~plugins/errorMessage.js', mode: 'client'},
         '~plugins/vueMask.js',
         '~plugins/veeValidate.js'
     ],
@@ -30,7 +32,8 @@ export default {
     modules: [
         '@nuxtjs/style-resources',
         '@nuxtjs/axios',
-        '@nuxtjs/auth'
+        '@nuxtjs/auth-next',
+        "vue-toastification/nuxt"
     ],
     colorMode: {
         preference: 'system',
@@ -57,7 +60,31 @@ export default {
         },
         transpile: ['vee-validate']
     },
+    toast: {
+        timeout: 5000,
+        maxToasts: 3,
+        pauseOnHover: false,
+        cssFile: "~/assets/styles/toast.scss"
+    },
     serverMiddleware: [
         '~/api'
-    ]
+    ],
+    auth: {
+        localStorage: true,
+        strategies: {
+            local: {
+                endpoints: {
+                    login: { url: '/api/users/login', method: 'post', propertyName: 'token' },
+                    logout: { url: '/api/users/logout', method: 'post' },
+                    user: { url: '/api/users', method: 'get', propertyName: 'user' }
+                }
+            }
+        },
+        redirect: {
+            login: '/login',
+            logout: '/',
+            callback: '/',
+            home: '/'
+        }
+    }
 };

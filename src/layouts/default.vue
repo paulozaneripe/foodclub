@@ -15,10 +15,10 @@
 
 <script>
 import Vue from 'vue';
-import SkipShortcut from '~/components/global/SkipShortcut/SkipShortcut.vue';
-import TheHeader from '~/components/global/TheHeader/TheHeader.vue';
-import A11yMenu from '~/components/global/A11yMenu/A11yMenu.vue';
-import TheFooter from '~/components/global/TheFooter/TheFooter.vue';
+import SkipShortcut from '~/components/ui/SkipShortcut/SkipShortcut.vue';
+import TheHeader from '~/components/layout/TheHeader/TheHeader.vue';
+import A11yMenu from '~/components/ui/A11yMenu/A11yMenu.vue';
+import TheFooter from '~/components/layout/TheFooter/TheFooter.vue';
 
 export default Vue.extend({
     watch: {

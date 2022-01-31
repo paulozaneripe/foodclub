@@ -13,13 +13,13 @@
 
 <script>
 import Vue from 'vue';
-import SkipShortcut from '~/components/global/SkipShortcut/SkipShortcut.vue';
-import A11yMenu from '~/components/global/A11yMenu/A11yMenu.vue';
+import SkipShortcut from '~/components/ui/SkipShortcut/SkipShortcut.vue';
+import A11yMenu from '~/components/ui/A11yMenu/A11yMenu.vue';
 
 export default Vue.extend({
     watch: {
         $route() {
-            document.getElementById("reset-focus").focus();
+            document.getElementById('reset-focus').focus();
         },
     },
     data() {

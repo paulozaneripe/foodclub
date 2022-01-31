@@ -4,7 +4,7 @@
             <div class="logo">
                 <NuxtLink to="/">
                     <img
-                        src="~/assets/images/foodclublogo.svg"
+                        src="~/assets/images/logo.svg"
                         alt="Logo do FoodClub"
                     />
                 </NuxtLink>
@@ -24,7 +24,7 @@
                 novalidate
             >
                 <AuthInput
-                    v-model="email"
+                    v-model="loginData.email"
                     name="email"
                     type="email"
                     max="255"
@@ -33,7 +33,7 @@
                     rules="required|email"
                 />
                 <AuthInput
-                    v-model.trim="password"
+                    v-model.trim="loginData.password"
                     name="password"
                     type="password"
                     max="20"

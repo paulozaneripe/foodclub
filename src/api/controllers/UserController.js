@@ -1,38 +1,52 @@
-const index = (req, res) => {
+import { hash } from 'bcrypt';
+import { checkEmptyValue, confirmPassword, validateEmail } from '../utils/validations';
+import User from '../models/User';
+
+const index = async (req, res) => {
     res.send('User index');
 };
 
-const show = (req, res) => {
+const show = async (req, res) => {
     res.send('User show');
 };
 
-const create = (req, res) => {
-    let userData = {
-        email: req.body.email,
-        name: req.body.name,
-        password: req.body.password,
-        confirmPassword: req.body.confirmPassword
+const create = async (req, res) => {
+    for (let key of Object.keys(req.body)) {
+        checkEmptyValue(req.body[key]);
+    }
+
+    const { email, name, password, repeatedPassword } = req.body;
+
+    validateEmail(email);
+
+    if (await User.findByEmail(email)) {
+        throw new Error("E-mail já registrado!");
+    }
+
+    confirmPassword(password, repeatedPassword);
+
+    const hashedPassword = await hash(password, 10);
+
+    const user = {
+        email: email,
+        name: name,
+        password: hashedPassword
     };
 
-    // const keys = Object.keys(userData);
+    const userId = await User.create(user);
 
-    // for(let key of keys) {
-    //     if (req.body[key] == "")
-    //         return res.send("Por favor, preencha todos os campos!");
-    // }
-
-    return res.send(userData);
+    return res.json({ id: userId });
 };
 
-const edit = (req, res) => {
+const edit = async (req, res) => {
     res.send('User edit');
 };
 
-const update = (req, res) => {
+const update = async (req, res) => {
     res.send('User update');
 };
 
-const remove = (req, res) => {
+const remove = async (req, res) => {
     res.send('User remove');
 };
 

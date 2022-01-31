@@ -9,9 +9,9 @@ export default {
     },
     data() {
         return {
-            loginData: {
-                email: "",
-                password: ""
+            login: {
+                email: '',
+                password: ''
             }
         };
     },
@@ -23,12 +23,6 @@ export default {
                     return;
                 }
 
-                this.$auth.loginWith('local', { data: this.loginData })
-                    .then(() => {
-                        this.$toast.success("Usuário logado com sucesso!");
-                    }).catch((error) => {
-                        this.$toast.error(this.$getErrorMessage(error));
-                    });
             });
         }
     }

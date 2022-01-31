@@ -61,11 +61,11 @@
 </template>
 
 <script>
-import SearchBar from '~/components/global/SearchBar/SearchBar.vue';
+import SearchBar from '~/components/ui/SearchBar/SearchBar.vue';
 
 export default {
     components: {
-        SearchBar,
+        SearchBar
     },
     head() {
         return {

@@ -13,7 +13,7 @@
             >
                 <h2>Crie sua conta</h2>
                 <AuthInput
-                    v-model="email"
+                    v-model="registerData.email"
                     name="email"
                     type="email"
                     max="255"
@@ -22,15 +22,15 @@
                     rules="required|email"
                 />
                 <AuthInput
-                    v-model="name"
+                    v-model="registerData.name"
                     name="name"
                     max="255"
                     icon="person"
                     label="Seu nome"
-                    rules="required|alpha_dash"
+                    rules="required"
                 />
                 <AuthInput
-                    v-model.trim="password"
+                    v-model.trim="registerData.password"
                     name="password"
                     type="password"
                     max="20"
@@ -39,8 +39,8 @@
                     rules="required|min:6|max:20"
                 />
                 <AuthInput
-                    v-model.trim="confirmPassword"
-                    name="confirmPassword"
+                    v-model.trim="registerData.repeatedPassword"
+                    name="repeatedPassword"
                     type="password"
                     max="20"
                     icon="lock"
@@ -59,7 +59,7 @@
             <div class="logo">
                 <NuxtLink to="/">
                     <img
-                        src="~/assets/images/foodclublogo.svg"
+                        src="~/assets/images/logo.svg"
                         alt="Logo do FoodClub"
                     />
                 </NuxtLink>

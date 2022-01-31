@@ -1,4 +1,4 @@
-import AuthInput from '~/components/auth/AuthInput/AuthInput.vue';
+import AuthInput from '~/components/ui/AuthInput/AuthInput.vue';
 import { extend, ValidationObserver } from "vee-validate";
 
 extend('confirm', {
@@ -6,7 +6,7 @@ extend('confirm', {
     validate(inputValue, { targetValue }) {
         return inputValue === targetValue;
     },
-    message: 'As senhas não correspondem'
+    message: 'As senhas não coincidem'
 });
 
 export default {
@@ -17,29 +17,29 @@ export default {
     },
     data() {
         return {
-            email: "",
-            name: "",
-            password: "",
-            confirmPassword: ""
+            registerData: {
+                email: '',
+                name: '',
+                password: '',
+                repeatedPassword: ''
+            }
         };
     },
     methods: {
         async submit() {
-
             this.$refs.form.validate().then(success => {
 
                 if (!success) {
                     return;
                 }
 
-                this.$axios.post("/api/users/register", {
-                    email: this.email,
-                    name: this.name,
-                    password: this.password,
-                    confirmPassword: this.confirmPassword
-                }).then(({ data }) => {
-                    alert("Email: " + data.email + " - Nome: " + data.name + " - Senha: " + data.password + " - Senha confirmada: " + data.confirmPassword);
-                });
+                this.$axios.post("/api/users/create", this.registerData)
+                    .then(({ data }) => {
+                        this.$router.push('/login');
+                        this.$toast.success("Usuário cadastrado com sucesso!");
+                    }).catch((error) => {
+                        this.$toast.error(this.$getErrorMessage(error));
+                    });
             });
         }
     }

@@ -1,20 +1,17 @@
 import { Router } from 'express';
+import tryCatch from '../utils/tryCatch';
 import UserController from '../controllers/UserController';
 import SessionController from '../controllers/SessionController';
 
 const routes = Router();
 
-routes.get('/', UserController.index);
-routes.post('/register', UserController.create);
+routes.get('/', tryCatch(UserController.index));
+routes.post('/create', tryCatch(UserController.create));
 
 // login/logout 
-routes.post('/login', SessionController.login);
-routes.post('/logout', SessionController.logout);
-routes.post('/forgot-password', SessionController.forgot);
-routes.post('/reset-password', SessionController.reset);
-
-// // register
-// routes.post('/register', UserController.post)
+routes.post('/login', tryCatch(SessionController.login));
+routes.post('/logout', tryCatch(SessionController.logout));
+routes.post('/forgot-password', tryCatch(SessionController.forgot));
+routes.post('/reset-password', tryCatch(SessionController.reset));
 
 export default routes;
-  
