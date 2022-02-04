@@ -1,8 +1,10 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
-import routes from './routes';
 import passport from 'passport';
+import routes from './routes';
 
+dotenv.config();
 
 const server = express();
 
@@ -21,11 +23,11 @@ server.use((req, res, next) => {
 
 server.use((error, req, res, next) => {
     res.status(error.status || 500);
-    res.send({ 
-        error: { 
-            status: error.status || 500, 
+    res.send({
+        error: {
+            status: error.status || 500,
             message: error.message
-        } 
+        }
     });
 });
 

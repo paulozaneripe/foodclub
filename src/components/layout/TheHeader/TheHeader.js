@@ -27,7 +27,8 @@ export default Vue.extend({
     methods: {
         showMenu() {
             this.headerMenu = !this.headerMenu;
-            document.getElementById("menu-background").style.display = this.headerMenu ? "block" : "none";
+            let menuBackground = document.getElementById("menu-background");
+            this.headerMenu ? menuBackground.classList.add("show") : menuBackground.classList.remove("show");
         },
     }
 });

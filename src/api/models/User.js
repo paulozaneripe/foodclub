@@ -1,19 +1,21 @@
-import db from '../config/database';
-import Template from './Template';
+import db from '../config/db';
+import Model from '../classes/Model';
 
-Template.defineTable('user');
+export default class User extends Model {
+    constructor() {
+        super('user');
+    }
 
-const User = {
-    ...Template,
     async findByEmail(email) {
-        const results = await db.query(`SELECT * FROM "user" WHERE email = '${email}'`);
+        const results = await db.query(`SELECT * FROM "${this.getTable()}" WHERE email = '${email}'`);
         return results.rows[0];
-    },
+    }
+
     async create(data) {
         const { name, email, password } = data;
 
         const query = `
-            INSERT INTO "user" 
+            INSERT INTO "${this.getTable()}" 
                 (name, email, password)
             VALUES 
                 ('${name}', '${email}', '${password}')
@@ -24,6 +26,4 @@ const User = {
         const results = await db.query(query);
         return results.rows[0].id;
     }
-};
-
-export default User;
+}

@@ -78,3 +78,6 @@ sw.*
 
 # Vscode settings
 .vscode
+
+# Environment variables
+.env

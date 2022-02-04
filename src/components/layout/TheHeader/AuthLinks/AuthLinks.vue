@@ -1,7 +1,7 @@
 <template>
     <li>
         <button id="user-button" aria-expanded="false" @click.prevent="showMenu" @keyup.space="showMenu">
-            Paulo
+            {{ $auth.user.name }}
             <span class="material-icons" aria-hidden="true" :class="this.menu ? 'active' : ''">
                 keyboard_arrow_down
             </span>

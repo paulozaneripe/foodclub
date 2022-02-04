@@ -1,6 +1,5 @@
 #a11y-background {
     z-index: 999;
-    display: none;
 }
 
 #a11y-background ~ div {
@@ -26,7 +25,7 @@
     margin: 0 0 15px auto;
     border-left: 25px solid transparent;
     border-right: 0px solid transparent;
-    box-shadow: 4px -5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 10px 0px 13px -7px rgba(0, 0, 0, 0.3);
 }
 
 .light-mode {
@@ -50,10 +49,9 @@
 }
 
 ul {
-    position: relative;
     padding: 20px 0 20px 17px;
     border-radius: 10px 10px 0 10px;
-    box-shadow: 4px -5px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px -4px 10px rgba(0, 0, 0, 0.2);
     width: 100%;
     margin-bottom: -1px;
 

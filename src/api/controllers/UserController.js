@@ -1,13 +1,22 @@
 import { hash } from 'bcrypt';
 import { checkEmptyValue, confirmPassword, validateEmail } from '../utils/validations';
-import User from '../models/User';
+import passport from 'passport';
+import passportJwt from 'passport-jwt';
+import UserModel from '../models/User';
 
-const index = async (req, res) => {
-    res.send('User index');
+const User = new UserModel();
+
+const index = async (req, res, next) => {
+    passport.authenticate('jwt', { session: false }, (error, user) => {
+        if (error)
+            return next(error);
+
+        return res.send({ user });
+    })(req, res);
 };
 
 const show = async (req, res) => {
-    res.send('User show');
+    res.send("User show");
 };
 
 const create = async (req, res) => {
@@ -35,7 +44,7 @@ const create = async (req, res) => {
 
     const userId = await User.create(user);
 
-    return res.json({ id: userId });
+    return res.send({ id: userId });
 };
 
 const edit = async (req, res) => {
@@ -49,5 +58,29 @@ const update = async (req, res) => {
 const remove = async (req, res) => {
     res.send('User remove');
 };
+
+passport.use(new passportJwt.Strategy(
+    {
+        jwtFromRequest: passportJwt.ExtractJwt.fromAuthHeaderAsBearerToken(),
+        secretOrKey: process.env.JWT_SECRET_KEY
+    },
+    async (jwtPayload, next) => {
+        await User.findByEmail(jwtPayload.email)
+            .then((user) => {
+                if (!user)
+                    return next(new Error("Autenticação falhou!"));
+
+                return next(null, {
+                    id: user.id,
+                    email: user.email,
+                    name: user.name,
+                    imageId: user.image_id,
+                    about: user.about
+                });
+            }).catch((error) => {
+                return next(error);
+            });
+    }
+));
 
 export default { index, show, create, edit, update, remove };

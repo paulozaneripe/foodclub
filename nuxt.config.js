@@ -21,7 +21,7 @@ export default {
     ],
     plugins: [
         { src: '~/plugins/persistedState.client.js', mode: 'client' },
-        { src: '~plugins/errorMessage.js', mode: 'client'},
+        { src: '~plugins/customToast.js', mode: 'client'},
         '~plugins/vueMask.js',
         '~plugins/veeValidate.js'
     ],
@@ -36,7 +36,7 @@ export default {
         "vue-toastification/nuxt"
     ],
     colorMode: {
-        preference: 'system',
+        preference: 'light',
         fallback: 'dark'
     },
     styleResources: {
@@ -70,13 +70,13 @@ export default {
         '~/api'
     ],
     auth: {
-        localStorage: true,
+        localStorage: false,
         strategies: {
             local: {
                 endpoints: {
                     login: { url: '/api/users/login', method: 'post', propertyName: 'token' },
                     logout: { url: '/api/users/logout', method: 'post' },
-                    user: { url: '/api/users', method: 'get', propertyName: 'user' }
+                    user: { url: '/api/users', method: 'get', propertyName: false }
                 }
             }
         },
