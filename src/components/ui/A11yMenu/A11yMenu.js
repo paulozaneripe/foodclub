@@ -7,7 +7,7 @@ export default Vue.extend({
     },
     data() {
         return {
-            showA11yMenu: false
+            a11yMenu: false
         };
     },
     computed: {
@@ -17,12 +17,12 @@ export default Vue.extend({
     },
     methods: {
         showMenu() {
-            this.showA11yMenu ? (this.showA11yMenu = false) : (this.showA11yMenu = true);
-            document.getElementById("a11y-button").ariaLabel = this.showA11yMenu
+            this.a11yMenu ? (this.a11yMenu = false) : (this.a11yMenu = true);
+            document.getElementById("a11y-button").ariaLabel = this.a11yMenu
                 ? "Fechar menu de acessibilidade"
                 : "Abrir menu de acessibilidade";
             let a11yBackground = document.getElementById("a11y-background");
-            this.showA11yMenu ? a11yBackground.classList.add("show") : a11yBackground.classList.remove("show");
+            this.a11yMenu ? a11yBackground.classList.add("show") : a11yBackground.classList.remove("show");
         }
     },
 });

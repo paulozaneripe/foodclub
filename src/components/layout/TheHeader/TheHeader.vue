@@ -28,7 +28,11 @@
                             </NuxtLink>
                         </div>
                     </li>
-                    <AuthLinks v-if="$auth.loggedIn"></AuthLinks>
+                    <AuthLinks 
+                        v-if="$auth.loggedIn"
+                        :menu="this.headerMenu"
+                        @showMenuBackground="this.showMenuBackground"
+                    />
                     <GuestLinks
                         v-else
                         :menu="this.headerMenu"

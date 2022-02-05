@@ -1,14 +1,12 @@
 <template>
     <li>
         <button
-            type="button"
             id="mobile-button"
             :class="this.menu ? 'active' : ''"
             aria-label="Abrir menu"
             aria-controls="links"
             aria-expanded="false"
             @click.prevent="showMenu"
-            @keyup.enter="showMenu"
             @keyup.space="showMenu"
         >
             <span id="hamburger" aria-hidden="true"></span>

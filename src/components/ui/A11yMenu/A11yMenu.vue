@@ -6,7 +6,7 @@
             @click="showMenu"
         ></div>
         <div>
-            <div v-if="showA11yMenu" id="a11y-menu">
+            <div v-if="a11yMenu" id="a11y-menu">
                 <ul>
                     <li>
                         <TheToggler
@@ -67,7 +67,7 @@
                 id="a11y-button"
                 tabindex="0"
                 role="button"
-                :aria-expanded="showA11yMenu === false ? 'false' : 'true'"
+                :aria-expanded="a11yMenu === false ? 'false' : 'true'"
                 aria-haspopup="true"
                 aria-label="Abrir menu de acessibilidade"
                 @click="showMenu"

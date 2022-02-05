@@ -1,18 +1,20 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-    data() {
-        return {
-            menu: false,
-        };
+    props: {
+        menu: {
+            type: Boolean,
+            required: true
+        },
     },
     methods: {
         showUserMenu() {
-            this.menu = !this.menu;
-            document.getElementById("user-avatar").setAttribute("aria-expanded", this.menu);
-            document.getElementById("user-avatar").ariaLabel = this.menu
+            document.getElementById("user-button").setAttribute("aria-expanded", this.menu);
+            document.getElementById("user-button").ariaLabel = this.menu
                 ? "Fechar menu de usuário"
                 : "Abrir menu de usuário";
+
+            this.$emit('showMenuBackground');
         }
     }
 });

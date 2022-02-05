@@ -1,20 +1,21 @@
 <template>
     <li class="container">
         <button
-            id="user-avatar"
+            id="user-button"
+            :class="this.menu ? 'active' : ''"
             aria-label="Abrir menu de usuário"
             aria-controls="user-links"
             aria-expanded="false"
             @click.prevent="showUserMenu"
             @keyup.space="showUserMenu"
-            @blur="showUserMenu"
         >
             <span 
                 class="material-icons"
             >
                 account_circle
             </span>
-            {{ $auth.user.name }}
+            <p>{{ $auth.user.name }}</p>
+            <span id="hamburger" aria-hidden="true"></span>
             <span 
                 class="material-icons" 
                 :class="this.menu ? 'active' : ''"
@@ -22,7 +23,6 @@
                 expand_less
             </span>
         </button>
-
         <div id="user-links" :class="this.menu ? 'active' : ''">
             <ul>
                 <li>

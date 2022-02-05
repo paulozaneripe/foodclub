@@ -153,8 +153,7 @@
         height: 0;
         z-index: 999;
         visibility: hidden;
-        overflow-y: hidden;
-        overflow-x: hidden;
+        overflow: hidden;
         transition: visibility .4s, height .4s;
 
         &.active {
