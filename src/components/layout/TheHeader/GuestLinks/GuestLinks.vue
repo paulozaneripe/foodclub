@@ -8,6 +8,7 @@
             aria-controls="links"
             aria-expanded="false"
             @click.prevent="showMenu"
+            @keyup.enter="showMenu"
             @keyup.space="showMenu"
         >
             <span id="hamburger" aria-hidden="true"></span>

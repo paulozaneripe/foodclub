@@ -14,7 +14,7 @@ export default Vue.extend({
                 ? "Fechar menu"
                 : "Abrir menu";
 
-            this.$emit('showMenuMethod');
+            this.$emit('showMenuBackground');
         }
     }
 });

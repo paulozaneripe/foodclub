@@ -25,9 +25,9 @@ export default {
 
                 this.$auth.loginWith('local', { data: this.loginData })
                     .then(() => {
-                        this.$customToast(this.$toast, "Usuário logado com sucesso!");
+                        this.$filterToast(this.$toast, "Usuário logado com sucesso!");
                     }).catch((error) => {
-                        this.$customToast(this.$toast, error);
+                        this.$filterToast(this.$toast, error);
                     });
             });
         }

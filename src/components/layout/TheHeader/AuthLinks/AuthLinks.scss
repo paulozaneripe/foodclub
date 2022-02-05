@@ -1,30 +1,113 @@
-.dark-mode button {
-    color: white;
+.dark-mode {
+    .container button:first-of-type {
+        color: white;
+    }
+
+    #user-links {
+        ul {
+            background-color: $dark-primary;
+        }
+    }
 }
 
-.light-mode button {
-    color: black;
+.light-mode {
+    #user-links {
+        ul {
+            background-color: $light-primary;
+        }
+    }
 }
 
-button {
+.container {
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: 1.6em;
-    cursor: pointer;
+
+    button:first-of-type {
+        display: flex;
+        align-items: center;
+        font-size: 1.6em;
+        cursor: pointer;
+
+        span {
+            opacity: 80%;
+            font-size: 32px;
+            cursor: pointer;
+
+            &:first-of-type {
+                margin-right: 10px;
+            }
+
+            &:last-of-type {
+                margin: 0 0 -2px 5px;
+                transition: transform .2s;
+
+                &.active {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
 }
 
-span.material-icons {
-    font-size: 30px;
-    filter: opacity(80%);
-    margin-left: 10px;
-    border-radius: 50%;
-    transform: rotate(-180deg);
-    cursor: pointer;
-    transition: transform .2s;
+#user-links {
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    max-height: 0;
+    top: 42px;
+    left: -60px;
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000050;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    transition: visibility .4s, max-height .4s;
+
+    &.active {
+        visibility: visible;
+        max-height: 187px;
+    }
+
+    ul {
+        min-width: 190px;
+        width: 100%;
+        padding: 20px;
+        border-radius: 10px 10px 0 0;
+        transition: background-color .2s;
+        
+
+        li {
+            font-size: 1.4em;
+
+            & > a:hover, &> a:focus {
+                font-weight: bold;
+
+                .material-icons {
+                    opacity: 100%;
+                }
+            }
+
+            &:not(:last-of-type) {
+                margin-bottom: 20px;
+            }
+
+            a {
+                display: flex;
+                align-items: center;
+                width: 100%;
+    
+                span {
+                    cursor: pointer;
+                    opacity: 60%;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
 }
 
-
-span.material-icons.active {
-    transform: rotate(0deg);
+@media (min-width: 575.98px) {
+    .container {
+        margin-left: 35px;
+    }
 }

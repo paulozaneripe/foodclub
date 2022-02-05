@@ -36,9 +36,9 @@ export default {
                 this.$axios.post("/api/users/create", this.registerData)
                     .then(({ data }) => {
                         this.$router.push('/login');
-                        this.$customToast(this.$toast, "Usuário cadastrado com sucesso!");
+                        this.$filterToast(this.$toast, "Usuário cadastrado com sucesso!");
                     }).catch((error) => {
-                        this.$customToast(this.$toast, error);
+                        this.$filterToast(this.$toast, error);
                     });
             });
         }

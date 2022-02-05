@@ -25,7 +25,7 @@ export default Vue.extend({
         };
     },
     methods: {
-        showMenu() {
+        showMenuBackground() {
             this.headerMenu = !this.headerMenu;
             let menuBackground = document.getElementById("menu-background");
             this.headerMenu ? menuBackground.classList.add("show") : menuBackground.classList.remove("show");

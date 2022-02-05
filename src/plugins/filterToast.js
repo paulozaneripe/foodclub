@@ -1,5 +1,5 @@
 export default ({ app }, inject) => {
-    inject('customToast', (toast, value) => {
+    inject('filterToast', (toast, value) => {
 
         if (value instanceof Error) {
             return toast.error(value.response.data.error.message, {

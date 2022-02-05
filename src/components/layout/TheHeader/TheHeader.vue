@@ -28,23 +28,20 @@
                             </NuxtLink>
                         </div>
                     </li>
+                    <AuthLinks v-if="$auth.loggedIn"></AuthLinks>
                     <GuestLinks
-                        v-if="!$auth.loggedIn"
+                        v-else
                         :menu="this.headerMenu"
-                        @showMenuMethod="this.showMenu"
+                        @showMenuBackground="this.showMenuBackground"
                     />
-                    <AuthLinks
-                        v-else                        
-                        :menu="this.headerMenu"
-                        @showMenuMethod="this.showMenu"
-                    ></AuthLinks>
+                    
                 </ul>
             </nav>
         </header>
         <div
             id="menu-background"
             class="darken-background"
-            @click="this.showMenu"
+            @click="this.showMenuBackground"
         ></div>
     </div>
 </template>
