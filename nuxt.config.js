@@ -13,7 +13,7 @@ export default {
             { name: 'format-detection', content: 'telephone=no' }
         ],
         link: [
-            { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+            { id: 'faviconTag', rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
         ]
     },
     css: [
@@ -37,7 +37,7 @@ export default {
     ],
     colorMode: {
         preference: 'light',
-        fallback: 'dark'
+        fallback: 'light'
     },
     styleResources: {
         scss: [
@@ -50,6 +50,7 @@ export default {
         }
     },
     build: {
+        maxChunkSize: 300000,
         splitChunks: {
             layouts: true
         },
