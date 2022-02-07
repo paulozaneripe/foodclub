@@ -69,20 +69,22 @@ export default {
     serverMiddleware: [
         '~/api'
     ],
+    router: {
+        middleware: ['auth']
+    },
     auth: {
         localStorage: false,
         strategies: {
             local: {
                 endpoints: {
                     login: { url: '/api/users/login', method: 'post', propertyName: 'token' },
-                    logout: { url: '/api/users/logout', method: 'post' },
                     user: { url: '/api/users', method: 'get', propertyName: false }
                 }
             }
         },
         redirect: {
             login: '/login',
-            logout: '/',
+            logout: '/login',
             callback: '/',
             home: '/'
         }

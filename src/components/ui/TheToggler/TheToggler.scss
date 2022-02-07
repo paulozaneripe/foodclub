@@ -59,6 +59,10 @@
     transition: transform 0.4s;
 }
 
+.no-animations .toggler-background:before {
+    transition: none;
+}
+
 .toggler input:checked + .toggler-background:before {
     box-shadow: -1px 0px 6px rgba(0, 0, 0, 0.2);
 }

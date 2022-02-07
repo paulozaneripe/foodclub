@@ -3,6 +3,7 @@ import { ValidationObserver } from "vee-validate";
 
 export default {
     layout: 'auth',
+    auth: 'guest',
     components: {
         AuthInput,
         ValidationObserver

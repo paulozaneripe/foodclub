@@ -81,6 +81,16 @@ button {
     user-select: none;
 }
 
+.no-animations,
+.no-animations *,
+.no-animations ~ * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    -ms-transition: none !important;
+    transition: none !important;
+}
+
 .open-dyslexic {
     font-family: OpenDyslexic, sans-serif;
     line-height: 15px;
@@ -135,6 +145,12 @@ button {
     font-size: 74.5%;
 }
 
+.big-letter-spacing,
+.big-letter-spacing *,
+.big-letter-spacing ~ * {
+    letter-spacing: 0.8px;
+}
+
 .darken-background {
     position: fixed;
     background-color: #00000030;
@@ -144,7 +160,7 @@ button {
     height: 100vh;
     visibility: hidden;
     opacity: 0;
-    transition: opacity .2s, visibility .2s;
+    transition: opacity 0.2s, visibility 0.2s;
 }
 
 .darken-background.show {
@@ -153,7 +169,7 @@ button {
 }
 
 body {
-    transition: background-color .2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
     font-family: Roboto, sans-serif;
     line-height: 15px;
     font-size: 62.5%;

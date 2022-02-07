@@ -71,6 +71,10 @@
                 &:hover, &:focus {
                     background-color: darken($dark-primary, 5%);
                 }
+
+                &:focus {
+                    border: 1px solid white;
+                }
             }
         }
     }
@@ -95,15 +99,20 @@
             li a {
                 border-bottom: 1px solid darken($light-background, 10%);
 
-                &:focus {
+                &:hover, &:focus {
                     background-color: darken($light-primary, 10%);
                 }
-    
-                &:hover {
-                    background-color: darken($light-primary, 10%);
+
+                &:focus {
+                    border: 1px solid black;
                 }
             }
         }
+    }
+
+    .no-animations #mobile-button #hamburger::after, 
+    .no-animations #mobile-button #hamburger::before {
+        transition: none;
     }
 
     #mobile-button {
@@ -145,7 +154,7 @@
 
     ul {    
         display: block;
-        position: absolute;
+        position: fixed;
         top: 72px;
         right: 0px;
         box-shadow: -5px 15px 15px 1px rgba(0, 0, 0, 0.2);

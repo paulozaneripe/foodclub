@@ -11,6 +11,7 @@ extend('confirm', {
 
 export default {
     layout: 'auth',
+    auth: 'guest',
     components: {
         AuthInput,
         ValidationObserver

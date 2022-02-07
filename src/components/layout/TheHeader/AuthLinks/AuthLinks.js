@@ -11,10 +11,13 @@ export default Vue.extend({
         showUserMenu() {
             document.getElementById("user-button").setAttribute("aria-expanded", this.menu);
             document.getElementById("user-button").ariaLabel = this.menu
-                ? "Fechar menu de usuário"
-                : "Abrir menu de usuário";
+                ? "Abrir menu de usuário"
+                : "Fechar menu de usuário";
 
             this.$emit('showMenuBackground');
+        },
+        async logout() {
+            this.$auth.logout();
         }
     }
 });

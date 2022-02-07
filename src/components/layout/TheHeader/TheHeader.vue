@@ -38,7 +38,6 @@
                         :menu="this.headerMenu"
                         @showMenuBackground="this.showMenuBackground"
                     />
-                    
                 </ul>
             </nav>
         </header>

@@ -9,9 +9,7 @@
             @click.prevent="showUserMenu"
             @keyup.space="showUserMenu"
         >
-            <span 
-                class="material-icons"
-            >
+            <span class="material-icons" aria-hidden="true">
                 account_circle
             </span>
             <p>{{ $auth.user.name }}</p>
@@ -26,13 +24,21 @@
         <div id="user-links" :class="this.menu ? 'active' : ''">
             <ul>
                 <li>
-                    <NuxtLink to="#"><span class="material-icons" aria-hidden="true">manage_accounts</span>Minha conta</NuxtLink>
+                    <NuxtLink :to="`/users/${ $auth.user.id }`"><span class="material-icons" aria-hidden="true">manage_accounts</span>Minha conta</NuxtLink>
                 </li>
                 <li>
-                    <NuxtLink to="#"><span class="material-icons" aria-hidden="true">menu_book</span>Enviar receita</NuxtLink>
+                    <NuxtLink to="#"><span class="material-icons" aria-hidden="true">auto_stories</span>Minhas receitas</NuxtLink>
                 </li>
                 <li>
-                    <NuxtLink to="#"><span class="material-icons" aria-hidden="true">logout</span>Sair</NuxtLink>
+                    <NuxtLink to="#"><span class="material-icons" aria-hidden="true">local_dining</span>Enviar receita</NuxtLink>
+                </li>
+                <li>
+                    <button             
+                        @click.prevent="logout"
+                        @keyup.space="logout"
+                    >
+                        <span class="material-icons" aria-hidden="true">logout</span>Sair
+                    </button>
                 </li>
             </ul>
         </div>

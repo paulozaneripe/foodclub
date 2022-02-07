@@ -11,8 +11,8 @@ export default Vue.extend({
         showMenu() {
             document.getElementById("mobile-button").setAttribute("aria-expanded", this.menu);
             document.getElementById("mobile-button").ariaLabel = this.menu
-                ? "Fechar menu"
-                : "Abrir menu";
+                ? "Abrir menu"
+                : "Fechar menu";
 
             this.$emit('showMenuBackground');
         }

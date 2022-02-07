@@ -70,21 +70,21 @@
 
         &.active {
             visibility: visible;
-            max-height: 187px;
+            max-height: 196px;
         }
 
         ul {
-            min-width: 190px;
+            min-width: 216px;
             width: 100%;
             padding: 20px;
             border-radius: 10px 10px 0 0;
             transition: background-color 0.2s;
 
             li {
-                font-size: 1.4em;
-
                 & > a:hover,
-                & > a:focus {
+                & > a:focus,
+                & > button:hover,
+                & > button:focus {
                     font-weight: bold;
 
                     .material-icons {
@@ -96,15 +96,19 @@
                     margin-bottom: 20px;
                 }
 
-                a {
+                a, button {
                     display: flex;
                     align-items: center;
                     width: 100%;
+                    font-size: 1.4em;
+                    margin: 0;
+                    padding: 0;
 
                     span {
                         cursor: pointer;
                         opacity: 60%;
                         margin-right: 10px;
+                        font-size: 24px;
                     }
                 }
             }
@@ -126,16 +130,24 @@
             outline: 2px solid white;
         }
 
-        ul {
+        #user-links {
             background-color: $dark-primary;
             border-top: 1px solid $dark-background;
             color: white;
+        }
 
-            li a {
+        #user-links ul {
+            color: white;
+
+            li a, li button {
                 border-bottom: 1px solid $dark-background;
                 
                 &:hover, &:focus {
                     background-color: darken($dark-primary, 5%);
+                }
+
+                &:focus {
+                    border: 1px solid white;
                 }
             }
         }
@@ -154,98 +166,139 @@
             outline: 2px solid black;
         }
 
-        ul {
+        #user-links {
             background-color: $light-primary;
             border-top: 1px solid darken($light-background, 10%);   
-    
-            li a {
-                border-bottom: 1px solid darken($light-background, 10%);
+        }
 
-                &:focus {
+        #user-links ul {
+            li a, li button {
+                border-bottom: 1px solid darken($light-background, 10%);
+    
+                &:hover, &:focus {
                     background-color: darken($light-primary, 10%);
                 }
-    
-                &:hover {
-                    background-color: darken($light-primary, 10%);
+
+                &:focus {
+                    border: 1px solid black;
                 }
             }
         }
     }
 
-    #user-links {
-        display: none;
+    .no-animations button:first-of-type #hamburger::after, 
+    .no-animations button:first-of-type #hamburger::before {
+        transition: none;
     }
 
-    .container {
+    button:first-of-type {
+        position: relative;
         display: flex;
         align-items: center;
+        cursor: pointer;
 
-        button:first-of-type {
-            display: flex;
-            align-items: center;
+        p {
+            display: block;
+            visibility: hidden;
+            max-width: 0;
+            max-height: 0;
+            font-size: 1.4em;
+            margin-right: 10px;
+            visibility: hidden;
+            transition:  visibility .4s, max-width .4s, max-height .4s;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        span {
+            opacity: 80%;
             cursor: pointer;
 
-            p {
-                display: block;
-                visibility: hidden;
-                max-width: 0;
-                max-height: 0;
-                font-size: 1.4em;
+            &:first-of-type {
                 margin-right: 10px;
-                visibility: hidden;
-                transition:  visibility .4s, max-width .4s, max-height .4s;
-                overflow: hidden;
-                text-overflow: ellipsis;
+                font-size: 34px;
             }
 
-            span {
-                opacity: 80%;
-                cursor: pointer;
+            &:last-of-type {
+                display: none;
+            }
+        }
 
-                &:first-of-type {
-                    margin-right: 10px;
-                    font-size: 34px;
-                }
+        #hamburger {
+            border-top: 3px solid;
+            width: 30px;
 
-                &:last-of-type {
-                    display: none;
-                }
+            &::after, &::before {
+                display: block;
+                position: relative;
+                content: "";
+                width: 30px;
+                height: 3px;
+                margin-top: 6px;
+                transition: transform .3s;
+            }
+        }
+
+        &.active {
+            p {
+                visibility: visible;
+                max-width: 100px;
+                max-height: 22px;
+                margin-right: 10px;
             }
 
             #hamburger {
-                border-top: 3px solid;
-                width: 30px;
-
-                &::after, &::before {
-                    display: block;
-                    position: relative;
-                    content: "";
-                    width: 30px;
-                    height: 3px;
-                    margin-top: 6px;
-                    transition: transform .3s;
+                border-top-color: transparent;
+    
+                &::before {
+                    transform: rotate(135deg); 
+                }
+    
+                &::after {
+                    transform: rotate(-135deg);
+                    top: -9px;
                 }
             }
+        }
+    }
 
-            &.active {
-                p {
-                    visibility: visible;
-                    max-width: 100px;
-                    max-height: 22px;
-                    margin-right: 10px;
+    #user-links {    
+        position: fixed;
+        top: 72px;
+        right: 0;
+        box-shadow: -5px 15px 15px 1px rgba(0, 0, 0, 0.2);
+        width: 65vw;
+        height: 0;
+        z-index: 999;
+        visibility: hidden;
+        overflow: hidden;
+        transition: visibility .4s, height .4s;
+
+        &.active {
+            visibility: visible;
+            height: 100vh;
+        }
+
+        li {
+
+            a, button {
+                width: 100%;
+                font-size: 1.6em;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 20px;
+    
+                &:focus {
+                    outline: none;
+                    border: 1px solid;
                 }
 
-                #hamburger {
-                    border-top-color: transparent;
-        
-                    &::before {
-                        transform: rotate(135deg); 
-                    }
-        
-                    &::after {
-                        transform: rotate(-135deg);
-                        top: -9px;
-                    }
+                span.material-icons  {
+                    display: block;
+                    margin-right: 20px;
+                    cursor: pointer;
+                    font-size: 24px;
                 }
             }
         }

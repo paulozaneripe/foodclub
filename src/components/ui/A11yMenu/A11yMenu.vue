@@ -3,11 +3,14 @@
         <div
             id="a11y-background"
             class="darken-background"
-            @click="showMenu"
+            @click="showA11yMenu"
         ></div>
-        <div>
-            <div v-if="a11yMenu" id="a11y-menu">
+        <div @blur="showA11yMenu">
+            <div id="a11y-menu" :class="a11yMenu ? 'active' : ''">
                 <ul>
+                    <li>
+                        <h3>Ajustes de acessibilidade</h3>
+                    </li>
                     <li>
                         <TheToggler
                             id="theme-toggler-a11ymenu"
@@ -22,10 +25,26 @@
                     </li>
                     <li>
                         <TheToggler
+                            id="animations-toggler"
+                            enabled-text="Animações"
+                            :enabled-if="animations"
+                            @toggle="$store.dispatch('toggleAnimations')"
+                        />
+                    </li>
+                    <li>
+                        <TheToggler
                             id="readable-font-toggler"
                             enabled-text="Fonte legível"
                             :enabled-if="readableFont"
                             @toggle="$store.dispatch('changeFont')"
+                        />
+                    </li>
+                    <li>
+                        <TheToggler
+                            id="big-letter-spacing"
+                            enabled-text="Maior espaço entre letras"
+                            :enabled-if="bigLetterSpacing"
+                            @toggle="$store.dispatch('toggleBigLetterSpacing')"
                         />
                     </li>
                     <li>
@@ -60,6 +79,11 @@
                             </span>
                         </div>
                     </li>
+                    <li>
+                        <button @click.prevent="resetA11ySettings">
+                            Redefinir configurações
+                        </button>
+                    </li>
                 </ul>
                 <span class="arrow"></span>
             </div>
@@ -67,12 +91,12 @@
                 id="a11y-button"
                 tabindex="0"
                 role="button"
-                :aria-expanded="a11yMenu === false ? 'false' : 'true'"
+                :aria-expanded="a11yMenu"
                 aria-haspopup="true"
                 aria-label="Abrir menu de acessibilidade"
-                @click="showMenu"
-                @keyup.space="showMenu"
-                @keyup.enter="showMenu"
+                @click="showA11yMenu"
+                @keyup.space="showA11yMenu"
+                @keyup.enter="showA11yMenu"
             >
                 <img
                     src="~/assets/images/icons/accessibility.svg"

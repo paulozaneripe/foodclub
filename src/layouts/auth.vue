@@ -24,8 +24,10 @@ export default Vue.extend({
     },
     data() {
         return {
+            animations: this.$store.state.animations,
             readableFont: this.$store.state.readableFont,
-            fontSize: this.$store.state.fontSize,
+            bigLetterSpacing: this.$store.state.bigLetterSpacing,
+            fontSize: this.$store.state.fontSize
         };
     },
     components: {
@@ -42,9 +44,12 @@ export default Vue.extend({
     },
     beforeMount() {
         window.addEventListener('keydown', this.handleTab);
-        document.body.className = this.readableFont
-            ? 'open-dyslexic ' + this.fontSize
-            : 'roboto ' + this.fontSize;
+
+        let font = this.readableFont ? 'open-dyslexic ' : 'roboto ';
+        let bigLetterSpacing = this.bigLetterSpacing ? 'big-letter-spacing ' : '';
+        let animations = this.animations ? '' : 'no-animations';
+
+        document.body.className = font + this.fontSize + bigLetterSpacing + animations;
     },
     methods: {
         handleTab(e) {

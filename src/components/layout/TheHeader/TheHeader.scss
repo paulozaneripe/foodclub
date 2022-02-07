@@ -1,3 +1,7 @@
+body.user-is-tabbing #logo a:focus-within {
+    outline: 2px solid white;
+}
+
 .light-mode {
     header {
         color: black;
