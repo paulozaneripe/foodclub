@@ -70,6 +70,9 @@ export default {
     serverMiddleware: [
         '~/api'
     ],
+    axios: {
+        baseURL: '/',
+    },
     router: {
         middleware: ['auth']
     },
