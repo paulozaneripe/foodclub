@@ -1,0 +1,111 @@
+.dark-mode {
+    .input-field {
+        input {
+            background-color: $dark-secondary;
+        }
+    
+        span:first-of-type.error {
+            color: lighten($red, 25%);
+        }
+        
+        input,
+        input::placeholder {
+            color: white;
+        }
+    }
+
+    #error-message {
+        color: lighten($red, 25%);
+    }
+}
+
+.light-mode {
+    .input-field {
+        input {
+            background-color: $light-background;
+        }
+
+        span:first-of-type.error {
+            color: $red;
+        }
+
+        input,
+        input::placeholder {
+            color: black;
+        }
+    }
+
+    #error-message {
+        color: $red;
+    }
+}
+
+.input-container {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    position: relative;
+    border-radius: 10px;
+
+    label {
+        position: relative;
+        font-size: 1.6em;
+    }
+
+    input {
+        width: 100%;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        font-size: 1.6em;
+        padding: 20px;
+        margin-top: 5px;
+        transition: background-color .2s;
+
+        &:focus {
+            outline: 2px solid;
+            outline-offset: 0;
+        }
+
+        &::placeholder {
+            opacity: 0.8;
+        }
+    
+        &[type="date"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        &.error {
+            outline: 2px solid lighten($red, 25%);
+        }
+    }
+
+    span {
+        position: absolute;
+        font-size: 1.4rem;
+        text-align: center;
+
+        &.date-picker {
+            bottom: 21px;
+            right: 21px;
+            opacity: 0.7;
+            pointer-events: none;
+            font-size: 1.3rem;
+        }
+    }
+}
+
+#error-message {
+    display: none;
+    visibility: hidden;
+    position: relative;
+    font-size: 1.3em;
+    margin: 5px 0 -5px 0;
+
+    &.error {
+        display: block;
+        visibility: visible;
+    }
+}

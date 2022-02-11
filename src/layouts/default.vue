@@ -70,7 +70,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 main {
-    min-height: calc(100vh - 234px);
+    min-height: calc(100vh - 244px);
 }
 
 section {

@@ -44,7 +44,7 @@
                 <NuxtLink class="forgot-password" to="/forgot-password">
                     Esqueceu sua senha?
                 </NuxtLink>
-                <button type="submit">ENTRAR</button>
+                <CustomButton description="ENTRAR" />
                 <p>
                     Não possui uma conta?
                     <NuxtLink to="/register">Cadastre-se</NuxtLink>
@@ -55,4 +55,5 @@
 </template>
 
 <script src="./login.js" />
+import CustomInput from '../../components/ui/CustomInput/CustomInput.vue.js';
 <style lang="scss" src="./login.scss" />

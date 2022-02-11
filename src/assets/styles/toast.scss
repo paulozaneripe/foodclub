@@ -128,17 +128,17 @@
 }
 
 .Vue-Toastification__toast--default {
-    background-color: #0E72D0;
+    background-color: $blue;
     color: #fff;
 }
 
 .Vue-Toastification__toast--info {
-    background-color: #0E72D0;
+    background-color: $blue;
     color: #fff;
 }
 
 .Vue-Toastification__toast--success {
-    background-color: #01854B;
+    background-color: $green;
     color: #fff;
 }
 
@@ -148,7 +148,7 @@
 }
 
 .Vue-Toastification__toast--warning {
-    background-color: #D67900;
+    background-color: $orange;
     color: #fff;
 }
 

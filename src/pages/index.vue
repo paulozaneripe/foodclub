@@ -1,71 +1,77 @@
 <template>
     <section>
         <SearchBar />
-        <div id="cards">
-            <div class="card">
-                <img
-                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                    alt="hamburger"
-                />
-                <div class="title">
-                    <p>Hamburger Triplo Bacon</p>
+        <Container>
+            <h2>Receitas da semana</h2>
+            <div id="cards">
+                <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                        alt="pizza"
+                    />
+                    <div class="title">
+                        <p>Pizza Napolitana</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                        alt="pizza"
+                    />
+                    <div class="title">
+                        <p>Pizza Napolitana</p>
+                    </div>
+                </div>
+                            <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                        alt="pizza"
+                    />
+                    <div class="title">
+                        <p>Pizza Napolitana</p>
+                    </div>
+                </div>
+                            <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                        alt="pizza"
+                    />
+                    <div class="title">
+                        <p>Pizza Napolitana</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                        alt="pizza"
+                    />
+                    <div class="title">
+                        <p>Pizza Napolitana</p>
+                    </div>
+                </div>
+                            <div class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80"
+                        alt="pizza"
+                    />
+                    <div class="title">
+                        <p>Pizza Napolitana</p>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <img
-                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                    alt="hamburger"
-                />
-                <div class="title">
-                    <p>Hamburger Triplo Bacon</p>
-                </div>
-            </div>
-                        <div class="card">
-                <img
-                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                    alt="hamburger"
-                />
-                <div class="title">
-                    <p>Hamburger Triplo Bacon</p>
-                </div>
-            </div>
-                        <div class="card">
-                <img
-                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                    alt="hamburger"
-                />
-                <div class="title">
-                    <p>Hamburger Triplo Bacon</p>
-                </div>
-            </div>
-            <div class="card">
-                <img
-                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                    alt="hamburger"
-                />
-                <div class="title">
-                    <p>Hamburger Triplo Bacon</p>
-                </div>
-            </div>
-                        <div class="card">
-                <img
-                    src="https://images.unsplash.com/photo-1513185158878-8d8c2a2a3da3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
-                    alt="hamburger"
-                />
-                <div class="title">
-                    <p>Hamburger Triplo Bacon</p>
-                </div>
-            </div>
-        </div>
+        </Container>
+
     </section>
 </template>
 
 <script>
 import SearchBar from '~/components/ui/SearchBar/SearchBar.vue';
+import Container from '../components/ui/Container/Container.vue';
 
 export default {
     components: {
-        SearchBar
+        SearchBar,
+        Container
     },
     head() {
         return {
@@ -82,11 +88,16 @@ export default {
 
 <style lang="scss" scoped>
 
+h2 {
+    margin-top: -10px;
+}
+
 #cards {
+    margin-top: 20px;
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
-    margin: 50px auto;
     justify-content: center;
     align-items: center;
     text-align: left;
@@ -96,7 +107,6 @@ export default {
     width: 100%;
     max-height: 200px;
     border-radius: 25px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
     white-space: nowrap;
 }
 
@@ -111,7 +121,7 @@ export default {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: #3a3a3a;
+    background-color: $dark-background;
     margin-top: -5px;
     padding: 0 20px;
     height: 45px;
@@ -123,6 +133,12 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         font-weight: bold;
+    }
+}
+
+@media (max-width: 380.98px) {
+    #cards {
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }
 }
 </style>

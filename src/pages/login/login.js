@@ -1,4 +1,5 @@
 import AuthInput from '~/components/ui/AuthInput/AuthInput.vue';
+import CustomButton from '~/components/ui/CustomButton/CustomButton.vue';
 import { ValidationObserver } from "vee-validate";
 
 export default {
@@ -6,6 +7,7 @@ export default {
     auth: 'guest',
     components: {
         AuthInput,
+        CustomButton,
         ValidationObserver
     },
     data() {

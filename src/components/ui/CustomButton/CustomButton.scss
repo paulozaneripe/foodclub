@@ -1,0 +1,58 @@
+.dark-mode {
+    .default {
+        background-color: $red;
+    
+        &:hover {
+            background-color: darken($red, 5%);
+        } 
+    }
+}
+
+.light-mode {
+    .default {
+        background-color: black;
+
+        &:hover {
+            background-color: lighten(black, 8%);
+        }
+    }
+
+    button {
+        &:focus {
+            outline: 2px solid black;
+            outline-offset: 3px;
+        }
+    }
+}
+
+.edit {
+    background-color: $blue;
+
+    &:hover {
+        background-color: darken($blue, 5%);
+    }
+}
+
+.save {
+    background-color: $green;
+
+    &:hover {
+        background-color: darken($green, 5%);
+    }
+}
+
+
+button {
+    width: 100%;
+    height: 58px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.4em;
+    cursor: pointer;
+    color: white;
+    transition: background-color 350ms;
+
+    &:disabled {
+        color: darken(white, 20%);
+    }
+}

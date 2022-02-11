@@ -48,7 +48,7 @@
                     rules="required|max:20|confirm:@password"
                     mode="aggressive"
                 />
-                <button type="submit">CADASTRAR</button>
+                <CustomButton description="CADASTRAR" />
                 <p>
                     Já possui uma conta?
                     <NuxtLink to="/login">Faça o login</NuxtLink>
