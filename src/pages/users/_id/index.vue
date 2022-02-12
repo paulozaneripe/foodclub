@@ -18,7 +18,7 @@
             <p>
                 Nenhuma receita publicada por este usuário.
             </p>
-            <CustomLink :route="`/users/${ $auth.user.id }/edit`" description="EDITAR" type="edit"/>
+            <CustomLink :route="`/users/${ $auth.user.id }/edit`" description="EDITAR" color="edit"/>
         </Container>
     </section>
 </template>

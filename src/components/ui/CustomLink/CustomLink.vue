@@ -1,5 +1,5 @@
 <template>
-    <a :href="route" :class="type">
+    <a :href="route" :class="color">
         {{ description }}
     </a>
 </template>

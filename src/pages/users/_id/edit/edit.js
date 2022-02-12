@@ -4,7 +4,6 @@ import CustomInput from '~/components/ui/CustomInput/CustomInput.vue';
 
 export default {
     layout: 'default',
-    auth: 'auth',
     data() {
         return {
             name: '',

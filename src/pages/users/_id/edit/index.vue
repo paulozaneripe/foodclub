@@ -23,7 +23,7 @@
                 type="date"
                 label="Sobrenome"
             />
-            <CustomButton :route="`/users/${ $auth.user.id }/edit`" description="SALVAR ALTERAÇÕES" type="save"/>
+            <CustomLink :route="`/users/${ $auth.user.id }/edit`" description="SALVAR ALTERAÇÕES" color="save"/>
         </Container>
     </section>
 </template>

@@ -7,7 +7,7 @@ export default Vue.extend({
             default: "BOTÃO",
             required: false
         },
-        type: {
+        color: {
             type: String,
             default: "default",
             required: false

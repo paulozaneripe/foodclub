@@ -12,7 +12,7 @@ export default Vue.extend({
             default: "LINK",
             required: false
         },
-        type: {
+        color: {
             type: String,
             default: "default",
             required: false
