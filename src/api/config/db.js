@@ -17,5 +17,5 @@ const productionDb = {
 };
 
 export default new Pool(
-    process.env.NODE_ENV !== 'procution' ? localDb : productionDb
+    process.env.NODE_ENV !== 'production' ? localDb : productionDb
 );

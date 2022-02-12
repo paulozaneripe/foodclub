@@ -1,3 +1,67 @@
+<template>
+    <section class="forgot-password-section">
+        <ValidationObserver
+            tag="div"
+            class="form-panel"
+            ref="form"
+            v-slot="{ handleSubmit }"
+        >
+            <form
+                method="POST"
+                @submit.prevent="handleSubmit(submit())"
+                novalidate
+            >
+                <h2>Esqueceu sua senha?</h2>
+                <AuthInput
+                    v-model="login.email"
+                    name="email"
+                    type="email"
+                    max="255"
+                    icon="email"
+                    label="E-mail"
+                    rules="required|email"
+                />
+                <button type="submit">ENVIAR E-MAIL DE RECUPERAÇÃO</button>
+                <NuxtLink to="/login">Voltar ao Login</NuxtLink>
+            </form>
+        </ValidationObserver>
+    </section>
+</template>
+
+<script>
+import AuthInput from '~/components/ui/AuthInput/AuthInput.vue';
+import { ValidationObserver } from "vee-validate";
+
+export default {
+    layout: 'auth',
+    auth: 'guest',
+    components: {
+        AuthInput,
+        ValidationObserver
+    },
+    data() {
+        return {
+            login: {
+                email: '',
+                password: ''
+            }
+        };
+    },
+    methods: {
+        async submit() {
+            this.$refs.form.validate().then(success => {
+
+                if (!success) {
+                    return;
+                }
+
+            });
+        }
+    }
+};
+</script>
+
+<style lang="scss">
 .dark-mode .forgot-password-section {
     .form-panel {
         background-color: $dark-primary;
@@ -77,3 +141,4 @@
         }
     }
 }
+</style>

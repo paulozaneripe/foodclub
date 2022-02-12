@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 export default {
     srcDir: './src',
     loading: false,
@@ -31,8 +34,8 @@ export default {
     ],
     modules: [
         '@nuxtjs/style-resources',
-        { src:'@nuxtjs/axios', mode: 'client' },
-        { src: '@nuxtjs/auth-next', mode: 'client'},
+        '@nuxtjs/axios',
+        '@nuxtjs/auth-next',
         "vue-toastification/nuxt"
     ],
     colorMode: {
@@ -71,7 +74,7 @@ export default {
         '~/api'
     ],
     axios: {
-        baseURL: '/',
+        baseURL: process.env.BASE_URL,
         debug: true
     },
     router: {
