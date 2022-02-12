@@ -3,7 +3,7 @@
         <Container class="user-information">
             <div class="user-image">
                 <img src="~/assets/images/avatar.png" alt="Imagem do usuário">
-                    <a :href="`/users/${ $auth.user.id }/edit`" class="icon" title="Alterar imagem de usuário">
+                    <a :href="`/`" class="icon" title="Alterar imagem de usuário">
                         <span id="change-photo" class="material-icons">
                             party_mode
                         </span>
@@ -23,7 +23,7 @@
                 type="date"
                 label="Sobrenome"
             />
-            <CustomLink :route="`/users/${ $auth.user.id }/edit`" description="SALVAR ALTERAÇÕES" color="save"/>
+            <CustomLink :route="`/`" description="SALVAR ALTERAÇÕES" color="save"/>
         </Container>
     </section>
 </template>

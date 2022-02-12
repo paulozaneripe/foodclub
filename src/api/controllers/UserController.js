@@ -16,7 +16,21 @@ const index = async (req, res, next) => {
 };
 
 const show = async (req, res) => {
-    res.send("User show");
+    const userData = await User.findById(req.params.id);
+    
+    if (!userData) throw new Error("Usuário não encontrado!");
+
+    const { id, image_id, email, name, about } = userData;
+
+    const user = {
+        id,
+        image_id,
+        email,
+        name,
+        about
+    };
+
+    return res.send(user);
 };
 
 const create = async (req, res) => {

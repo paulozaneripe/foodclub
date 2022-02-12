@@ -6,6 +6,7 @@ import SessionController from '../controllers/SessionController';
 const routes = Router();
 
 routes.get('/', tryCatch(UserController.index));
+routes.get('/:id', tryCatch(UserController.show));
 routes.post('/create', tryCatch(UserController.create));
 
 // login/logout 

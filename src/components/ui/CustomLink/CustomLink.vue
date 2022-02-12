@@ -1,7 +1,7 @@
 <template>
-    <a :href="route" :class="color">
+    <NuxtLink :to="route" :class="color">
         {{ description }}
-    </a>
+    </NuxtLink>
 </template>
 
 <script src="./CustomLink.js" />

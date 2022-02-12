@@ -31,8 +31,8 @@ export default {
     ],
     modules: [
         '@nuxtjs/style-resources',
-        '@nuxtjs/axios',
-        '@nuxtjs/auth-next',
+        { src:'@nuxtjs/axios', mode: 'client' },
+        { src: '@nuxtjs/auth-next', mode: 'client'},
         "vue-toastification/nuxt"
     ],
     colorMode: {
@@ -72,6 +72,7 @@ export default {
     ],
     axios: {
         baseURL: '/',
+        debug: true
     },
     router: {
         middleware: ['auth']
