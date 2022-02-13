@@ -4,6 +4,13 @@ import GuestLinks from '~/components/layout/TheHeader/GuestLinks/GuestLinks.vue'
 import AuthLinks from '~/components/layout/TheHeader/AuthLinks/AuthLinks.vue';
 
 export default Vue.extend({
+    watch:{
+        $route (to, from) {
+            this.headerMenu = false;
+            let menuBackground = document.getElementById("menu-background");
+            menuBackground.classList.remove("show");
+        }
+    },
     components: {
         TheToggler,
         GuestLinks,

@@ -2,6 +2,14 @@ import Vue from 'vue';
 import TheToggler from '~/components/ui/TheToggler/TheToggler.vue';
 
 export default Vue.extend({
+    watch:{
+        $route (to, from) {
+            this.a11yMenu = false;
+            document.getElementById("a11y-button").ariaLabel = "Abrir menu de acessibilidade";
+            let a11yBackground = document.getElementById("a11y-background");
+            a11yBackground.classList.remove("show");
+        }
+    },
     components: {
         TheToggler,
     },

@@ -3,8 +3,10 @@ import { checkEmptyValue, isEmpty, hasValueMinLength, confirmPassword, validateE
 import passport from 'passport';
 import passportJwt from 'passport-jwt';
 import UserModel from '../models/User';
+import ImageModel from '../models/Image';
 
 const User = new UserModel();
+const Image = new ImageModel();
 
 const index = async (req, res, next) => {
     passport.authenticate('jwt', { session: false }, (error, user) => {

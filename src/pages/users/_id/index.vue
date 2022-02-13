@@ -16,7 +16,7 @@
             <p>
                 Nenhuma receita publicada por este usuário.
             </p>
-            <CustomLink v-if="$auth.user.id === user.id" :route="`/users/${ user.id }/edit`" description="EDITAR" color="edit"/>
+            <CustomLink v-if="$auth.user && $auth.user.id === user.id" :route="`/users/${ user.id }/edit`" description="EDITAR" color="edit"/>
         </Container>
     </section>
 </template>

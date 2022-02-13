@@ -101,6 +101,7 @@ import CustomTextArea from '~/components/ui/CustomTextArea/CustomTextArea.vue';
 
 export default {
     layout: 'default',
+    auth: true,
     middleware: 'checkUser',
     components: {
         Container,
