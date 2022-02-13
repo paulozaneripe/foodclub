@@ -16,4 +16,12 @@ extend("email", {
     message: "Este e-mail não é válido"
 });
 
+extend('confirm', {
+    params: ['targetValue'],
+    validate(inputValue, { targetValue }) {
+        return inputValue === targetValue;
+    },
+    message: 'As senhas não coincidem'
+});
+
 localize('pt_BR', ptBR);

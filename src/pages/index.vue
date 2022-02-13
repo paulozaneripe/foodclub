@@ -69,6 +69,7 @@ import SearchBar from '~/components/ui/SearchBar/SearchBar.vue';
 import Container from '../components/ui/Container/Container.vue';
 
 export default {
+    auth: false,
     components: {
         SearchBar,
         Container

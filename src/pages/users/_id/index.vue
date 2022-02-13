@@ -2,23 +2,21 @@
     <section>
         <Container class="user-information">
             <div class="user-image">
-                <img src="~/assets/images/avatar.png" alt="Imagem do usuário">
-                <a v-if="$auth.user.id === this.user.id" :href="`/users/${ $auth.user.id }/edit`" class="icon" title="Alterar imagem de usuário">
-                    <span id="change-photo" class="material-icons">
-                        party_mode
-                    </span>
-                </a>
+                <img 
+                    src="~/assets/images/avatar.png" 
+                    alt="Imagem do usuário"
+                >
             </div>
-            <h3>{{ this.user.name }}</h3>
+            <h3>{{ user.name }}</h3>
             <p>
-                {{ this.user.about === null || this.user.about === '' ? 'Este usuário não possui uma descrição.' : ''}}
+                {{ user.about === null || user.about === '' ? 'Este usuário não possui uma descrição.' : user.about }}
             </p>
             <hr>
             <h4>Receitas publicadas</h4>
             <p>
                 Nenhuma receita publicada por este usuário.
             </p>
-            <CustomLink v-if="$auth.user.id === this.user.id" :route="`/users/${ this.user.id }/edit`" description="EDITAR" color="edit"/>
+            <CustomLink v-if="$auth.user.id === user.id" :route="`/users/${ user.id }/edit`" description="EDITAR" color="edit"/>
         </Container>
     </section>
 </template>
@@ -30,12 +28,16 @@ import CustomLink from '~/components/ui/CustomLink/CustomLink.vue';
 export default {
     layout: 'default',
     auth: false,
+    components: {
+        Container,
+        CustomLink
+    },
     data() {
         return {
             user: {}
         };
     },
-    mounted() {
+    created() {
         this.$axios.get(`/api/users/${this.$route.params.id}`)
             .then(({ data }) => {
                 this.user = data;
@@ -43,10 +45,6 @@ export default {
                 this.$router.push('/');
                 this.$filterToast(this.$toast, error);
             });
-    },
-    components: {
-        Container,
-        CustomLink
     }
 };
 </script>
@@ -56,11 +54,10 @@ export default {
     .user-image {
         position: relative;
         text-align: center;
-        margin-bottom: 25px;
-        margin: unset auto;
+        margin: 0 auto 25px auto;
     
         img {
-            display: block;
+            position: relative;
             border-radius: 50%;
             max-width: 220px;
             width: 100%;
@@ -72,18 +69,30 @@ export default {
 
         #change-photo {
             position: absolute;
-            left: 0;
-            bottom: 0;
-            padding: 10px;
-            background-color: #2e60a1;
+            left: 0; 
+            right: 0;
+            bottom: -15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            width: 45px;
+            height: 45px;
+            background-color: $blue;
             color: white;
             border-radius: 50%;
+            cursor: pointer;
+            transition: background-color .4s, transform .4s;
+
+            &:hover {
+                transform: rotate(180deg);
+                background-color: darken($blue, 5%);
+            }
         }
     }
 
     h3, h4, p {
         text-align: center;
-
     }
 
     h3 {
@@ -103,25 +112,9 @@ export default {
     p {
         font-size: 1.6em;
     }
-    
-    button {
-        width: 100%;
-        height: 58px;
-        border-radius: 10px;
-        font-weight: bold;
-        font-size: 1.4em;
-        cursor: pointer;
-        color: white;
-        background-color: #0E72D0;
-        transition: background-color 350ms;
 
-        &:hover {
-            background-color: darken(#0E72D0, 5%);
-        }
-
-        &:disabled {
-            color: darken(white, 20%);
-        }
+    a:last-of-type {
+        margin-top: 45px;
     }
 }
 </style>

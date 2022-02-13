@@ -2,12 +2,14 @@ import { Router } from 'express';
 import tryCatch from '../utils/tryCatch';
 import UserController from '../controllers/UserController';
 import SessionController from '../controllers/SessionController';
+import multer from '../middlewares/multer';
 
 const routes = Router();
 
 routes.get('/', tryCatch(UserController.index));
 routes.get('/:id', tryCatch(UserController.show));
 routes.post('/create', tryCatch(UserController.create));
+routes.put('/:id/edit', tryCatch(multer.single('avatar')), tryCatch(UserController.edit));
 
 // login/logout 
 routes.post('/login', tryCatch(SessionController.login));

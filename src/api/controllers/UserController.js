@@ -1,5 +1,5 @@
-import { hash } from 'bcrypt';
-import { checkEmptyValue, confirmPassword, validateEmail } from '../utils/validations';
+import { hash, compare } from 'bcrypt';
+import { checkEmptyValue, isEmpty, hasValueMinLength, confirmPassword, validateEmail } from '../utils/validations';
 import passport from 'passport';
 import passportJwt from 'passport-jwt';
 import UserModel from '../models/User';
@@ -62,11 +62,58 @@ const create = async (req, res) => {
 };
 
 const edit = async (req, res) => {
-    res.send('User edit');
-};
+    const { name, about, oldPassword, password, repeatedPassword } = req.body;
 
-const update = async (req, res) => {
-    res.send('User update');
+    const user = await User.findById(req.params.id);
+    
+    if (!user) throw new Error("Usuário não encontrado!");
+
+    if (!isEmpty(name)) {
+        user.name = name;
+    }
+
+    if(!isEmpty(about)) {
+        if (hasValueMinLength(about, 40)) {
+            user.about = about;
+        } else {
+            throw new Error("O campo Sobre deve conter pelo menos 40 caracteres!");
+        }
+    }
+
+    if (!isEmpty(oldPassword) && hasValueMinLength(oldPassword, 6)) {
+        await User.findById(user.id).then(async (user) => {
+            if (!(await compare(oldPassword, user.password)))
+                throw new Error("Senha atual inválida!");
+        });
+
+        if (oldPassword === password)
+            throw new Error("A nova senha deve ser diferente da anterior!");
+
+        const passwords = {
+            oldPassword,
+            password, 
+            repeatedPassword
+        };
+
+        for (let key of Object.keys(passwords)) {
+            if (isEmpty(passwords[key]))
+                throw new Error("É necessário todos os campos de senha preenchidos!");
+
+            if (!hasValueMinLength(passwords[key], 6)) {
+                throw new Error("Os campos de senha devem ter um mínimo de 6 caracteres!");
+            }
+        }
+    
+        confirmPassword(password, repeatedPassword);
+
+        const hashedPassword = await hash(password, 10);
+
+        user.password = hashedPassword;
+    }
+
+    const userId = await User.update(user);
+
+    return res.send({ id: userId });
 };
 
 const remove = async (req, res) => {
@@ -97,4 +144,4 @@ passport.use(new passportJwt.Strategy(
     }
 ));
 
-export default { index, show, create, edit, update, remove };
+export default { index, show, create, edit, remove };

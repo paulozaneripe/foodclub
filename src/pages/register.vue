@@ -77,14 +77,6 @@ import AuthInput from '~/components/ui/AuthInput/AuthInput.vue';
 import CustomButton from '~/components/ui/CustomButton/CustomButton.vue';
 import { extend, ValidationObserver } from "vee-validate";
 
-extend('confirm', {
-    params: ['targetValue'],
-    validate(inputValue, { targetValue }) {
-        return inputValue === targetValue;
-    },
-    message: 'As senhas não coincidem'
-});
-
 export default {
     layout: 'auth',
     auth: 'guest',
@@ -112,7 +104,7 @@ export default {
                 }
 
                 this.$axios.post("/api/users/create", this.registerData)
-                    .then(({ data }) => {
+                    .then(() => {
                         this.$router.push('/login');
                         this.$filterToast(this.$toast, "Usuário cadastrado com sucesso!");
                     }).catch((error) => {

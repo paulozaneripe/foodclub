@@ -59,7 +59,7 @@ export default {
     @media (min-width: 767.98px) {
         .error {
             & > div {
-                padding: 0 40px 45px 40px;
+                padding: 40px;
             }
         }
     }
@@ -67,7 +67,7 @@ export default {
     @media (max-width: 767.98px) {
         .error {
             & > div {
-                padding: 10px 30px 30px 30px;
+                padding: 30px;
             }
 
             h1 {

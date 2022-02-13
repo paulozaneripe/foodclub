@@ -16,11 +16,6 @@ export default Vue.extend({
             default: null,
             required: true
         },
-        type: {
-            type: String,
-            default: "text",
-            required: false
-        },
         max: {
             type: String,
             required: false
@@ -33,11 +28,6 @@ export default Vue.extend({
         placeholder: {
             type: String,
             default: null,
-            required: false
-        },
-        readonly: {
-            type: Boolean,
-            default: false,
             required: false
         },
         rules: {
@@ -59,16 +49,6 @@ export default Vue.extend({
     methods: {
         updateValue(value) {
             this.$emit('input', value);
-        },
-        showHidePassword(e) {
-            let input = document.getElementById(this.name);
-
-            input.type = input.type === "password" ? "text" : "password";
-            e.target.innerHTML = input.type === "password" ? "visibility" : "visibility_off";
-            e.target.ariaExpanded = input.type === "password" ? false : true;
-            e.target.ariaLabel = input.type === "password" ? "Mostrar senha" : "Ocultar senha";
-            e.target.title = input.type === "password" ? "Mostrar senha" : "Ocultar senha";
-            input.type === "password" ? e.target.classList.remove("hide") : e.target.classList.add("hide");
         }
     }
 });

@@ -26,4 +26,20 @@ export default class User extends Model {
         const results = await db.query(query);
         return results.rows[0].id;
     }
+
+    async update(data) {
+        const { id, name, about, password } = data;
+
+        const query = `
+            UPDATE "${this.getTable()}" SET
+                name = '${name}', about = '${about}', password = '${password}'
+            WHERE 
+                id = ${id}
+            RETURNING 
+                id
+        `;
+
+        const results = await db.query(query);
+        return results.rows[0].id;
+    }
 }

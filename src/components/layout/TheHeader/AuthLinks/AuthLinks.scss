@@ -208,6 +208,7 @@
             transition:  visibility .4s, max-width .4s, max-height .4s;
             overflow: hidden;
             text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         span {
@@ -243,7 +244,7 @@
             p {
                 visibility: visible;
                 max-width: 100px;
-                max-height: 22px;
+                min-height: 22px;
                 margin-right: 10px;
             }
 

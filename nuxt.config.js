@@ -74,8 +74,7 @@ export default {
         '~/api'
     ],
     axios: {
-        baseURL: process.env.BASE_URL,
-        debug: true
+        baseURL: process.env.BASE_URL
     },
     router: {
         middleware: ['auth']

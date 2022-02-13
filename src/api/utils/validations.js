@@ -5,6 +5,14 @@ const checkEmptyValue = (value) => {
         throw new Error("Por favor, preencha todos os campos!");
 };
 
+const isEmpty = (value) => {
+    return value === "" || value === null  || value === undefined || !value.replace(/\s/g, '').length;
+};
+
+const hasValueMinLength = (value, lengthSize) => {
+    return value.replace(/\s/g, '').length >= lengthSize;
+};
+
 const confirmPassword = (password, confirmPassword) => {
     if (password !== confirmPassword)
         throw new Error("As senhas não coincidem!");
@@ -15,4 +23,4 @@ const validateEmail = (email) => {
         throw new Error("E-mail inválido!");
 };
 
-export { checkEmptyValue, confirmPassword, validateEmail };
+export { checkEmptyValue, isEmpty, hasValueMinLength, confirmPassword, validateEmail };
