@@ -6,7 +6,7 @@ export default class Image extends Model {
         super('image');
     }
 
-    async create({ path }) {
+    async create(path) {
         const query = `
             INSERT INTO "${this.getTable()}" 
                 (path)
@@ -23,11 +23,13 @@ export default class Image extends Model {
     async update({ id, path }) {
         const query = `
             UPDATE "${this.getTable()}" SET
-                path = ${path}
+                path = '${path}'
             WHERE 
                 id = ${id}
+            RETURNING 
+                id
         `;
-
+        
         const results = await db.query(query);
         return results.rows[0].id;
     }

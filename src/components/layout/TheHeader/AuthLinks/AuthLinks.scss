@@ -18,6 +18,18 @@
     }
 }
 
+img.user-avatar {
+    object-fit: cover;
+    max-width: 28px;
+    width: 100%;
+    height: 28px;
+    min-height: 100%;
+    cursor: pointer;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+}
+
 @media (min-width: 575.98px) {
     .container {
         display: flex;
@@ -37,7 +49,7 @@
                 opacity: 0.8;
                 cursor: pointer;
 
-                &:first-of-type {
+                &.user-avatar {
                     font-size: 34px;
                     margin-right: 10px;
                 }

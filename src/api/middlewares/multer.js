@@ -1,11 +1,12 @@
 import multer from 'multer';
+import path from 'path';
 
 const storage = multer.diskStorage({
     destination: (req, file, next) => {
-        next(null, './public/images');
+        next(null, path.join(__dirname, '../../assets/images/uploads'));
     },
     filename: (req, file, next) => {
-        next(null, `${Date.now().toString()}-${file.originalname}`);
+        next(null, `${Date.now()}-${file.originalname}`);
     }
 });
 

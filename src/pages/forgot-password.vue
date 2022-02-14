@@ -39,6 +39,11 @@ export default {
         AuthInput,
         ValidationObserver
     },
+    head() {
+        return {
+            title: 'FoodClub - Esqueceu sua senha?',
+        };
+    },
     data() {
         return {
             login: {

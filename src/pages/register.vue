@@ -75,7 +75,7 @@
 <script>
 import AuthInput from '~/components/ui/AuthInput/AuthInput.vue';
 import CustomButton from '~/components/ui/CustomButton/CustomButton.vue';
-import { extend, ValidationObserver } from "vee-validate";
+import { ValidationObserver } from "vee-validate";
 
 export default {
     layout: 'auth',
@@ -84,6 +84,11 @@ export default {
         AuthInput,
         CustomButton,
         ValidationObserver
+    },
+    head() {
+        return {
+            title: 'FoodClub - Crie sua conta',
+        };
     },
     data() {
         return {

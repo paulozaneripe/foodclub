@@ -67,6 +67,11 @@ export default {
         CustomButton,
         ValidationObserver
     },
+    head() {
+        return {
+            title: 'FoodClub - Login',
+        };
+    },
     data() {
         return {
             loginData: {

@@ -7,6 +7,14 @@ export default Vue.extend({
             required: true
         },
     },
+    data() {
+        return {
+            avatarPath: 'images/avatar.png'
+        };
+    },
+    mounted() {
+        this.avatarPath = this.$auth.user.avatar_path;
+    },
     methods: {
         showUserMenu() {
             document.getElementById("user-button").setAttribute("aria-expanded", this.menu);
@@ -17,7 +25,8 @@ export default Vue.extend({
             this.$emit('showMenuBackground');
         },
         async logout() {
-            this.$auth.logout();
+            await this.$auth.logout();
+            this.$router.push('/login');
         }
     }
 });

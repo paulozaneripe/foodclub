@@ -2,6 +2,8 @@ import { hash, compare } from 'bcrypt';
 import { checkEmptyValue, isEmpty, hasValueMinLength, confirmPassword, validateEmail } from '../utils/validations';
 import passport from 'passport';
 import passportJwt from 'passport-jwt';
+import fs from 'fs';
+import path from 'path';
 import UserModel from '../models/User';
 import ImageModel from '../models/Image';
 
@@ -22,11 +24,11 @@ const show = async (req, res) => {
     
     if (!userData) throw new Error("Usuário não encontrado!");
 
-    const { id, image_id, email, name, about } = userData;
+    const { id, avatar_path, email, name, about } = userData;
 
     const user = {
         id,
-        image_id,
+        avatar_path,
         email,
         name,
         about
@@ -74,7 +76,7 @@ const edit = async (req, res) => {
         user.name = name;
     }
 
-    if(!isEmpty(about)) {
+    if (!isEmpty(about)) {
         if (hasValueMinLength(about, 40)) {
             user.about = about;
         } else {
@@ -83,10 +85,8 @@ const edit = async (req, res) => {
     }
 
     if (!isEmpty(oldPassword) && hasValueMinLength(oldPassword, 6)) {
-        await User.findById(user.id).then(async (user) => {
-            if (!(await compare(oldPassword, user.password)))
-                throw new Error("Senha atual inválida!");
-        });
+        if (!(await compare(oldPassword, user.password)))
+            throw new Error("Senha atual inválida!");
 
         if (oldPassword === password)
             throw new Error("A nova senha deve ser diferente da anterior!");
@@ -113,6 +113,18 @@ const edit = async (req, res) => {
         user.password = hashedPassword;
     }
 
+    if (!isEmpty(req.file)) {
+        const avatarPath = `images/uploads/${req.file.filename}`;
+        let imageId = user.image_id;
+
+        if (isEmpty(imageId)) {
+            imageId = await Image.create(avatarPath);
+            user.image_id = imageId;
+        } else {
+            await Image.update({ id: imageId, path: avatarPath });
+        }
+    }
+    
     const userId = await User.update(user);
 
     return res.send({ id: userId });
@@ -133,12 +145,14 @@ passport.use(new passportJwt.Strategy(
                 if (!user)
                     return next(new Error("Autenticação falhou!"));
 
+                const { id, avatar_path, email, name, about } = user; 
+
                 return next(null, {
-                    id: user.id,
-                    email: user.email,
-                    name: user.name,
-                    imageId: user.image_id,
-                    about: user.about
+                    id,
+                    avatar_path,
+                    email,
+                    name,
+                    about
                 });
             }).catch((error) => {
                 return next(error);

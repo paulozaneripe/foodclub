@@ -7,11 +7,16 @@
             aria-controls="user-links"
             aria-expanded="false"
             @click.prevent="showUserMenu"
-            @keyup.space="showUserMenu"
         >
-            <span class="material-icons" aria-hidden="true">
+            <span v-if="!$auth.user.avatar_path" class="material-icons user-avatar" aria-hidden="true">
                 account_circle
             </span>
+            <img 
+                v-else
+                class="user-avatar"
+                :src="require(`~/assets/${ avatarPath }`)"
+                :alt="'Avatar do usuário ' + $auth.user.name"
+            />
             <p>{{ $auth.user.name }}</p>
             <span id="hamburger" aria-hidden="true"></span>
             <span 

@@ -65,7 +65,7 @@ export default {
         transpile: ['vee-validate']
     },
     toast: {
-        timeout: 5000,
+        timeout: 4000,
         maxToasts: 3,
         pauseOnHover: false,
         cssFile: "~/assets/styles/toast.scss"

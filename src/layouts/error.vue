@@ -21,7 +21,12 @@ export default {
     },
     components: {
         CustomLink
-    }
+    },
+    head() {
+        return {
+            title: 'FoodClub - Ops!',
+        };
+    },
 };
 </script>
 

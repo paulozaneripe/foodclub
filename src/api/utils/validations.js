@@ -1,12 +1,12 @@
 import { validate } from 'isemail';
 
 const checkEmptyValue = (value) => {
-    if (value === "" || !value.replace(/\s/g, '').length)
+    if (value === "" || !value.toString().replace(/\s/g, '').length)
         throw new Error("Por favor, preencha todos os campos!");
 };
 
 const isEmpty = (value) => {
-    return value === "" || value === null  || value === undefined || !value.replace(/\s/g, '').length;
+    return value === "" || value === null  || value === undefined || !value.toString().replace(/\s/g, '').length;
 };
 
 const hasValueMinLength = (value, lengthSize) => {

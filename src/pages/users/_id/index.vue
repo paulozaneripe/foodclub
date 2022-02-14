@@ -3,8 +3,8 @@
         <Container class="user-information">
             <div class="user-image">
                 <img 
-                    src="~/assets/images/avatar.png" 
-                    alt="Imagem do usuário"
+                    :src="require(`~/assets/${avatarPath}`)"
+                    :alt="'Avatar do usuário ' + user.name"
                 >
             </div>
             <h3>{{ user.name }}</h3>
@@ -32,8 +32,14 @@ export default {
         Container,
         CustomLink
     },
+    head() {
+        return {
+            title: `FoodClub ${ this.user.name ? '- ' + this.user.name : '' }`,
+        };
+    },
     data() {
         return {
+            avatarPath: 'images/avatar.png',
             user: {}
         };
     },
@@ -41,6 +47,8 @@ export default {
         this.$axios.get(`/api/users/${this.$route.params.id}`)
             .then(({ data }) => {
                 this.user = data;
+                if (this.user.avatar_path) 
+                    this.avatarPath = this.user.avatar_path;
             }).catch((error) => {
                 this.$router.push('/');
                 this.$filterToast(this.$toast, error);
@@ -57,14 +65,16 @@ export default {
         margin: 0 auto 25px auto;
     
         img {
-            position: relative;
-            border-radius: 50%;
+            display: block;
+            object-fit: cover;
             max-width: 220px;
             width: 100%;
+            height: 220px;
+            min-height: 100%;
+            margin: auto;
+            border-radius: 50%;
             box-shadow: 0 0px 10px 0px rgba(0, 0, 0, 0.2);
-            filter: gray;
-            -webkit-filter: grayscale(1);
-            filter: grayscale(1)
+            outline: none;
         }
 
         #change-photo {

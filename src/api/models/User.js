@@ -1,13 +1,40 @@
 import db from '../config/db';
-import Model from '../classes/Model';
 
-export default class User extends Model {
-    constructor() {
-        super('user');
+export default class User {
+
+    async findById(id) {
+        const query = `
+            SELECT 
+                "image".path AS avatar_path, "user".*  
+            FROM 
+                "user" 
+            LEFT JOIN 
+                "image" 
+            ON 
+                "image".id = "user".image_id 
+            WHERE 
+                "user".id = ${id}
+        `;
+
+        const results = await db.query(query);
+        return results.rows[0];
     }
 
     async findByEmail(email) {
-        const results = await db.query(`SELECT * FROM "${this.getTable()}" WHERE email = '${email}'`);
+        const query = `
+            SELECT 
+                "image".path AS avatar_path, "user".*  
+            FROM 
+                "user" 
+            LEFT JOIN 
+                "image" 
+            ON 
+                "image".id = "user".image_id 
+            WHERE 
+                "user".email = '${email}'
+        `;
+
+        const results = await db.query(query);
         return results.rows[0];
     }
 
@@ -15,7 +42,7 @@ export default class User extends Model {
         const { name, email, password } = data;
 
         const query = `
-            INSERT INTO "${this.getTable()}" 
+            INSERT INTO "user" 
                 (name, email, password)
             VALUES 
                 ('${name}', '${email}', '${password}')
@@ -28,11 +55,11 @@ export default class User extends Model {
     }
 
     async update(data) {
-        const { id, name, about, password } = data;
+        const { id, image_id, name, about, password } = data;
 
         const query = `
-            UPDATE "${this.getTable()}" SET
-                name = '${name}', about = '${about}', password = '${password}'
+            UPDATE "user" SET
+                image_id = ${image_id}, name = '${name}', about = '${about}', password = '${password}'
             WHERE 
                 id = ${id}
             RETURNING 
