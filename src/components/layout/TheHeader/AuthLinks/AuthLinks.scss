@@ -20,13 +20,11 @@
 
 img.user-avatar {
     object-fit: cover;
-    min-width: 28px;
-    width: 100%;
+    width: 28px;
     height: 28px;
-    min-height: 100%;
     cursor: pointer;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: cover !important;
     margin-right: 12px;
 }
 

@@ -23,8 +23,8 @@ export default {
         '@/assets/styles/global.scss'
     ],
     plugins: [
-        { src: '~/plugins/persistedState.client.js', mode: 'client' },
-        { src: '~/plugins/filterToast.js', mode: 'client' },
+        { src: '~/plugins/persistedState.client.js', ssr: true },
+        { src: '~/plugins/filterToast.js', ssr: true },
         '~/plugins/vueMask.js',
         '~/plugins/veeValidate.js'
     ],
