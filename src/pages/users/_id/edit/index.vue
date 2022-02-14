@@ -11,8 +11,8 @@
                     <div class="user-image">
                         <img
                             id="avatar"
-                            :src="avatar_url ? avatar_url : require('~/assets/images/avatar.png')"
-                            :alt="'Avatar do usuário ' + $auth.user.name"
+                            :src="user.avatar_url ? user.avatar_url : require('~/assets/images/avatar.png')"
+                            :alt="'Avatar do usuário ' + user.name"
                         />
                         <span
                             id="change-photo"
@@ -115,6 +115,7 @@ export default {
     },
     data() {
         return {
+            user: {},
             email: '',
             avatar: '',
             name: '',
@@ -125,10 +126,16 @@ export default {
         };
     },
     created() {
-        this.avatar_url = this.$auth.user.avatar_url;
-        this.email = this.$auth.user.email;
-        this.name = this.$auth.user.name;
-        this.about = this.$auth.user.about;
+        this.$axios.get(`/api/users/${this.$route.params.id}`)
+            .then(({ data }) => {
+                this.user = data;
+                this.email = this.user.email;
+                this.name = this.user.name;
+                this.about = this.user.about;
+            }).catch((error) => {
+                this.$router.push('/');
+                this.$filterToast(this.$toast, error);
+            });
     },
     methods: {
         handleFileInput(e) {
