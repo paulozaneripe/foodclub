@@ -20,7 +20,7 @@
         >
             <form
                 method="POST"
-                @submit.prevent="handleSubmit(submit())"
+                @submit.prevent="handleSubmit(submit)"
                 novalidate
             >
                 <AuthInput

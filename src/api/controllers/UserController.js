@@ -2,8 +2,7 @@ import { hash, compare } from 'bcrypt';
 import { checkEmptyValue, isEmpty, hasValueMinLength, confirmPassword, validateEmail } from '../utils/validations';
 import passport from 'passport';
 import passportJwt from 'passport-jwt';
-import fs from 'fs';
-import path from 'path';
+import s3 from '../config/awsS3';
 import UserModel from '../models/User';
 import ImageModel from '../models/Image';
 
@@ -24,11 +23,11 @@ const show = async (req, res) => {
     
     if (!userData) throw new Error("Usuário não encontrado!");
 
-    const { id, avatar_path, email, name, about } = userData;
+    const { id, avatar_url, email, name, about } = userData;
 
     const user = {
         id,
-        avatar_path,
+        avatar_url,
         email,
         name,
         about
@@ -114,14 +113,21 @@ const edit = async (req, res) => {
     }
 
     if (!isEmpty(req.file)) {
-        const avatarPath = `images/uploads/${req.file.filename}`;
+        const avatarUrl = req.file.location;
         let imageId = user.image_id;
 
         if (isEmpty(imageId)) {
-            imageId = await Image.create(avatarPath);
+            imageId = await Image.create(avatarUrl);
             user.image_id = imageId;
         } else {
-            await Image.update({ id: imageId, path: avatarPath });
+            const key = user.avatar_url.split('/').pop();
+            
+            s3.deleteObject({ Bucket: process.env.AWS_BUCKET_NAME, Key: key }, (err, data) => {
+                console.error(err);
+                console.log(data);
+            });
+
+            await Image.update({ id: imageId, url: avatarUrl });
         }
     }
     
@@ -145,11 +151,11 @@ passport.use(new passportJwt.Strategy(
                 if (!user)
                     return next(new Error("Autenticação falhou!"));
 
-                const { id, avatar_path, email, name, about } = user; 
+                const { id, avatar_url, email, name, about } = user; 
 
                 return next(null, {
                     id,
-                    avatar_path,
+                    avatar_url,
                     email,
                     name,
                     about

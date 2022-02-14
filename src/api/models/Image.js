@@ -6,12 +6,12 @@ export default class Image extends Model {
         super('image');
     }
 
-    async create(path) {
+    async create(url) {
         const query = `
             INSERT INTO "${this.getTable()}" 
-                (path)
+                (url)
             VALUES 
-                ('${path}')
+                ('${url}')
             RETURNING 
                 id
         `;
@@ -20,10 +20,10 @@ export default class Image extends Model {
         return results.rows[0].id;
     }
 
-    async update({ id, path }) {
+    async update({ id, url }) {
         const query = `
             UPDATE "${this.getTable()}" SET
-                path = '${path}'
+                url = '${url}'
             WHERE 
                 id = ${id}
             RETURNING 

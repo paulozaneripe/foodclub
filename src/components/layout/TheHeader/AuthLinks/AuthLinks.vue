@@ -8,13 +8,13 @@
             aria-expanded="false"
             @click.prevent="showUserMenu"
         >
-            <span v-if="!$auth.user.avatar_path" class="material-icons user-avatar" aria-hidden="true">
+            <span v-if="!$auth.user.avatar_url" class="material-icons user-avatar" aria-hidden="true">
                 account_circle
             </span>
             <img 
                 v-else
                 class="user-avatar"
-                :src="require(`~/assets/${ avatarPath }`)"
+                :src="$auth.user.avatar_url ? $auth.user.avatar_url : require('~/assets/images/avatar.png')"
                 :alt="'Avatar do usuário ' + $auth.user.name"
             />
             <p>{{ $auth.user.name }}</p>

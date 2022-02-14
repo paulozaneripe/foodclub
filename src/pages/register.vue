@@ -8,7 +8,7 @@
         >
             <form
                 method="POST"
-                @submit.prevent="handleSubmit(submit())"
+                @submit.prevent="handleSubmit(submit)"
                 novalidate
             >
                 <h2>Crie sua conta</h2>

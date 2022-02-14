@@ -4,14 +4,14 @@
             <ValidationObserver tag="div" ref="form" v-slot="{ handleSubmit }">
                 <form
                     method="POST"
-                    @submit.prevent="handleSubmit(submit())"
+                    @submit.prevent="handleSubmit(submit)"
                     enctype="multipart/form-data"
                     novalidate
                 >
                     <div class="user-image">
                         <img
                             id="avatar"
-                            :src="require(`~/assets/${avatarPath}`)"
+                            :src="avatar_url ? avatar_url : require('~/assets/images/avatar.png')"
                             :alt="'Avatar do usuário ' + $auth.user.name"
                         />
                         <span
@@ -115,7 +115,6 @@ export default {
     },
     data() {
         return {
-            avatarPath: 'images/avatar.png',
             email: '',
             avatar: '',
             name: '',
@@ -126,8 +125,7 @@ export default {
         };
     },
     created() {
-        if (this.$auth.user.avatar_path)
-            this.avatarPath = this.$auth.user.avatar_path;
+        this.avatar_url = this.$auth.user.avatar_url;
         this.email = this.$auth.user.email;
         this.name = this.$auth.user.name;
         this.about = this.$auth.user.about;

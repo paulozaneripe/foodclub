@@ -3,7 +3,7 @@
         <Container class="user-information">
             <div class="user-image">
                 <img 
-                    :src="require(`~/assets/${avatarPath}`)"
+                    :src="user.avatar_url ? user.avatar_url : require('~/assets/images/avatar.png')"
                     :alt="'Avatar do usuário ' + user.name"
                 >
             </div>
@@ -39,7 +39,6 @@ export default {
     },
     data() {
         return {
-            avatarPath: 'images/avatar.png',
             user: {}
         };
     },
@@ -47,8 +46,6 @@ export default {
         this.$axios.get(`/api/users/${this.$route.params.id}`)
             .then(({ data }) => {
                 this.user = data;
-                if (this.user.avatar_path) 
-                    this.avatarPath = this.user.avatar_path;
             }).catch((error) => {
                 this.$router.push('/');
                 this.$filterToast(this.$toast, error);

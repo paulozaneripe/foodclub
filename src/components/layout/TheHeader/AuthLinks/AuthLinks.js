@@ -7,14 +7,6 @@ export default Vue.extend({
             required: true
         },
     },
-    data() {
-        return {
-            avatarPath: 'images/avatar.png'
-        };
-    },
-    mounted() {
-        this.avatarPath = this.$auth.user.avatar_path;
-    },
     methods: {
         showUserMenu() {
             document.getElementById("user-button").setAttribute("aria-expanded", this.menu);

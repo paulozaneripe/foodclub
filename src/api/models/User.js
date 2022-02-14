@@ -5,7 +5,7 @@ export default class User {
     async findById(id) {
         const query = `
             SELECT 
-                "image".path AS avatar_path, "user".*  
+                "image".url AS avatar_url, "user".*  
             FROM 
                 "user" 
             LEFT JOIN 
@@ -23,7 +23,7 @@ export default class User {
     async findByEmail(email) {
         const query = `
             SELECT 
-                "image".path AS avatar_path, "user".*  
+                "image".url AS avatar_url, "user".*  
             FROM 
                 "user" 
             LEFT JOIN 
