@@ -24,9 +24,9 @@ export default {
     ],
     plugins: [
         { src: '~/plugins/persistedState.client.js', mode: 'client' },
-        { src: '~plugins/filterToast.js', mode: 'client'},
-        '~plugins/vueMask.js',
-        '~plugins/veeValidate.js'
+        { src: '~/plugins/filterToast.js', mode: 'client' },
+        '~/plugins/vueMask.js',
+        '~/plugins/veeValidate.js'
     ],
     components: false,
     buildModules: [

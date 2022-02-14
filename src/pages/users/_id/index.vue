@@ -46,8 +46,8 @@ export default {
         this.$axios.get(`/api/users/${this.$route.params.id}`)
             .then(({ data }) => {
                 this.user = data;
-            }).catch((error) => {
-                this.$router.push('/');
+            }).catch(async (error) => {
+                await this.$router.push('/');
                 this.$filterToast(this.$toast, error);
             });
     }

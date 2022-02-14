@@ -132,8 +132,8 @@ export default {
                 this.email = this.user.email;
                 this.name = this.user.name;
                 this.about = this.user.about;
-            }).catch((error) => {
-                this.$router.push('/');
+            }).catch(async (error) => {
+                await this.$router.push('/');
                 this.$filterToast(this.$toast, error);
             });
     },
