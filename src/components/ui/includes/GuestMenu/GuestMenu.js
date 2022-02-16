@@ -9,7 +9,7 @@ export default Vue.extend({
     },
     methods: {
         showMenu() {
-            document.getElementById("mobile-button").setAttribute("aria-expanded", this.menu);
+            document.getElementById("mobile-button").setAttribute("aria-expanded", this.menu ? "false" : "true");
             document.getElementById("mobile-button").ariaLabel = this.menu
                 ? "Abrir menu"
                 : "Fechar menu";

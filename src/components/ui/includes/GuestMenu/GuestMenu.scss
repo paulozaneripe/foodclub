@@ -27,7 +27,7 @@
                 text-decoration: none;
             }
 
-            &:first-of-type a:first-of-type {
+            #login-link a {
                 background-color: $red;
                 color: white;
                 margin-right: 20px;
@@ -39,10 +39,24 @@
                 }
             }
 
-            &:last-of-type a {
+            #register-link a {
                 border: 1px solid;
             }
         }
+    }
+
+    .main-links {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    ul li #login-link a {
+        margin: 0;
+    }
+
+    ul li #register-link {
+        display: none;
     }
 }
 
@@ -168,6 +182,7 @@
         &.active {
             visibility: visible;
             height: 100vh;
+            transition: height .4s;
         }
 
         li {
@@ -189,6 +204,10 @@
                     outline: none;
                     border: 1px solid;
                 }
+            }
+
+            #register-link {
+                display: block;
             }
         }
     }

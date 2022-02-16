@@ -1,34 +1,17 @@
 import Vue from 'vue';
-import TheToggler from '~/components/ui/TheToggler/TheToggler.vue';
-import GuestLinks from '~/components/layout/TheHeader/GuestLinks/GuestLinks.vue';
-import AuthLinks from '~/components/layout/TheHeader/AuthLinks/AuthLinks.vue';
+import TheToggler from '~/components/ui/fields/TheToggler/TheToggler.vue';
+import GuestMenu from '~/components/ui/includes/GuestMenu/GuestMenu.vue';
+import AuthMenu from '~/components/ui/includes/AuthMenu/AuthMenu.vue';
 
 export default Vue.extend({
-    watch:{
-        $route (to, from) {
-            this.headerMenu = false;
-            let menuBackground = document.getElementById("menu-background");
-            menuBackground.classList.remove("show");
-        }
-    },
     components: {
         TheToggler,
-        GuestLinks,
-        AuthLinks
+        GuestMenu,
+        AuthMenu
     },
     data() {
         return {
             headerMenu: false,
-        };
-    },
-    head() {
-        return {
-            link: [
-                {
-                    rel: 'stylesheet',
-                    href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-                },
-            ],
         };
     },
     methods: {

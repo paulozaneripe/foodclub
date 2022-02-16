@@ -4,21 +4,6 @@
             <nav>
                 <ul>
                     <li>
-                        <TheToggler
-                            id="theme-toggler-header"
-                            aria-label="Modo escuro"
-                            disabled-text="light_mode"
-                            enabled-text="dark_mode"
-                            icon
-                            :enabled-if="$colorMode.preference === 'dark'"
-                            @toggle="
-                                $colorMode.preference === 'light'
-                                    ? ($colorMode.preference = 'dark')
-                                    : ($colorMode.preference = 'light')
-                            "
-                        />
-                    </li>
-                    <li>
                         <div id="logo">
                             <NuxtLink to="/">
                                 <img
@@ -27,13 +12,21 @@
                                 />
                             </NuxtLink>
                         </div>
+                        <NuxtLink to="/users" id="users-link" class="nav-links">
+                            <span class="material-icons" aria-hidden="true">people_alt</span>
+                            Usuários
+                        </NuxtLink>
+                        <NuxtLink to="/recipes" id="recipes-link" class="nav-links">
+                            <span class="material-icons" aria-hidden="true">menu_book</span>
+                            Receitas
+                        </NuxtLink>
                     </li>
-                    <AuthLinks 
+                    <AuthMenu 
                         v-if="$auth.loggedIn"
                         :menu="this.headerMenu"
                         @showMenuBackground="this.showMenuBackground"
                     />
-                    <GuestLinks
+                    <GuestMenu
                         v-else
                         :menu="this.headerMenu"
                         @showMenuBackground="this.showMenuBackground"
@@ -50,5 +43,4 @@
 </template>
 
 <script src="./TheHeader.js" />
-import GuestLinks from '../../guest/GuestLinks/GuestLinks.vue.js';
 <style lang="scss" src="./TheHeader.scss" scoped />

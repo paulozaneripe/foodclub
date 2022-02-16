@@ -26,6 +26,7 @@ export default {
         { src: '~/plugins/persistedState.client.js', ssr: true },
         { src: '~/plugins/filterToast.js', ssr: true },
         '~/plugins/vueMask.js',
+        '~/plugins/clickaway',
         '~/plugins/veeValidate.js'
     ],
     components: false,

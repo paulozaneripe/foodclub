@@ -36,6 +36,12 @@ const show = async (req, res) => {
     return res.send(user);
 };
 
+const list = async (req, res) => {   
+    let users = await User.list();
+    
+    return res.send(users);
+};
+
 const create = async (req, res) => {
     for (let key of Object.keys(req.body)) {
         checkEmptyValue(req.body[key]);
@@ -166,4 +172,4 @@ passport.use(new passportJwt.Strategy(
     }
 ));
 
-export default { index, show, create, edit, remove };
+export default { index, show, list, create, edit, remove };

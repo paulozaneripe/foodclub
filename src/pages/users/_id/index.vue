@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import Container from '~/components/ui/Container/Container.vue';
-import CustomLink from '~/components/ui/CustomLink/CustomLink.vue';
+import Container from '~/components/layout/Container/Container.vue';
+import CustomLink from '~/components/ui/fields/CustomLink/CustomLink.vue';
 
 export default {
     layout: 'default',
@@ -43,7 +43,7 @@ export default {
         };
     },
     created() {
-        this.$axios.get(`/api/users/${this.$route.params.id}`)
+        this.$axios.get(`/api/users/${this.$route.params.id}/show`)
             .then(({ data }) => {
                 this.user = data;
             }).catch(async (error) => {

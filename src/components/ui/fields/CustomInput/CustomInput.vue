@@ -2,29 +2,27 @@
     <ValidationProvider
         tag="div"
         class="input-container"
-        :name="filterLabel(label)"
+        :name="label"
         :mode="mode"
         :rules="rules"
         :vid="name === 'password' ? name : ''"
         v-slot="{ errors, ariaMsg, ariaInput }"
     >
         <div class="input-field">
+            <label :for="name">{{ label }}</label>
             <input
                 :id="name"
-                :class="type === 'password' ? 'password' : ''"
+                :class=" type === 'password' ? errors[0] ? 'error password' : 'password' : errors[0] ? 'error' : '' "
                 :value="value"
                 :name="name"
                 :type="type"
                 :maxlength="max"
-                placeholder=" "
+                :placeholder="placeholder"
+                :readonly="readonly"
                 v-mask="mask"
                 v-bind="ariaInput"
                 @input="updateValue($event.target.value)"
             />
-            <label id="input-label" :for="name">{{ label }}</label>
-            <span class="material-icons" :class="errors[0] ? 'error' : ''">{{
-                errors[0] ? 'error_outline' : icon
-            }}</span>
             <span
                 v-if="type === 'password'"
                 class="material-icons password-visibility"
@@ -40,7 +38,7 @@
             >
                 visibility
             </span>
-            <span v-if="type === 'date'" class="material-icons date-picker">
+            <span v-if="type === 'date'" class="material-icons date-picker" aria-hidden="true">
                 calendar_today
             </span>
         </div>
@@ -53,5 +51,5 @@
     </ValidationProvider>
 </template>
 
-<script src="./AuthInput.js" />
-<style lang="scss" src="./AuthInput.scss" scoped />
+<script src="./CustomInput.js" />
+<style lang="scss" src="./CustomInput.scss" scoped />

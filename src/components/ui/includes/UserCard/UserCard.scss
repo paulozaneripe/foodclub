@@ -1,0 +1,44 @@
+.user-card {
+    padding: 20px;
+    width: 100%;
+    max-height: 200px;
+    white-space: nowrap;
+    border-radius: 25px;
+    transition: transform .4s;
+    cursor: pointer;
+}
+
+.user-card:hover, .user-card:focus {
+    transform: scale(1.1);
+}
+
+.user-card .avatar img {
+    display: block;
+    object-fit: cover;
+    max-width: 160px;
+    width: 100%;
+    height: 160px;
+    min-height: 100%;
+    margin: auto;
+    border-radius: 50%;
+    box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.user-card .name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    padding: 0 20px;
+    height: 45px;
+    border-radius: 0 0 25px 25px;
+
+    p {
+        margin: 0 auto;
+        text-align: center;
+        font-size: 1.6em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: bold;
+    }
+}

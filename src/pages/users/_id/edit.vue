@@ -91,11 +91,11 @@
 </template>
 
 <script>
-import Container from '~/components/ui/Container/Container.vue';
+import Container from '~/components/layout/Container/Container.vue';
 import { ValidationObserver } from 'vee-validate';
-import CustomButton from '~/components/ui/CustomButton/CustomButton.vue';
-import CustomInput from '~/components/ui/CustomInput/CustomInput.vue';
-import CustomTextArea from '~/components/ui/CustomTextArea/CustomTextArea.vue';
+import CustomButton from '~/components/ui/fields/CustomButton/CustomButton.vue';
+import CustomInput from '~/components/ui/fields/CustomInput/CustomInput.vue';
+import CustomTextArea from '~/components/ui/fields/CustomTextArea/CustomTextArea.vue';
 
 export default {
     layout: 'default',
@@ -126,7 +126,7 @@ export default {
         };
     },
     created() {
-        this.$axios.get(`/api/users/${this.$route.params.id}`)
+        this.$axios.get(`/api/users/${this.$route.params.id}/show`)
             .then(({ data }) => {
                 this.user = data;
                 this.email = this.user.email;
@@ -186,7 +186,7 @@ export default {
 
 <style lang="scss">
 .dark-mode .user-is-tabbing #change-photo:focus-within {
-    outline: 2px solid $red;
+    outline: 2px solid white;
 }
 
 .light-mode .user-is-tabbing #change-photo:focus-within {

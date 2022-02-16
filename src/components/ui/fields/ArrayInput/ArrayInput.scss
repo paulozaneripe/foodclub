@@ -1,0 +1,121 @@
+.dark-mode {
+    .input-field input:read-only {
+        background-color: lighten($dark-secondary, 5%);
+    }
+
+    .input-field {
+        input {
+            background-color: $dark-secondary;
+        }
+    
+        .remove-button span {
+            color: white;
+        }
+
+        span:first-of-type.error {
+            color: lighten($red, 25%);
+        }
+        
+        input,
+        input::placeholder {
+            color: white;
+        }
+    }
+
+    #error-message {
+        color: lighten($red, 25%);
+    }
+}
+
+.light-mode {
+    .input-field input:read-only {
+        background-color: darken($light-background, 7%);
+    }
+
+    .input-field {
+        input {
+            background-color: $light-background;
+        }
+
+        span:first-of-type.error {
+            color: $red;
+        }
+
+        input,
+        input::placeholder {
+            color: black;
+        }
+    }
+
+    #error-message {
+        color: $red;
+    }
+}
+
+.input-field {
+    margin: 5px 0 15px 0;
+
+    & > div {
+        display: flex;
+        width: 100%;
+
+        input {
+            display: block;
+            width: 100%;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            font-size: 1.6em;
+            padding: 20px;
+            transition: background-color .2s;
+            margin: 0;
+
+            &:focus {
+                outline: 2px solid;
+                outline-offset: 0;
+            }
+
+            &::placeholder {
+                opacity: 0.8;
+            }
+
+            &.error {
+                outline: 2px solid lighten($red, 25%);
+            }
+        }
+
+        .remove-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20px;
+            margin: auto;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-left: 15px;
+            transition: color .2s;
+
+            &:hover span {
+                color: lighten($red, 15%);
+            }
+        
+            span {
+                font-size: 25px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+#error-message {
+    display: none;
+    visibility: hidden;
+    position: relative;
+    font-size: 1.3em;
+    margin: 5px 0 -5px 0;
+
+    &.error {
+        display: block;
+        visibility: visible;
+    }
+}

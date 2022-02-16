@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import TheToggler from '~/components/ui/TheToggler/TheToggler.vue';
+import TheToggler from '~/components/ui/fields/TheToggler/TheToggler.vue';
 
 export default Vue.extend({
     watch:{
@@ -37,6 +37,14 @@ export default Vue.extend({
                 : "Abrir menu de acessibilidade";
             let a11yBackground = document.getElementById("a11y-background");
             this.a11yMenu ? a11yBackground.classList.add("show") : a11yBackground.classList.remove("show");
+        },
+        closeA11yMenu() {
+            if (this.a11yMenu) {
+                this.a11yMenu = false;
+                document.getElementById("a11y-button").ariaLabel = "Abrir menu de acessibilidade";
+                let a11yBackground = document.getElementById("a11y-background");
+                a11yBackground.classList.remove("show");
+            }
         },
         resetA11ySettings() {
             this.$colorMode.preference = 'light';

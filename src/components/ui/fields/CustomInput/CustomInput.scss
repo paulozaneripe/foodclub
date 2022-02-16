@@ -1,6 +1,11 @@
 .dark-mode {
+    .input-field input:read-only {
+        background-color: transparent;
+        border: 1px solid #666;
+    }
+
     .input-field {
-        textarea {
+        input {
             background-color: $dark-secondary;
         }
     
@@ -8,8 +13,8 @@
             color: lighten($red, 25%);
         }
         
-        textarea,
-        textarea::placeholder {
+        input,
+        input::placeholder {
             color: white;
         }
     }
@@ -20,8 +25,13 @@
 }
 
 .light-mode {
+    .input-field input:read-only {
+        background-color: transparent;
+        border: 1px solid #aaa;
+    }
+
     .input-field {
-        textarea {
+        input {
             background-color: $light-background;
         }
 
@@ -29,8 +39,8 @@
             color: $red;
         }
 
-        textarea,
-        textarea::placeholder {
+        input,
+        input::placeholder {
             color: black;
         }
     }
@@ -40,7 +50,7 @@
     }
 }
 
-.textarea-container {
+.input-container {
     margin-bottom: 20px;
 }
 
@@ -53,18 +63,15 @@
         font-size: 1.6em;
     }
 
-    textarea {
+    input {
         width: 100%;
         border-radius: 10px;
         border: none;
         outline: none;
-        font-size: 1.4em;
+        font-size: 1.6em;
         padding: 20px;
         margin-top: 5px;
-        min-height: 120px;
-        resize: none;
         transition: background-color .2s;
-        font-family: inherit;
 
         &:focus {
             outline: 2px solid;
@@ -73,6 +80,11 @@
 
         &::placeholder {
             opacity: 0.8;
+        }
+
+        &.password[type="password"]::-ms-reveal,
+        &.password[type="password"]::-ms-clear {
+            display: none;
         }
     
         &[type="date"]::-webkit-calendar-picker-indicator {
@@ -83,12 +95,29 @@
         &.error {
             outline: 2px solid lighten($red, 25%);
         }
+
+        &:not(:placeholder-shown) ~ .password-visibility {
+            display: block;
+        }
     }
 
     span {
         position: absolute;
         font-size: 1.4rem;
         text-align: center;
+
+        &.password-visibility  {
+            bottom: 18px;
+            right: 21px;
+            opacity: 0.7;
+            display: none;
+            cursor: pointer;
+            transition: opacity .6s;
+
+            &.hide {
+                opacity: 0.5;
+            }
+        }
 
         &.date-picker {
             bottom: 21px;

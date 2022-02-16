@@ -65,30 +65,19 @@
 </template>
 
 <script>
-import SearchBar from '~/components/ui/SearchBar/SearchBar.vue';
-import Container from '../components/ui/Container/Container.vue';
+import SearchBar from '~/components/ui/includes/SearchBar/SearchBar.vue';
+import Container from '../components/layout/Container/Container.vue';
 
 export default {
     auth: false,
     components: {
         SearchBar,
         Container
-    },
-    head() {
-        return {
-            link: [
-                {
-                    rel: 'stylesheet',
-                    href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-                },
-            ],
-        };
-    },
+    }
 };
 </script>
 
 <style lang="scss" scoped>
-
 h2 {
     margin-top: -10px;
 }
@@ -127,7 +116,6 @@ h2 {
     padding: 0 20px;
     height: 45px;
     border-radius: 0 0 25px 25px;
-
     p {
         color: white;
         font-size: 1.4em;

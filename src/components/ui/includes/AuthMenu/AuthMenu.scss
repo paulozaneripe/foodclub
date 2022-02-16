@@ -90,11 +90,15 @@ img.user-avatar {
             border-radius: 10px 10px 0 0;
             transition: background-color 0.2s;
 
-            li {
-                & > a:hover,
-                & > a:focus,
-                & > button:hover,
-                & > button:focus {
+            li button {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                font-size: 1.4em;
+                margin: 0;
+                padding: 0;
+
+                &:hover, &:focus {
                     font-weight: bold;
 
                     .material-icons {
@@ -106,21 +110,16 @@ img.user-avatar {
                     margin-bottom: 20px;
                 }
 
-                a, button {
-                    display: flex;
-                    align-items: center;
-                    width: 100%;
-                    font-size: 1.4em;
-                    margin: 0;
-                    padding: 0;
+                span {
+                    cursor: pointer;
 
-                    span {
-                        cursor: pointer;
-
-                        margin-right: 10px;
-                        font-size: 24px;
-                    }
+                    margin-right: 10px;
+                    font-size: 24px;
                 }
+            }
+
+            .main-links {
+                display: none;
             }
         }
     }
@@ -149,7 +148,7 @@ img.user-avatar {
         #user-links ul {
             color: white;
 
-            li a, li button {
+            li button {
                 border-bottom: 1px solid $dark-background;
                 
                 &:hover, &:focus {
@@ -159,6 +158,10 @@ img.user-avatar {
                 &:focus {
                     border: 1px solid white;
                 }
+            }
+
+            .main-links {
+                display: block;
             }
         }
     }
@@ -182,7 +185,7 @@ img.user-avatar {
         }
 
         #user-links ul {
-            li a, li button {
+            li button {
                 border-bottom: 1px solid darken($light-background, 10%);
     
                 &:hover, &:focus {
@@ -288,30 +291,6 @@ img.user-avatar {
         &.active {
             visibility: visible;
             height: 100vh;
-        }
-
-        li {
-
-            a, button {
-                width: 100%;
-                font-size: 1.6em;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                padding: 20px;
-    
-                &:focus {
-                    outline: none;
-                    border: 1px solid;
-                }
-
-                span.material-icons  {
-                    display: block;
-                    margin-right: 20px;
-                    cursor: pointer;
-                    font-size: 24px;
-                }
-            }
         }
     }
 }

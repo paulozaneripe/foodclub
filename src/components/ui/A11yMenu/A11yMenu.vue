@@ -3,9 +3,8 @@
         <div
             id="a11y-background"
             class="darken-background"
-            @click="showA11yMenu"
         ></div>
-        <div @blur="showA11yMenu">
+        <div v-on-clickaway="closeA11yMenu">
             <div id="a11y-menu" :class="a11yMenu ? 'active' : ''">
                 <ul>
                     <li>
