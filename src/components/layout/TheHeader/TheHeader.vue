@@ -17,7 +17,7 @@
                             Usuários
                         </NuxtLink>
                         <NuxtLink to="/recipes" id="recipes-link" class="nav-links">
-                            <span class="material-icons" aria-hidden="true">menu_book</span>
+                            <span class="material-icons" aria-hidden="true">auto_stories</span>
                             Receitas
                         </NuxtLink>
                     </li>

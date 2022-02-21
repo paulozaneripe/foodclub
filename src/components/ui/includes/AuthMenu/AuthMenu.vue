@@ -37,7 +37,7 @@
                 <AuthLink 
                     @showUserMenu="this.showUserMenu" 
                     :route="`/users/${ $auth.user.id }/recipes`" 
-                    icon="auto_stories" 
+                    icon="menu_book" 
                     description="Minhas receitas" 
                 />
                 <AuthLink 
@@ -57,7 +57,7 @@
                     class="main-links"
                     @showUserMenu="this.showUserMenu" 
                     route="/recipes" 
-                    icon="menu_book" 
+                    icon="auto_stories" 
                     description="Receitas" 
                 />
                 <AuthLink 

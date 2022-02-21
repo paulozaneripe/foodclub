@@ -1,8 +1,8 @@
 <template>
     <section class="recipes">
         <Container class="recipes">
-            <h2>Receitas</h2>
-            <div id="recipe-cards">
+            <h2>Minhas receitas</h2>
+            <div id="recipe-cards" v-if="recipes">
                 <RecipeCard 
                     v-for="recipe in recipes" 
                     :key="recipe.id" 
@@ -12,6 +12,7 @@
                     :username="recipe.user_name" 
                 />
             </div>
+            <h3 v-else>Você não possui receitas publicadas</h3>
         </Container>
     </section>
 </template>
@@ -22,14 +23,13 @@ import RecipeCard from '~/components/ui/includes/RecipeCard/RecipeCard.vue';
 
 export default {
     layout: 'default',
-    auth: false,
     components: {
         Container,
         RecipeCard
     },  
     head() {
         return {
-            title: 'FoodClub - Receitas',
+            title: `FoodClub - Minhas receitas }`,
         };
     },
     data() {
@@ -38,9 +38,10 @@ export default {
         };
     },
     created() {
-        this.$axios.get(`/api/recipes/list`)
+        this.$axios.get(`/api/users/${this.$route.params.id}/recipes`)
             .then(( response ) => {
                 this.recipes = response.data;
+                if (this.recipes.length === 0) this.recipes = null;
             }).catch(async (error) => {
                 await this.$router.push('/');
                 this.$filterToast(this.$toast, error);
@@ -52,9 +53,14 @@ export default {
 <style lang="scss">
 .recipes {
     h2 {
-        margin-top: -10px;
         margin-bottom: 30px;
         text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+        opacity: 0.6;
+        font-size: 2em;
     }
 
     #recipe-cards {

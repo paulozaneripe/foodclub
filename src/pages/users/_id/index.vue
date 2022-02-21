@@ -7,15 +7,26 @@
                     :alt="'Avatar do usuário ' + user.name"
                 >
             </div>
-            <h3>{{ user.name }}</h3>
-            <p>
-                {{ user.about === null || user.about === '' ? 'Este usuário não possui uma descrição.' : user.about }}
-            </p>
+            <div class="info">
+                <h3>{{ user.name }}</h3>
+                <p>
+                    {{ user.about === null || user.about === '' ? 'Este usuário não possui uma descrição.' : user.about }}
+                </p>
+            </div>
             <hr>
             <h4>Receitas publicadas</h4>
-            <p>
+            <p v-if="!user.recipes" style="text-align: center;">
                 Nenhuma receita publicada por este usuário.
             </p>
+            <div v-else id="recipe-cards">
+                <RecipeCard 
+                    v-for="recipe in user.recipes" 
+                    :key="recipe.id" 
+                    :id="recipe.id" 
+                    :imageUrl="recipe.image_url" 
+                    :title="recipe.title"
+                />
+            </div>
             <CustomLink v-if="$auth.user && $auth.user.id === user.id" :route="`/users/${ user.id }/edit`" description="EDITAR" color="edit"/>
         </Container>
     </section>
@@ -23,13 +34,15 @@
 
 <script>
 import Container from '~/components/layout/Container/Container.vue';
-import CustomLink from '~/components/ui/fields/CustomLink/CustomLink.vue';
+import RecipeCard from '~/components/ui/includes/RecipeCard/RecipeCard.vue';
+import CustomLink from '~/components/ui/form/CustomLink/CustomLink.vue';
 
 export default {
     layout: 'default',
     auth: false,
     components: {
         Container,
+        RecipeCard,
         CustomLink
     },
     head() {
@@ -39,7 +52,8 @@ export default {
     },
     data() {
         return {
-            user: {}
+            user: {},
+            recipes: []
         };
     },
     created() {
@@ -58,7 +72,6 @@ export default {
 .user-information {
     .user-image {
         position: relative;
-        text-align: center;
         margin: 0 auto 25px auto;
     
         img {
@@ -98,13 +111,14 @@ export default {
         }
     }
 
-    h3, h4, p {
+    .info {
         text-align: center;
+
+        h3 {
+            margin-bottom: 20px;
+        }
     }
 
-    h3 {
-        margin-bottom: 20px;
-    }
 
     hr {
         opacity: 0.7;
@@ -114,6 +128,7 @@ export default {
     h4 {
         font-size: 2.6em;
         margin-bottom: 30px;
+        text-align: center;
     }
 
     p {
@@ -122,6 +137,17 @@ export default {
 
     a:last-of-type {
         margin-top: 45px;
+    }
+
+    #recipe-cards {
+        margin-top: 20px;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 30px;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: left;
     }
 }
 </style>

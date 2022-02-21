@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import TheToggler from '~/components/ui/fields/TheToggler/TheToggler.vue';
+import TheToggler from '~/components/ui/form/TheToggler/TheToggler.vue';
 
 export default Vue.extend({
     watch:{

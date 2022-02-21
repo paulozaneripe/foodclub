@@ -40,8 +40,8 @@ export default Vue.extend({
             default: false,
             required: false
         },
-        rules: {
-            type: String,
+        index: {
+            type: Number,
             default: null,
             required: false
         },
@@ -52,7 +52,7 @@ export default Vue.extend({
         },
         mode: {
             type: String,
-            default: "eager",
+            default: "passive",
             required: false
         }
     },

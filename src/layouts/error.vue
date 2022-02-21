@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import CustomLink from '~/components/ui/fields/CustomLink/CustomLink.vue';
+import CustomLink from '~/components/ui/form/CustomLink/CustomLink.vue';
 
 export default {
     layout: 'auth',

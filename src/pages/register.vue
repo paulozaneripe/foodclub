@@ -73,8 +73,8 @@
 </template>
 
 <script>
-import AuthInput from '~/components/ui/fields/AuthInput/AuthInput.vue';
-import CustomButton from '~/components/ui/fields/CustomButton/CustomButton.vue';
+import AuthInput from '~/components/ui/form/AuthInput/AuthInput.vue';
+import CustomButton from '~/components/ui/form/CustomButton/CustomButton.vue';
 import { ValidationObserver } from "vee-validate";
 
 export default {

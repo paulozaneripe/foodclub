@@ -5,13 +5,11 @@ export default class User {
     async findById(id) {
         const query = `
             SELECT 
-                "image".url AS avatar_url, "user".*  
+                "user".*, "image".url AS avatar_url
             FROM 
-                "user" 
+                "user"
             LEFT JOIN 
-                "image" 
-            ON 
-                "image".id = "user".image_id 
+                "image" ON "image".id = "user".image_id
             WHERE 
                 "user".id = ${id}
         `;
@@ -23,15 +21,11 @@ export default class User {
     async findByEmail(email) {
         const query = `
             SELECT 
-                "user".*, "image".url AS avatar_url  
+                *
             FROM 
                 "user" 
-            LEFT JOIN 
-                "image" 
-            ON 
-                "image".id = "user".image_id 
             WHERE 
-                "user".email = LOWER('${email}')
+                email = LOWER('${email}')
         `;
 
         const results = await db.query(query);
@@ -43,13 +37,11 @@ export default class User {
             SELECT 
                 "user".*, "image".url AS avatar_url
             FROM 
-                "user" 
+                "user"
             LEFT JOIN 
-                "image" 
-            ON 
-                "image".id = "user".image_id
+                "image" ON "image".id = "user".image_id
             ORDER BY
-                "user".created_at
+                created_at
         `;
 
         const results = await db.query(query);

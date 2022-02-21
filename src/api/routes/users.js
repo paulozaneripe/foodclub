@@ -9,6 +9,7 @@ const routes = Router();
 routes.get('/', tryCatch(UserController.index));
 routes.get('/:id/show', tryCatch(UserController.show));
 routes.get('/list', tryCatch(UserController.list));
+routes.get('/:id/recipes', tryCatch(UserController.recipes));
 routes.post('/create', tryCatch(UserController.create));
 routes.put('/:id/edit', tryCatch(multer.single('avatar')), tryCatch(UserController.edit));
 

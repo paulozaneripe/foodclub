@@ -14,6 +14,20 @@ class Model {
         return results.rows[0];
     }
 
+    async list() {
+        const query = `
+            SELECT 
+                *
+            FROM 
+                "${this.getTable()}" 
+            ORDER BY
+                created_at
+        `;
+
+        const results = await db.query(query);
+        return results.rows;
+    }
+
     deleteById(id) {
         return db.query(`DELETE FROM "${this.getTable()}" WHERE id = ${id}`);
     }

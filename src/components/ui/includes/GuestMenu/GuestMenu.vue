@@ -21,7 +21,7 @@
                 <NuxtLink to="/users"><span class="material-icons" aria-hidden="true">people_alt</span>Usuários</NuxtLink>
             </li>
             <li @click="showMenu()" class="main-links">
-                <NuxtLink to="/recipes"><span class="material-icons" aria-hidden="true">menu_book</span>Receitas</NuxtLink>
+                <NuxtLink to="/recipes"><span class="material-icons" aria-hidden="true">auto_stories</span>Receitas</NuxtLink>
             </li>
             <li @click="showMenu()" class="main-links">
                 <NuxtLink to="/recipes/create"><span class="material-icons" aria-hidden="true">local_dining</span>Enviar receita</NuxtLink>

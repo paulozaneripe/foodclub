@@ -96,12 +96,13 @@
             transition: color .2s;
 
             &:hover span {
-                color: lighten($red, 15%);
+                color: lighten($red, 5%);
             }
         
             span {
                 font-size: 25px;
                 cursor: pointer;
+                font-weight: bold;
             }
         }
     }

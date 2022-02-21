@@ -52,7 +52,7 @@
                         max="420"
                         label="Sobre"
                         placeholder="Digite algo sobre você..."
-                        rules="min:40|max:410"
+                        rules="min:20|max:410"
                     />
                     <h4>Alterar senha</h4>
                     <CustomInput
@@ -93,9 +93,9 @@
 <script>
 import Container from '~/components/layout/Container/Container.vue';
 import { ValidationObserver } from 'vee-validate';
-import CustomButton from '~/components/ui/fields/CustomButton/CustomButton.vue';
-import CustomInput from '~/components/ui/fields/CustomInput/CustomInput.vue';
-import CustomTextArea from '~/components/ui/fields/CustomTextArea/CustomTextArea.vue';
+import CustomButton from '~/components/ui/form/CustomButton/CustomButton.vue';
+import CustomInput from '~/components/ui/form/CustomInput/CustomInput.vue';
+import CustomTextArea from '~/components/ui/form/CustomTextArea/CustomTextArea.vue';
 
 export default {
     layout: 'default',

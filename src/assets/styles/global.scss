@@ -184,6 +184,7 @@ body.user-is-tabbing ~ select:focus,
 body.user-is-tabbing ~ textarea:focus {
     outline-offset: 3px;
     outline: 2px solid;
+    outline-style: dotted;
 }
 
 body.user-is-tabbing .light-mode ~ button:focus,

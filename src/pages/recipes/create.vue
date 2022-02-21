@@ -8,53 +8,66 @@
                     enctype="multipart/form-data"
                     novalidate
                 >
-
+                    <label for="recipe-images">Imagens da receita (Envie até {{ uploadLimit }} imagens)</label>
+                    <ImageManager id="recipe-images" :upload-limit="uploadLimit" v-model="images" />
                     <CustomInput
                         v-model="title"
                         name="title"
-                        max="50"
+                        max="60"
                         label="Título da receita"
                         placeholder="Digite um nome para sua receita..."
-                        rules="required"
+                        rules="required|min:3|max:60"
                     />
                     <ul>
-                        <label for="ingredients">Ingrediente</label>
-                        <li v-for="(ingredient, index) in ingredients" :key="index">
+                        <label for="ingredients">Ingredientes</label>
+                        <li
+                            v-for="(ingredient, index) in ingredients"
+                            :key="index"
+                        >
                             <ArrayInput
                                 v-model="ingredient.value"
-                                name="ingredient"
+                                name="ingredients"
                                 field="Ingrediente"
                                 placeholder="Informe um ingrediente por campo..."
-                                max="50"
-                                rules="required"
+                                max="87"
+                                :index="parseInt(index)"
                                 @removeField="removeField(ingredients, index)"
                             />
                         </li>
-                        <button class="add-button" @click.prevent="addField(ingredients)">
+                        <button
+                            class="add-button"
+                            @click.prevent="addField(ingredients)"
+                        >
                             <span class="material-icons" aria-hidden="true">
                                 add
                             </span>
-                            Adicionar
+                            Adicionar ingrediente
                         </button>
                     </ul>
                     <ul>
-                        <label for="ingredients">Modo de preparo</label>
-                        <li v-for="(step, index) in preparation" :key="index">
+                        <label for="preparation">Modo de preparo</label>
+                        <li 
+                            v-for="(step, index) in preparation" 
+                            :key="index"
+                        >
                             <ArrayInput
                                 v-model="step.value"
                                 name="preparation"
                                 field="Modo de preparo"
                                 placeholder="Informe um passo por campo..."
-                                max="50"
-                                rules="required"
+                                max="87"
+                                :index="parseInt(index)"
                                 @removeField="removeField(preparation, index)"
                             />
                         </li>
-                        <button class="add-button" @click.prevent="addField(preparation)">
+                        <button
+                            class="add-button"
+                            @click.prevent="addField(preparation)"
+                        >
                             <span class="material-icons" aria-hidden="true">
                                 add
                             </span>
-                            Adicionar
+                            Adicionar passo
                         </button>
                     </ul>
                     <CustomTextArea
@@ -63,7 +76,7 @@
                         max="420"
                         label="Informações (Opcional)"
                         placeholder="Conte alguma curiosidade sobre esta receita..."
-                        rules="min:40|max:410"
+                        rules="min:20|max:410"
                     />
                     <CustomButton
                         class="save"
@@ -79,10 +92,11 @@
 <script>
 import Container from '~/components/layout/Container/Container.vue';
 import { ValidationObserver } from 'vee-validate';
-import CustomButton from '~/components/ui/fields/CustomButton/CustomButton.vue';
-import CustomInput from '~/components/ui/fields/CustomInput/CustomInput.vue';
-import ArrayInput from '~/components/ui/fields/ArrayInput/ArrayInput.vue';
-import CustomTextArea from '~/components/ui/fields/CustomTextArea/CustomTextArea.vue';
+import ImageManager from '~/components/ui/form/ImageManager/ImageManager.vue';
+import CustomButton from '~/components/ui/form/CustomButton/CustomButton.vue';
+import CustomInput from '~/components/ui/form/CustomInput/CustomInput.vue';
+import ArrayInput from '~/components/ui/form/ArrayInput/ArrayInput.vue';
+import CustomTextArea from '~/components/ui/form/CustomTextArea/CustomTextArea.vue';
 
 export default {
     layout: 'default',
@@ -90,6 +104,7 @@ export default {
     components: {
         Container,
         ValidationObserver,
+        ImageManager,
         CustomButton,
         CustomInput,
         ArrayInput,
@@ -102,7 +117,8 @@ export default {
     },
     data() {
         return {
-            images: '',
+            uploadLimit: 5,
+            images: null,
             title: '',
             ingredients: [{ value: '' }],
             preparation: [{ value: '' }],
@@ -110,70 +126,90 @@ export default {
         };
     },
     methods: {
-        handleFileInput(e) {
-
-        },
-        addField(field, index) {            
+        addField(field) {
             if (field.length < 10) {
                 if (field[field.length - 1].value !== '') {
                     field.push({ value: '' });
                 }
             } else {
-                alert("Você atingiu o limite de campos!");
+                this.$toast.info('Você atingiu o limite de campos!', {
+                    icon: {
+                        iconClass: 'material-icons',
+                        iconChildren: 'info',
+                        iconTag: 'span'
+                    }
+                });
             }
         },
         removeField(field, index) {
+            field[index].value = "";
             if (field.length > 1) {
                 field.splice(index, 1);
             }
         },
-        removeEmptyField(field) {
-            if (field.length > 1 && !field[field.length - 1].value) {
-                field.splice(field.length - 1, 1);
+        getObjectValues(object, valueName) {
+            const JSONObject = JSON.parse(JSON.stringify(object));
+            const objectValues = [];
+
+            for (let i = 0; i < JSONObject.length; i++) {
+                objectValues.push(JSONObject[i][valueName]);
             }
 
-            return field;
+            return objectValues;
         },
         async submit() {
             this.$refs.form.validate().then((success) => {
                 if (!success) return;
 
-                this.$filterToast(this.$toast, 'Receita salva com sucesso!');
+                const formData = new FormData();
+                if (this.images) {
+                    Array.from(this.images).forEach((image) => {
+                        formData.append('images', image, image.name);
+                    });
+                }
+                formData.append('userId', this.$auth.user.id);
+                formData.append('title', this.title);
+                formData.append('ingredients', this.getObjectValues(this.ingredients, "value"));
+                formData.append('preparation', this.getObjectValues(this.preparation, "value"));
+                formData.append('information', this.information);
 
-                // const formData = new FormData();
-                // if (this.images)
-                //     formData.append('images', this.images, this.images);
-
-                // this.$axios
-                //     .post(`/api/recipes/create`, formData, {
-                //         headers: {
-                //             'Content-Type':
-                //                 'multipart/form-data; boundary=${form._boundary}',
-                //         },
-                //     })
-                //     .then(async () => {
-                //         this.$router.push(`/recipes`);
-                //         this.$filterToast(
-                //             this.$toast,
-                //             'Receita salva com sucesso!'
-                //         );
-                //     })
-                //     .catch((error) => {
-                //         this.$filterToast(this.$toast, error);
-                //     });
+                this.$axios
+                    .post(`/api/recipes/create`, formData, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                        },
+                    }).then(async () => {
+                        this.$router.push(`/recipes`);
+                        this.$filterToast(
+                            this.$toast,
+                            'Receita salva com sucesso!'
+                        );
+                    }).catch((error) => {
+                        this.$filterToast(this.$toast, error);
+                    });
             });
-        }
+        },
     },
 };
 </script>
 
 <style lang="scss">
-.dark-mode .user-is-tabbing {
-    outline: 2px solid white;
+.user-is-tabbing {
+    .image-input:focus-within {
+        outline: 2px solid;
+    }
 }
 
-.light-mode .user-is-tabbing {
-    outline: 2px solid black;
+.dark-mode {
+    .user-is-tabbing {
+        outline: 2px solid white;
+    }
+}
+
+.light-mode {
+    .user-is-tabbing {
+        outline: 2px solid black;
+    }
 }
 
 .recipe-create {
@@ -193,11 +229,12 @@ export default {
         background-color: $blue;
         color: white;
         font-size: 1.6em;
+        text-align: left;
         margin: 15px 0;
         padding: 5px 15px 5px 8px;
         border-radius: 15px;
         cursor: pointer;
-        transition: background-color .4s;
+        transition: background-color 0.4s;
 
         &:hover {
             background-color: darken($blue, 5%);

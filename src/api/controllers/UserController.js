@@ -5,9 +5,11 @@ import passportJwt from 'passport-jwt';
 import s3 from '../config/awsS3';
 import UserModel from '../models/User';
 import ImageModel from '../models/Image';
+import RecipeModel from '../models/Recipe';
 
 const User = new UserModel();
 const Image = new ImageModel();
+const Recipe = new RecipeModel();
 
 const index = async (req, res, next) => {
     passport.authenticate('jwt', { session: false }, (error, user) => {
@@ -19,19 +21,25 @@ const index = async (req, res, next) => {
 };
 
 const show = async (req, res) => {
-    const userData = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id);
     
-    if (!userData) throw new Error("Usuário não encontrado!");
+    if (!user) throw new Error("Usuário não encontrado!");
 
-    const { id, avatar_url, email, name, about } = userData;
+    const recipes = await Recipe.listByUserId(req.params.id);
 
-    const user = {
-        id,
-        avatar_url,
-        email,
-        name,
-        about
-    };
+    if (recipes.length > 0) {
+        const recipesPromise = recipes.map(async recipe => {
+            const images = await Recipe.getImagesById(recipe.id);
+    
+            if (images.length > 0) 
+                recipe.image_url = images[0].url;
+    
+            return recipe;
+        });
+
+        const allUserRecipes = await Promise.all(recipesPromise);
+        user.recipes = allUserRecipes;
+    }
 
     return res.send(user);
 };
@@ -40,6 +48,22 @@ const list = async (req, res) => {
     let users = await User.list();
     
     return res.send(users);
+};
+
+const recipes = async (req, res) => {   
+    const recipes = await Recipe.listByUserId(req.params.id);
+
+    const recipesPromise = recipes.map(async recipe => {
+        const images = await Recipe.getImagesById(recipe.id);
+
+        if (images.length > 0) 
+            recipe.image_url = images[0].url;
+
+        return recipe;
+    });
+    
+    const allRecipes = await Promise.all(recipesPromise);
+    return res.send(allRecipes);
 };
 
 const create = async (req, res) => {
@@ -82,7 +106,7 @@ const edit = async (req, res) => {
     }
 
     if (!isEmpty(about)) {
-        if (hasValueMinLength(about, 40)) {
+        if (hasValueMinLength(about, 20)) {
             user.about = about;
         } else {
             throw new Error("O campo Sobre deve conter pelo menos 40 caracteres!");
@@ -128,8 +152,8 @@ const edit = async (req, res) => {
         } else {
             const key = user.avatar_url.split('/').pop();
             
-            s3.deleteObject({ Bucket: process.env.AWS_BUCKET_NAME, Key: key }, (err, data) => {
-                console.error(err);
+            s3.deleteObject({ Bucket: process.env.AWS_BUCKET_NAME, Key: key }, (error, data) => {
+                if (error) throw new Error(error);
                 console.log(data);
             });
 
@@ -153,18 +177,21 @@ passport.use(new passportJwt.Strategy(
     },
     async (jwtPayload, next) => {
         await User.findByEmail(jwtPayload.email)
-            .then((user) => {
+            .then(async (user) => {
                 if (!user)
                     return next(new Error("Autenticação falhou!"));
 
-                const { id, avatar_url, email, name, about } = user; 
+                if (user.image_id) {
+                    const image = await Image.findById(user.image_id);
+                    user.avatar_url = image.url;
+                }
+
+                const { id, avatar_url, name } = user; 
 
                 return next(null, {
                     id,
                     avatar_url,
-                    email,
-                    name,
-                    about
+                    name
                 });
             }).catch((error) => {
                 return next(error);
@@ -172,4 +199,4 @@ passport.use(new passportJwt.Strategy(
     }
 ));
 
-export default { index, show, list, create, edit, remove };
+export default { index, show, list, recipes, create, edit, remove };

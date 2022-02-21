@@ -45,6 +45,7 @@ export default {
 <style lang="scss">
 .users {
     h2 {
+        margin-top: -10px;
         margin-bottom: 30px;
         text-align: center;
     }
@@ -55,8 +56,8 @@ export default {
         justify-content: center;
         align-items: center;
         text-align: center;
-        margin: 30px auto;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        margin: 20px auto;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 30px;
     }
 }

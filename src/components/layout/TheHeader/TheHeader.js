@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import TheToggler from '~/components/ui/fields/TheToggler/TheToggler.vue';
+import TheToggler from '~/components/ui/form/TheToggler/TheToggler.vue';
 import GuestMenu from '~/components/ui/includes/GuestMenu/GuestMenu.vue';
 import AuthMenu from '~/components/ui/includes/AuthMenu/AuthMenu.vue';
 

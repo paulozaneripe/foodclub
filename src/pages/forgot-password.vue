@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import AuthInput from '~/components/ui/fields/AuthInput/AuthInput.vue';
+import AuthInput from '~/components/ui/form/AuthInput/AuthInput.vue';
 import { ValidationObserver } from "vee-validate";
 
 export default {

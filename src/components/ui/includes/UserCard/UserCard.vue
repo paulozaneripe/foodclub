@@ -1,5 +1,5 @@
 <template>
-    <div @click="showUser()" @keydown.enter="showUser()"  role="button" class="user-card" tabindex="0">
+    <div class="user-card" role="button" tabindex="0" @click="showUser()" @keydown.enter="showUser()" >
         <div class="avatar">
             <img
                 :src="avatarUrl ? avatarUrl : require('~/assets/images/avatar.png')"
