@@ -117,6 +117,10 @@ export default {
         h3 {
             margin-bottom: 20px;
         }
+
+        p {
+            white-space: pre-line;
+        }
     }
 
 

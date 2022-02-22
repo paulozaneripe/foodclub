@@ -238,6 +238,7 @@ export default {
             li {
                 font-size: 1.6em;
                 text-align: left;
+                opacity: 0.8;
 
                 &:not(:last-of-type) {
                     margin-bottom: 10px;
@@ -266,6 +267,7 @@ export default {
                 font-size: 1.6em;
                 text-align: left;
                 counter-increment: item;
+                opacity: 0.8;
 
                 &:not(:last-of-type) {
                     margin-bottom: 10px;
@@ -274,19 +276,15 @@ export default {
                 &:before {
                     content: counter(item) ". ";
                     margin-right: 2px;
-                    font-weight: bold;
                 }
             }
         }
 
         .information {
-            & > div {
-                margin-bottom: 20px;
-            }
-
             p {
                 font-size: 1.6em;
                 opacity: 0.8;
+                white-space: pre-line;
                 text-align: left;
             }
         }
