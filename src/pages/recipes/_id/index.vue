@@ -276,6 +276,7 @@ export default {
                 &:before {
                     content: counter(item) ". ";
                     margin-right: 2px;
+                    font-weight: bold;
                 }
             }
         }
