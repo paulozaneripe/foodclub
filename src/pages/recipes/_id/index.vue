@@ -150,14 +150,6 @@ export default {
 </script>
 
 <style lang="scss">
-.dark-mode .ingredients li:before {
-    color: white;
-}
-
-.light-mode .ingredients li:before {
-    color: black;
-}
-
 .recipe-information {
     .highlight > img {
         width: 100%;
@@ -171,7 +163,8 @@ export default {
     .gallery-preview {
         display: flex;
         justify-content: flex-end;
-        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 10px;
 
         img {
             height: 80px;
@@ -182,7 +175,6 @@ export default {
             transition: opacity 0.2s;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
-            margin-top: 10px;
 
             &:not(:last-of-type) {
                 margin-right: 10px;
@@ -246,14 +238,13 @@ export default {
             li {
                 font-size: 1.6em;
                 text-align: left;
-                opacity: 0.8;
 
                 &:not(:last-of-type) {
                     margin-bottom: 10px;
                 }
 
                 &:before {
-                    content:"•";
+                    content:"• ";
                     font-weight: bold;
                     margin-right: 5px;
                 }
@@ -274,7 +265,6 @@ export default {
             li {
                 font-size: 1.6em;
                 text-align: left;
-                opacity: 0.8;
                 counter-increment: item;
 
                 &:not(:last-of-type) {
@@ -283,6 +273,7 @@ export default {
 
                 &:before {
                     content: counter(item) ". ";
+                    margin-right: 2px;
                     font-weight: bold;
                 }
             }
@@ -303,6 +294,18 @@ export default {
 
     a.edit {
         margin-top: 45px;
+    }
+}
+
+@media (max-width: 575.98px) { 
+    .recipe-information .gallery-preview { 
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+
+        img {
+            margin: 0;
+            width: 100%;
+        }
     }
 }
 </style>
