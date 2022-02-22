@@ -69,7 +69,7 @@ export default {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
         gap: 30px;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         text-align: left;
     }

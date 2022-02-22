@@ -1,8 +1,8 @@
 <template>
     <section>
-        <SearchBar />
+        <!-- <SearchBar /> -->
         <Container>
-            <h2>Últimas publicadas</h2>
+            <h2>Últimas receitas publicadas</h2>
             <div id="recipe-cards">
                 <RecipeCard 
                     v-for="recipe in recipes" 
@@ -26,7 +26,7 @@ import RecipeCard from '~/components/ui/includes/RecipeCard/RecipeCard.vue';
 export default {
     auth: false,
     components: {
-        SearchBar,
+        // SearchBar,
         Container,
         RecipeCard
     },    
@@ -56,9 +56,9 @@ h2 {
     margin-top: 20px;
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 30px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: left;
 }

@@ -1,5 +1,5 @@
 .recipe-card {
-    max-width: 270px;
+    
     width: 100%;
     max-height: 200px;
     border-radius: 25px;
@@ -64,10 +64,6 @@
 
 
 @media (max-width: 767.98px) { 
-    .recipe-card {
-        max-width: 100%;
-    }
-
     .recipe-card .info .title p {
         white-space: normal;
     }
