@@ -13,8 +13,8 @@
                     :username="recipe.user_name" 
                 />
             </div>
+            <CustomLink route="/recipes/create" description="PUBLIQUE SUA RECEITA" />
         </Container>
-
     </section>
 </template>
 
@@ -22,13 +22,15 @@
 import SearchBar from '~/components/ui/includes/SearchBar/SearchBar.vue';
 import Container from '../components/layout/Container/Container.vue';
 import RecipeCard from '~/components/ui/includes/RecipeCard/RecipeCard.vue';
+import CustomLink from '~/components/ui/form/CustomLink/CustomLink.vue';
 
 export default {
     auth: false,
     components: {
         // SearchBar,
         Container,
-        RecipeCard
+        RecipeCard,
+        CustomLink
     },    
     data() {
         return {
@@ -50,5 +52,9 @@ export default {
 <style lang="scss" scoped>
 h2 {
     margin-top: -10px;
+}
+
+a {
+    margin-top: 25px;
 }
 </style>
