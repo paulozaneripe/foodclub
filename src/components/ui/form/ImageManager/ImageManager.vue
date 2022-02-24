@@ -12,9 +12,11 @@
                 @change="handleFileInput"
             >
         </span>
-        <span 
+        <span
+            role="button"
             v-for="(image, index) in oldImages" 
-            @click="removeOldImage($event)" 
+            @click="removeOldImage($event)"
+            @keydown.enter="removeOldImage($event)"
             :key="index" 
             :id="image.id"
             class="image" 

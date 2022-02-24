@@ -28,7 +28,7 @@ export default Vue.extend({
         }
     },
     mounted() {
-        this.preview = document.getElementById(this.id);
+        this.preview = document.getElementById(this.id);        
     },
     methods: {
         hasLimit(event) {
@@ -105,6 +105,10 @@ export default Vue.extend({
         },
         removeOldImage(event) {
             let imageContainer = event.target.parentNode;
+
+            if (event.type !== "click") {
+                imageContainer = event.target;
+            }
 
             if (imageContainer.id) {
                 const removedImages = document.querySelector('input[name="removed-images"]');
