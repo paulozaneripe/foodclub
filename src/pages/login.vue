@@ -41,9 +41,9 @@
                     label="Senha"
                     rules="required"
                 />
-                <NuxtLink class="forgot-password" to="/forgot-password">
+                <!-- <NuxtLink class="forgot-password" to="/forgot-password">
                     Esqueceu sua senha?
-                </NuxtLink>
+                </NuxtLink> -->
                 <CustomButton description="ENTRAR" />
                 <p>
                     Não possui uma conta?
