@@ -75,12 +75,17 @@ header {
 
                     &:hover, &:focus {
                         opacity: 1;
+                        margin-right: -1px;
+                        font-weight: bold;
+
+                        span {
+                            opacity: 1;
+                        }
                     }
 
                     span {
                         margin-right: 10px;
                         cursor: pointer;
-                        opacity: 0.9;
                     }
                 }
 
