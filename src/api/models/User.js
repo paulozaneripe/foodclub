@@ -69,14 +69,22 @@ export default class User {
 
         const query = `
             UPDATE "user" SET
-                image_id = ${image_id}, name = '${name}', about = '${about}', password = '${password}'
+                image_id=$1, name=($2), about=($3), password=($4)
             WHERE 
-                id = ${id}
+                id = $5
             RETURNING 
                 id
         `;
 
-        const results = await db.query(query);
+        const values = [
+            image_id, 
+            name, 
+            about, 
+            password,
+            id
+        ];
+
+        const results = await db.query(query, values);
         return results.rows[0].id;
     }
 }

@@ -12,6 +12,7 @@ export default class Recipe {
                 "user" ON "user".id = "recipe".user_id
             ORDER BY
                 "created_at"
+            DESC
         `;
 
         if (limit) {

@@ -128,7 +128,7 @@ export default Vue.extend({
                                 'Content-Type': 'multipart/form-data',
                             },
                         }).then(async () => {
-                            this.$router.push(`/recipes`);
+                            this.$router.push(`/users/${this.$auth.user.id}/recipes`);
                             this.$filterToast(
                                 this.$toast,
                                 'Receita salva com sucesso!'

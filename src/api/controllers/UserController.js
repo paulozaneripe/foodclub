@@ -105,13 +105,7 @@ const edit = async (req, res) => {
         user.name = name;
     }
 
-    if (!isEmpty(about)) {
-        if (hasValueMinLength(about, 20)) {
-            user.about = about;
-        } else {
-            throw new Error("O campo Sobre deve conter pelo menos 40 caracteres!");
-        }
-    }
+    user.about = about;
 
     if (!isEmpty(oldPassword) && hasValueMinLength(oldPassword, 6)) {
         if (!(await compare(oldPassword, user.password)))

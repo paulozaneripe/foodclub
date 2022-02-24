@@ -82,11 +82,17 @@ export default {
     },
     auth: {
         localStorage: false,
+        cookie: {
+            options: {
+                expires: 7
+            }
+        },
         strategies: {
             local: {
                 endpoints: {
                     login: { url: '/api/users/login', method: 'post', propertyName: 'token' },
-                    user: { url: '/api/users', method: 'get', propertyName: false }
+                    user: { url: '/api/users', method: 'get', propertyName: false },
+                    logout: false
                 }
             }
         },

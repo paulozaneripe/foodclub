@@ -49,10 +49,10 @@
                     <CustomTextArea
                         v-model="about"
                         name="about"
-                        max="420"
+                        max="436"
                         label="Sobre"
                         placeholder="Digite algo sobre você..."
-                        rules="min:20|max:410"
+                        rules="max:435"
                     />
                     <h4>Alterar senha</h4>
                     <CustomInput

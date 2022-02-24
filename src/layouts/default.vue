@@ -21,11 +21,6 @@ import A11yMenu from '~/components/ui/A11yMenu/A11yMenu.vue';
 import TheFooter from '~/components/layout/TheFooter/TheFooter.vue';
 
 export default Vue.extend({
-    watch: {
-        $route() {
-            document.getElementById("reset-focus").focus();
-        },
-    },
     data() {
         return {
             animations: this.$store.state.animations,
