@@ -105,7 +105,10 @@ const edit = async (req, res) => {
         user.name = name;
     }
 
-    user.about = about;
+    if (!isEmpty(about)) {
+        user.about = about;
+    }
+    
 
     if (!isEmpty(oldPassword) && hasValueMinLength(oldPassword, 6)) {
         if (!(await compare(oldPassword, user.password)))
