@@ -56,16 +56,5 @@ export default {
         margin-bottom: 30px;
         text-align: center;
     }
-
-    #recipe-cards {
-        margin-top: 20px;
-        position: relative;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-        gap: 30px;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: left;
-    }
 }
 </style>

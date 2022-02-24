@@ -7,7 +7,7 @@ export default Vue.extend({
             required: true
         },
         imageUrl: {
-            default: '//via.placeholder.com/700x200?text=Receita+sem+Imagem',
+            default: '//via.placeholder.com/1920x350/CECECE/2B2B2B/?text=Receita+sem+Imagem',
             required: true
         },
         title: {

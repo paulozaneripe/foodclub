@@ -4,19 +4,12 @@
             <div class="gallery">
                 <div class="highlight">
                     <img 
-                        v-if="recipe.images" 
-                        :src="recipe.images[0].url" 
-                        :alt="`Imagem 1 da receita ${recipe.title}`"
-                        tabindex="0"
-                    >
-                    <img 
-                        v-else
-                        src="//via.placeholder.com/700x200?text=Receita+sem+Imagem" 
+                        :src="hasImage ? recipe.images[0].url : defaultImage" 
                         :alt="`Imagem 1 da receita ${recipe.title}`"
                     >
                 </div>
             </div>
-            <div  class="gallery-preview">
+            <div v-if="multipleImages" class="gallery-preview">
                 <img 
                     v-for="(image, index) in recipe.images" 
                     :key="index" :class="index === 0 ? 'active' : ''" 
@@ -29,7 +22,7 @@
             </div>
             <div class="title">
                 <h1>{{ recipe.title }}</h1>
-                <p>por <NuxtLink :to="`/users/${recipe.user_id}`">{{ recipe.user_name }}</NuxtLink></p>
+                <p>por <NuxtLink :to="`/users/${recipe.user_id}`"><strong>{{ recipe.user_name }}</strong></NuxtLink></p>
             </div>
             <div class="recipe-body">
                 <div class="ingredients">
@@ -75,11 +68,18 @@
                         <h3>Informações adicionais</h3>
                     </div>
                     <p>
-                        {{ recipe.information ? recipe.information : 'Essa receita não possui informações adicionais...'}}
+                        {{ recipe.information ? recipe.information : 'Essa receita não possui informações adicionais.'}}
                     </p>
                 </div>
             </div>
             <CustomLink class="edit" v-if="$auth.user && $auth.user.id === recipe.user_id" :route="`/recipes/${ recipe.id }/edit`" description="EDITAR" color="edit"/>
+            <form
+                method="POST"
+                @submit.prevent="submit"
+                novalidate
+            >
+                <CustomButton class="delete" v-if="$auth.user && $auth.user.id === recipe.user_id" description="EXCLUIR" />
+            </form>
         </Container>
     </section>
 </template>
@@ -87,13 +87,15 @@
 <script>
 import Container from '~/components/layout/Container/Container.vue';
 import CustomLink from '~/components/ui/form/CustomLink/CustomLink.vue';
+import CustomButton from '~/components/ui/form/CustomButton/CustomButton.vue';
 
 export default {
     layout: 'default',
     auth: false,
     components: {
         Container,
-        CustomLink
+        CustomLink,
+        CustomButton
     },
     head() {
         return {
@@ -103,16 +105,19 @@ export default {
     data() {
         return {
             recipe: {},
-            imagesLength: 0,
+            hasImage: false,
+            multipleImages: false,
             showIngredients: true,
-            showPreparation: true
+            showPreparation: true,
+            defaultImage: '//via.placeholder.com/1920/CECECE/2B2B2B/?text=Receita+sem+Imagem'
         };
     },
     created() {
         this.$axios.get(`/api/recipes/${this.$route.params.id}/show`)
             .then(({ data }) => {
                 this.recipe = data;
-                this.imagesLength = this.recipe.images.length;
+                this.hasImage = this.recipe.images.length >= 1;
+                this.multipleImages = this.recipe.images.length > 1;
             }).catch(async (error) => {
                 await this.$router.push('/');
                 this.$filterToast(this.$toast, error);
@@ -144,6 +149,24 @@ export default {
 
             highlight.src = target.src;
             highlight.alt = target.alt;
+        },
+        submit() {
+            const confirmation = confirm(`Deseja realmente excluir a receita "${this.recipe.title}"?`);
+            if (confirmation) {
+
+                const userId = this.$auth.user.id;
+
+                this.$axios.delete(`/api/recipes/${this.$route.params.id}/delete`)
+                    .then(async () => {
+                        this.$router.push(`/users/${this.$auth.user.id}/recipes`);
+                        this.$filterToast(
+                            this.$toast,
+                            'Receita excluída com sucesso!'
+                        );
+                    }).catch((error) => {
+                        this.$filterToast(this.$toast, error);
+                    });
+            }
         }
     }
 };
@@ -155,8 +178,6 @@ export default {
         width: 100%;
         height: 280px;
         object-fit: cover;
-        cursor: zoom-in;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         border-radius: 25px;
     }
 
@@ -173,7 +194,6 @@ export default {
             opacity: 0.6;
             cursor: pointer;
             transition: opacity 0.2s;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
 
             &:not(:last-of-type) {
@@ -283,7 +303,9 @@ export default {
 
         .information {
             p {
+                margin-top: -11px;
                 font-size: 1.6em;
+                line-height: 1.6em;
                 opacity: 0.8;
                 white-space: pre-line;
                 text-align: left;
@@ -292,7 +314,11 @@ export default {
     }
 
     a.edit {
-        margin-top: 45px;
+        margin-top: 25px;
+    }
+
+    button.delete {
+        margin-top: 25px;
     }
 }
 
@@ -300,6 +326,7 @@ export default {
     .recipe-information .gallery-preview { 
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 10px;
 
         img {
             margin: 0;

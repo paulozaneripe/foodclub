@@ -4,7 +4,7 @@
         class="input-field"
         :name="field"
         :mode="mode"
-        :rules="index === 0 ? 'required|min:3|max:87' : 'min:3|max:87'"
+        :rules="index === 0 ? 'required|min:3|max:200' : 'min:3|max:200'"
         v-slot="{ errors, ariaMsg, ariaInput }"
     >
         <div>
@@ -20,16 +20,20 @@
                 v-mask="mask"
                 v-bind="ariaInput"
                 @input="updateValue($event.target.value)"
+                @keydown.enter="addField"
             />
-            <button v-if="index > 0 || value != ''" class="remove-button" aria-label="Remover" @click.prevent="removeField()">
-                <span 
-                    class="material-icons" 
-                    aria-hidden="true"
-                    title="Remover campo"
-                >
-                    close
-                </span>
-            </button>
+            <span 
+                v-if="index > 0 || value != ''"
+                @click.prevent="removeField()"
+                @keydown.enter="removeField()"
+                role="button"
+                class="material-icons remove-button" 
+                aria-label="Remover"
+                title="Remover campo"
+                tabindex="0"
+            >
+                close
+            </span>
         </div>        
         <span
             id="error-message"

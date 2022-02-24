@@ -62,6 +62,9 @@ export default Vue.extend({
         },
         removeField() {
             this.$emit('removeField');
+        },
+        addField() {
+            this.$emit('addField');
         }
     }
 });

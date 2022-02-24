@@ -21,7 +21,7 @@
             tabindex="0" 
             aria-label="Remover imagem"
         >
-            <img :src="image.url">
+            <img :src="image.url" :alt="`Imagem de ordem ${index} da Receita`">
             <span class="material-icons">close</span>
         </span>
         <input type="hidden" name="removed-images">

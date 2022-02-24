@@ -1,0 +1,53 @@
+.user-is-tabbing {
+    .image-input:focus-within {
+        outline: 2px solid;
+    }
+}
+
+.dark-mode {
+    .user-is-tabbing {
+        outline: 2px solid white;
+    }
+}
+
+.light-mode {
+    .user-is-tabbing {
+        outline: 2px solid black;
+    }
+}
+
+.recipe-form {
+    button.save {
+        margin-top: 25px;
+    }
+
+    label {
+        position: relative;
+        font-size: 1.6em;
+    }
+
+    .add-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $blue;
+        color: white;
+        font-size: 1.6em;
+        text-align: left;
+        margin: 15px 0;
+        padding: 5px 15px 5px 8px;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: background-color 0.4s;
+
+        &:hover {
+            background-color: darken($blue, 5%);
+        }
+
+        span {
+            margin-right: 5px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+    }
+}

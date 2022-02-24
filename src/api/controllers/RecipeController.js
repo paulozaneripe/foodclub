@@ -145,8 +145,30 @@ const edit = async (req, res) => {
     return res.send({ id: recipeId });
 };
 
-const remove = (req, res) => {
-    res.send('User remove');
+const remove = async (req, res) => {
+    const recipe = await Recipe.findById(req.params.id);
+    if (!recipe) throw new Error("Receita não encontrada!");
+
+    const images = await Recipe.getImagesById(recipe.id);
+
+    if (images) {
+        const deletedImagesPromise = images.map(async (image) => {            
+            const key = image.url.split('/').pop();
+            
+            s3.deleteObject({ Bucket: process.env.AWS_BUCKET_NAME, Key: key }, (error, data) => {
+                if (error) throw new Error(error);
+                console.log(data);
+            });
+    
+            await Image.deleteById(image.id);
+        });
+
+        await Promise.all(deletedImagesPromise);
+    }
+
+    await Recipe.deleteById(req.params.id);
+
+    return res.send({ id: req.params.id });
 };
 
 export default { index, show, list, create, edit, remove };

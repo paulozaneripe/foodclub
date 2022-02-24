@@ -115,7 +115,7 @@ export default {
         text-align: center;
 
         h3 {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
         }
 
         p {
@@ -125,7 +125,7 @@ export default {
 
 
     hr {
-        opacity: 0.7;
+        opacity: 0.5;
         margin: 35px 0 25px 0;
     }
     
@@ -141,17 +141,6 @@ export default {
 
     a:last-of-type {
         margin-top: 45px;
-    }
-
-    #recipe-cards {
-        margin-top: 20px;
-        position: relative;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-        gap: 30px;
-        justify-content: flex-start;
-        align-items: center;
-        text-align: left;
     }
 }
 </style>

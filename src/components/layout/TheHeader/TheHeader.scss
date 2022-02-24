@@ -69,16 +69,18 @@ header {
                     justify-content: center;
                     align-items: center;
                     font-size: 1.6em;
+                    opacity: 0.9;
+                    transition: opacity .2s;
                     cursor: pointer;
 
                     &:hover, &:focus {
-                        font-weight: bold;
-                        margin-right: -1px;
+                        opacity: 1;
                     }
 
                     span {
                         margin-right: 10px;
                         cursor: pointer;
+                        opacity: 0.9;
                     }
                 }
 
@@ -86,7 +88,7 @@ header {
                     margin-left: 45px;
                 }
 
-                #recipes-link { 
+                #recipes-link {
                     margin-left: 40px;
                 }
             }

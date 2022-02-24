@@ -94,15 +94,12 @@
             border-radius: 10px;
             margin-left: 15px;
             transition: color .2s;
+            font-size: 25px;
+            cursor: pointer;
+            font-weight: bold;
 
-            &:hover span {
+            &:hover {
                 color: lighten($red, 5%);
-            }
-        
-            span {
-                font-size: 25px;
-                cursor: pointer;
-                font-weight: bold;
             }
         }
     }

@@ -10,5 +10,6 @@ routes.get('/:id/show', tryCatch(RecipeController.show));
 routes.get('/list', tryCatch(RecipeController.list));
 routes.post('/create', tryCatch(multer.array('images', 5)), tryCatch(RecipeController.create));
 routes.put('/:id/edit', tryCatch(multer.array('images', 5)), tryCatch(RecipeController.edit));
+routes.delete('/:id/delete', tryCatch(RecipeController.remove));
 
 export default routes;

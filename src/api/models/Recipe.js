@@ -11,7 +11,7 @@ export default class Recipe {
             LEFT JOIN 
                 "user" ON "user".id = "recipe".user_id
             ORDER BY
-                created_at
+                "created_at"
         `;
 
         if (limit) {
@@ -106,5 +106,9 @@ export default class Recipe {
 
         const results = await db.query(query);
         return results.rows[0].id;
+    }
+
+    deleteById(id) {
+        return db.query(`DELETE FROM "recipe" WHERE id = ${id}`);
     }
 }
