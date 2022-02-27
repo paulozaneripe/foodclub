@@ -84,7 +84,7 @@ export default class Recipe {
             INSERT INTO "recipe"  
                 (user_id, title, ingredients, preparation, information)
             VALUES 
-                (${userId}, '${title}', string_to_array('${ingredients}', ','), string_to_array('${preparation}', ','), '${information}')
+                (${userId}, '${title}', string_to_array('${ingredients}', '§'), string_to_array('${preparation}', '§'), '${information}')
             RETURNING 
                 id
         `;
@@ -98,7 +98,7 @@ export default class Recipe {
 
         const query = `
             UPDATE "recipe" SET
-                title = '${title}', ingredients = string_to_array('${ingredients}', ','), preparation = string_to_array('${preparation}', ','), information = '${information}'
+                title = '${title}', ingredients = string_to_array('${ingredients}', '§'), preparation = string_to_array('${preparation}', '§'), information = '${information}'
             WHERE 
                 id = ${id}
             RETURNING 

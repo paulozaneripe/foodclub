@@ -1,19 +1,11 @@
 .user-is-tabbing {
     .image-input:focus-within {
-        outline: 2px solid;
+        outline: $outline solid $outline-color;
     }
 }
 
-.dark-mode {
-    .user-is-tabbing {
-        outline: 2px solid white;
-    }
-}
-
-.light-mode {
-    .user-is-tabbing {
-        outline: 2px solid black;
-    }
+.user-is-tabbing {
+    outline: $outline solid $outline-color;
 }
 
 .recipe-form {

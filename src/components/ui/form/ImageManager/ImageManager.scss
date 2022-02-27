@@ -1,3 +1,7 @@
+.user-is-tabbing .image-manager .image-input:focus-within {
+    outline: $outline solid $outline-color;
+} 
+
 .dark-mode .image-manager .image-input {
     border: 1px solid #666;
     color: #AAA;
@@ -7,7 +11,6 @@
     }
 
     &:focus-within {
-        outline: 2px solid white;
         color: lighten(#AAA, 10%);
     }
 }
@@ -21,7 +24,6 @@
     }
 
     &:focus-within {
-        outline: 2px solid black;
         color: darken($dark-primary, 10%);
     }
 }

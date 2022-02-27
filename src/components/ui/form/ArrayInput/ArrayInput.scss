@@ -1,3 +1,12 @@
+.user-is-tabbing .input-field > div input:focus {
+    outline: $outline solid;
+    outline-offset: 0;
+}
+
+.user-is-tabbing .input-field > div input.error {
+    outline: $outline solid lighten($red, 25%);
+}
+
 .dark-mode {
     .input-field input:read-only {
         background-color: lighten($dark-secondary, 5%);
@@ -71,7 +80,7 @@
             margin: 0;
 
             &:focus {
-                outline: 2px solid;
+                outline: solid $outline-color;
                 outline-offset: 0;
             }
 
@@ -80,7 +89,7 @@
             }
 
             &.error {
-                outline: 2px solid lighten($red, 25%);
+                outline: solid lighten($red, 25%);
             }
         }
 

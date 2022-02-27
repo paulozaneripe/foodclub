@@ -138,6 +138,10 @@ export default {
     }
 }
 
+.light-mode .logo a:focus-within {
+    outline: $outline solid $outline-inverted-color !important;
+}
+
 .register-section {
     padding: 20px 0;
 

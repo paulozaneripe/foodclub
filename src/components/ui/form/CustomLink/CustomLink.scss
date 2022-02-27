@@ -16,13 +16,6 @@
             background-color: lighten(black, 8%);
         }
     }
-
-    a {
-        &:focus {
-            outline: 2px solid black;
-            outline-offset: 3px;
-        }
-    }
 }
 
 .edit {

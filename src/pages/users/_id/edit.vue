@@ -185,12 +185,17 @@ export default {
 </script>
 
 <style lang="scss">
+.user-is-tabbing #change-photo:focus-within {
+    box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.2);
+    outline-offset: 0px !important;
+}
+
 .dark-mode .user-is-tabbing #change-photo:focus-within {
-    outline: 2px solid white;
+    outline: 6px solid white;
 }
 
 .light-mode .user-is-tabbing #change-photo:focus-within {
-    outline: 2px solid black;
+    outline: 6px solid black;
 }
 
 .user-edit {

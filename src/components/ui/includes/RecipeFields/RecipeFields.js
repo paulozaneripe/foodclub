@@ -73,7 +73,7 @@ export default Vue.extend({
         addField(field) {
             if (field.length < 50) {
                 if (field[field.length - 1].value !== '') {
-                    field.push({ value: '' });
+                    field.push({ value: '' });  
                 }
             } else {
                 this.$toast.info('Você atingiu o limite de campos!', {
@@ -91,17 +91,20 @@ export default Vue.extend({
                 field.splice(index, 1);
             }
         },
-        getObjectValues(object, valueName) {
+        valuesToString(object, valueName) {
             const JSONObject = JSON.parse(JSON.stringify(object));
-            const objectValues = [];
+            let stringValues = "";
 
             for (let i = 0; i < JSONObject.length; i++) {
                 let value = JSONObject[i][valueName].replace(/\s+/g, ' ');
-                if (!(value === null || value.match(/^\s*$/) !== null))
-                    objectValues.push(value);
+                if (!(value === null || value.match(/^\s*$/) !== null)) {
+                    stringValues = stringValues + value.replace('§',' ');
+                    if (i !== JSONObject.length - 1)
+                        stringValues = stringValues + "§";
+                }
             }
 
-            return objectValues;
+            return stringValues;
         },
         async submit() {
             this.$refs.form.validate().then((success) => {
@@ -114,8 +117,8 @@ export default Vue.extend({
                 }
                 formData.append('userId', this.$auth.user.id);
                 formData.append('title', this.title);
-                formData.append('ingredients', this.getObjectValues(this.ingredients, "value"));
-                formData.append('preparation', this.getObjectValues(this.preparation, "value"));
+                formData.append('ingredients', this.valuesToString(this.ingredients, "value"));
+                formData.append('preparation', this.valuesToString(this.preparation, "value"));
                 formData.append('information', this.information);
                 if (!this.post && this.removedImages) {
                     formData.append('removedImages', this.removedImages);

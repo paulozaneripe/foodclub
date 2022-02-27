@@ -136,7 +136,7 @@ img.user-avatar {
         }
 
         .user-is-tabbing #user-button:focus {
-            outline: 2px solid white;
+            outline: $outline solid $outline-color;
         }
 
         #user-links {
@@ -176,7 +176,7 @@ img.user-avatar {
         }
 
         .user-is-tabbing #user-button:focus {
-            outline: 2px solid black;
+            outline: $outline solid $outline-color;
         }
 
         #user-links {

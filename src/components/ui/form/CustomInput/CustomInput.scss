@@ -1,3 +1,11 @@
+.user-is-tabbing .input-field input:focus {
+    outline: $outline solid $outline-color;
+}
+
+.user-is-tabbing .input-field input.error {
+    outline: $outline solid lighten($red, 25%);
+}
+
 .dark-mode {
     .input-field input:read-only {
         background-color: transparent;
@@ -74,7 +82,7 @@
         transition: background-color .2s;
 
         &:focus {
-            outline: 2px solid;
+            outline: solid $outline-color;
             outline-offset: 0;
         }
 
@@ -93,7 +101,7 @@
         }
 
         &.error {
-            outline: 2px solid lighten($red, 25%);
+            outline: solid lighten($red, 25%);
         }
 
         &:not(:placeholder-shown) ~ .password-visibility {

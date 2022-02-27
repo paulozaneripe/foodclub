@@ -8,7 +8,7 @@
         :vid="name === 'password' ? name : ''"
         v-slot="{ errors, ariaMsg, ariaInput }"
     >
-        <div class="input-field">
+        <div class="input-field" :class="errors[0] ? 'error' : ''">
             <input
                 :id="name"
                 :class="type === 'password' ? 'password' : ''"

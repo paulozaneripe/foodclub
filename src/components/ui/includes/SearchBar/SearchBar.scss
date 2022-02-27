@@ -20,12 +20,8 @@
     }
 }
 
-.dark-mode .search-bar:focus-within {
-    outline: 2px solid white;
-}
-
-.light-mode .search-bar:focus-within {
-    outline: 2px solid black;
+.search-bar:focus-within {
+    outline: $outline solid $outline-color;
 }
 
 .search-bar {

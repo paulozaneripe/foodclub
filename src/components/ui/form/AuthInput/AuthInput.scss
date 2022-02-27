@@ -1,3 +1,12 @@
+.user-is-tabbing .input-field:focus-within {
+    outline: $outline solid $outline-color;
+    border-radius: 11px;
+}
+
+.user-is-tabbing .input-field.error {
+    outline: $outline solid lighten($red, 25%);
+}
+
 .dark-mode {
     .input-field {
         background-color: $dark-secondary;
@@ -49,9 +58,12 @@
     width: 100%;
     
     &:focus-within {
-        outline: 2px solid;
-        border-radius: 11px;
+        outline: solid $outline-color;
         outline-offset: 0;
+    }
+
+    &.error {
+        outline: solid lighten($red, 25%);
     }
 
     input {
@@ -107,7 +119,7 @@
         bottom: 19px;
         left: 50px;
         width: 63%;
-        transition: bottom ease 0.5s, font-size ease 0.5s;
+        transition: bottom ease 0.2s, font-size ease 0.2s;
         text-overflow: ellipsis;
         white-space: nowrap;
         word-wrap: break-word;

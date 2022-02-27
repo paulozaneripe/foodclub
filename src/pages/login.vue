@@ -118,6 +118,10 @@ export default {
     }
 }
 
+.light-mode .logo a:focus-within {
+    outline: $outline solid $outline-inverted-color !important;
+}
+
 .login-section {
     padding: 20px 0;
 

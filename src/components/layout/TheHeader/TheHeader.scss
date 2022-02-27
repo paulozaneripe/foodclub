@@ -1,5 +1,5 @@
-body.user-is-tabbing #logo a:focus-within {
-    outline: 2px solid white;
+.light-mode body.user-is-tabbing #logo a:focus-within {
+    outline: $outline solid $outline-inverted-color !important;
 }
 
 .light-mode {
