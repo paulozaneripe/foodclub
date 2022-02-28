@@ -20,11 +20,11 @@
     color: $dark-primary;
 
     &:hover {
-        color: darken($dark-primary, 10%);
+        color: darken($dark-primary, 15%);
     }
 
     &:focus-within {
-        color: darken($dark-primary, 10%);
+        color: darken($dark-primary, 15%);
     }
 }
 

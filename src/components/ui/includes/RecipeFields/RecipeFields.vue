@@ -22,60 +22,70 @@
             placeholder="Digite um nome para sua receita..."
             rules="required|min:3|max:60"
         />
-        <ul>
-            <label for="ingredients">Ingredientes</label>
-            <li
-                v-for="(ingredient, index) in ingredients"
-                :key="index"
-            >
-                <ArrayInput
-                    v-model="ingredient.value"
-                    name="ingredients"
-                    field="Ingrediente"
-                    placeholder="Informe um ingrediente por campo..."
-                    max="201"
-                    :index="parseInt(index)"
-                    @removeField="removeField(ingredients, index)"
-                    @addField="addField(ingredients)"
-                />
-            </li>
-        </ul>
-        <button
+        <fieldset>
+            <legend>Ingredientes</legend>
+                <ul>
+                    <li
+                        v-for="(ingredient, index) in ingredients"
+                        :key="index"
+                    >
+                        <ArrayInput
+                            v-model="ingredient.value"
+                            name="ingredients"
+                            field="Ingrediente"
+                            placeholder="Informe um ingrediente por campo..."
+                            max="201"
+                            :index="parseInt(index)"
+                            @removeField="removeField(ingredients, index)"
+                            @addField="addField(ingredients)"
+                        />
+                    </li>
+                </ul>
+        </fieldset>
+        <span
             class="add-button"
+            role="button"
+            tabindex="0"
             @click.prevent="addField(ingredients)"
+            @keydown.enter.prevent="addField(ingredients)"
         >
             <span class="material-icons" aria-hidden="true">
                 add
             </span>
             Adicionar ingrediente [Enter]
-        </button>
-        <ul>
-            <label for="preparation">Modo de preparo</label>
-            <li 
-                v-for="(step, index) in preparation" 
-                :key="index"
-            >
-                <ArrayInput
-                    v-model="step.value"
-                    name="preparation"
-                    field="Modo de preparo"
-                    placeholder="Informe um passo por campo..."
-                    max="201"
-                    :index="parseInt(index)"
-                    @removeField="removeField(preparation, index)"
-                    @addField="addField(preparation)"
-                />
-            </li>
-        </ul>
-        <button
+        </span>
+        <fieldset>
+            <legend>Modo de preparo</legend>
+            <ul>
+                <li 
+                    v-for="(step, index) in preparation" 
+                    :key="index"
+                >
+                    <ArrayInput
+                        v-model="step.value"
+                        name="preparation"
+                        field="Modo de preparo"
+                        placeholder="Informe um passo por campo..."
+                        max="201"
+                        :index="parseInt(index)"
+                        @removeField="removeField(preparation, index)"
+                        @addField="addField(preparation)"
+                    />
+                </li>
+            </ul>
+        </fieldset>
+        <span
             class="add-button"
+            role="button"
+            tabindex="0"
             @click.prevent="addField(preparation)"
+            @keydown.enter.prevent="addField(preparation)"
         >
             <span class="material-icons" aria-hidden="true">
                 add
             </span>
             Adicionar passo [Enter]
-        </button>
+        </span>
         <CustomTextArea
             v-model="information"
             name="information"

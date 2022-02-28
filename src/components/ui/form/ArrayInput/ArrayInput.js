@@ -56,6 +56,12 @@ export default Vue.extend({
             required: false
         }
     },
+    mounted() {
+        if (this.index + 1 > 1) {
+            const input = document.getElementById(`${this.name}-${this.index + 1}`);
+            input.focus();
+        }
+    },
     methods: {
         updateValue(value) {
             this.$emit('input', value);

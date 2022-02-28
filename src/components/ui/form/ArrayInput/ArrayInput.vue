@@ -9,7 +9,7 @@
     >
         <div>
             <input
-                :id="name"
+                :id="`${name}-${index + 1}`"
                 :class="errors[0] ? 'error' : ''"
                 :value="value"
                 :name="name"
@@ -20,7 +20,7 @@
                 v-mask="mask"
                 v-bind="ariaInput"
                 @input="updateValue($event.target.value)"
-                @keydown.enter="addField"
+                @keydown.enter.prevent="addField"
             />
             <span 
                 v-if="index > 0 || value != ''"

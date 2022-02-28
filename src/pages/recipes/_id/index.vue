@@ -27,7 +27,7 @@
             <div class="recipe-body">
                 <div class="ingredients">
                     <div>
-                        <h3>Ingredientes</h3>
+                        <h2>Ingredientes</h2>
                         <span 
                             role="button" 
                             aria-expanded="true" 
@@ -46,7 +46,7 @@
                 </div>
                 <div class="preparation">
                     <div>
-                        <h3>Modo de preparo</h3>
+                        <h2>Modo de preparo</h2>
                         <span 
                             role="button" 
                             aria-expanded="true" 
@@ -65,7 +65,7 @@
                 </div>
                 <div class="information">
                     <div>
-                        <h3>Informações adicionais</h3>
+                        <h2>Informações adicionais</h2>
                     </div>
                     <p>
                         {{ recipe.information ? recipe.information : 'Essa receita não possui informações adicionais.'}}
@@ -219,6 +219,10 @@ export default {
             
             font-size: 2em;
             opacity: 0.6;
+
+            a:hover {
+                text-decoration: underline;
+            }
         }
     }
 
@@ -229,7 +233,7 @@ export default {
             transition: visibility .2s, opacity .2s;
         }
 
-        h3 {
+        h2 {
             text-align: left;
             font-size: 2.4em;
             opacity: 0.9;
@@ -251,7 +255,7 @@ export default {
                 margin-bottom: 20px;
             }
 
-            h3, span {
+            h2, span {
                 display: inline-block;
             }
 
@@ -279,7 +283,7 @@ export default {
                 margin-bottom: 20px;
             }
 
-            h3, span {
+            h2, span {
                 display: inline-block;
             }
 

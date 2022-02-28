@@ -7,6 +7,7 @@
                 id="images" 
                 name="images" 
                 title=""
+                aria-label="Adicionar imagens"
                 accept="image/*" 
                 multiple
                 @change="handleFileInput"
