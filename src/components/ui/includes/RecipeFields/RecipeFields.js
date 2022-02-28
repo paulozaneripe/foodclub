@@ -70,10 +70,16 @@ export default Vue.extend({
         getRemovedImages(value) {
             this.removedImages = value;
         },
-        addField(field) {
+        addField(field, listName) {
+            const lastIndex = document.getElementById(listName).getElementsByTagName("li").length + 1;
+
             if (field.length < 50) {
                 if (field[field.length - 1].value !== '') {
                     field.push({ value: '' });  
+                    
+                    setTimeout(() => {
+                        document.getElementById(`${listName}-${lastIndex}`).focus();
+                    }, 10);
                 }
             } else {
                 this.$toast.info('Você atingiu o limite de campos!', {

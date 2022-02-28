@@ -24,7 +24,7 @@
         />
         <fieldset>
             <legend>Ingredientes</legend>
-                <ul>
+                <ul id="ingredients">
                     <li
                         v-for="(ingredient, index) in ingredients"
                         :key="index"
@@ -37,7 +37,7 @@
                             max="201"
                             :index="parseInt(index)"
                             @removeField="removeField(ingredients, index)"
-                            @addField="addField(ingredients)"
+                            @addField="addField(ingredients, 'ingredients')"
                         />
                     </li>
                 </ul>
@@ -46,8 +46,8 @@
             class="add-button"
             role="button"
             tabindex="0"
-            @click.prevent="addField(ingredients)"
-            @keydown.enter.prevent="addField(ingredients)"
+            @click.prevent="addField(ingredients, 'ingredients')"
+            @keydown.enter.prevent="addField(ingredients, 'ingredients')"
         >
             <span class="material-icons" aria-hidden="true">
                 add
@@ -56,7 +56,7 @@
         </span>
         <fieldset>
             <legend>Modo de preparo</legend>
-            <ul>
+            <ul id="preparation">
                 <li 
                     v-for="(step, index) in preparation" 
                     :key="index"
@@ -69,7 +69,7 @@
                         max="201"
                         :index="parseInt(index)"
                         @removeField="removeField(preparation, index)"
-                        @addField="addField(preparation)"
+                        @addField="addField(preparation, 'preparation')"
                     />
                 </li>
             </ul>
@@ -78,8 +78,8 @@
             class="add-button"
             role="button"
             tabindex="0"
-            @click.prevent="addField(preparation)"
-            @keydown.enter.prevent="addField(preparation)"
+            @click.prevent="addField(preparation, 'preparation')"
+            @keydown.enter.prevent="addField(preparation, 'preparation')"
         >
             <span class="material-icons" aria-hidden="true">
                 add

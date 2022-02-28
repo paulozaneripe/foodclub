@@ -63,7 +63,7 @@ function signUserToken(user) {
     return jwt.sign({
         id: user.id,
         email: user.email
-    }, process.env.JWT_SECRET_KEY);
+    }, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
 }
 
 export default { login, logout, forgot, reset };
