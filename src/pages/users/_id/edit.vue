@@ -191,7 +191,7 @@ export default {
 }
 
 .dark-mode .user-is-tabbing #change-photo:focus-within {
-    outline: 6px solid white;
+    outline: 6px solid $outline-color;
 }
 
 .light-mode .user-is-tabbing #change-photo:focus-within {

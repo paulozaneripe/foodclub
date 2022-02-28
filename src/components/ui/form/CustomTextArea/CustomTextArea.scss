@@ -1,8 +1,8 @@
-.input-field textarea:focus {
+.user-is-tabbing .input-field textarea:focus {
     outline: $outline solid $outline-color;
 }
 
-.input-field .error {
+.user-is-tabbing .input-field textarea.error {
     outline: $outline solid lighten($red, 25%);
 }
 

@@ -97,10 +97,15 @@ export default Vue.extend({
 
             for (let i = 0; i < JSONObject.length; i++) {
                 let value = JSONObject[i][valueName].replace(/\s+/g, ' ');
-                if (!(value === null || value.match(/^\s*$/) !== null)) {
-                    stringValues = stringValues + value.replace('§',' ');
-                    if (i !== JSONObject.length - 1)
-                        stringValues = stringValues + "§";
+
+                if (value !== null && value !== '' && value !== ' ') {
+
+                    value = value.replace('§',' ');
+                    if (i > 0) {
+                        stringValues = stringValues + "§" + value;
+                    } else {
+                        stringValues = stringValues + value;
+                    }
                 }
             }
 
