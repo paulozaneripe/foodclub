@@ -289,6 +289,7 @@ export default {
 
             li {
                 font-size: 1.6em;
+                line-height: 1.6em;
                 text-align: left;
                 counter-increment: item;
                 opacity: 0.8;

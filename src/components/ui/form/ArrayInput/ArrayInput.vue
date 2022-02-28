@@ -4,7 +4,7 @@
         class="input-field"
         :name="field"
         :mode="mode"
-        :rules="index === 0 ? 'required|min:3|max:200' : 'min:3|max:200'"
+        :rules="index === 0 ? 'required|min:3|max:500' : 'min:3|max:500'"
         v-slot="{ errors, ariaMsg, ariaInput }"
     >
         <div>
@@ -14,7 +14,6 @@
                 :value="value"
                 :name="name"
                 :type="type"
-                :maxlength="max"
                 :placeholder="placeholder"
                 :readonly="readonly"
                 v-mask="mask"

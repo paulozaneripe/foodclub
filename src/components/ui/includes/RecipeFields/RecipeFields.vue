@@ -17,7 +17,6 @@
         <CustomInput
             v-model="title"
             name="title"
-            max="60"
             label="Título da receita"
             placeholder="Digite um nome para sua receita..."
             rules="required|min:3|max:60"
@@ -34,7 +33,6 @@
                             name="ingredients"
                             field="Ingrediente"
                             placeholder="Informe um ingrediente por campo..."
-                            max="201"
                             :index="parseInt(index)"
                             @removeField="removeField(ingredients, index)"
                             @addField="addField(ingredients, 'ingredients')"
@@ -66,7 +64,6 @@
                         name="preparation"
                         field="Modo de preparo"
                         placeholder="Informe um passo por campo..."
-                        max="201"
                         :index="parseInt(index)"
                         @removeField="removeField(preparation, index)"
                         @addField="addField(preparation, 'preparation')"
@@ -89,10 +86,9 @@
         <CustomTextArea
             v-model="information"
             name="information"
-            max="436"
             label="Informações (Opcional)"
             placeholder="Conte alguma curiosidade sobre esta receita..."
-            rules="min:10|max:435"
+            rules="min:10|max:1000"
         />
         <CustomButton
             class="save"

@@ -26,10 +26,6 @@ export default Vue.extend({
             default: "text",
             required: false
         },
-        max: {
-            type: String,
-            required: false
-        },
         placeholder: {
             type: String,
             default: null,
