@@ -81,3 +81,8 @@ sw.*
 
 # Environment variables
 .env
+
+# Images from uploads folder
+src/assets/images/uploads/*.jpeg
+src/assets/images/uploads/*.jpg
+src/assets/images/uploads/*.png
